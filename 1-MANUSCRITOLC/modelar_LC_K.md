@@ -121,13 +121,19 @@ A influência das variáveis composicionais (L/C, cristalinidade) sobre a taxa d
 
 ## 3. Resultados e Discussão
 
-### 3.0. Caracterização Preliminar: Degradação Temporal de Resistência e Deformação
+### 3.1. Degradação Temporal de Resistência e Deformação
 
 A análise inicial dos dados de tração revelou comportamentos diferenciais entre os tratamentos alcalinos ao longo do período de exposição de 180 dias. Os resultados preliminares estabelecem a base empírica para as análises probabilísticas posteriores.
 
 Quanto a cinética da degradação de resistência à tração do geotêxtil ao longo do tempo experimental adotado, a Figura 3A apresenta a evolução temporal da Resistência Última à Tração (UTS, *Ultimate Tensile Strength*) para os quatro tratamentos (T0-T3), mostrando decaimento não-linear em todos os casos. As fibras não tratadas (T0, natural) exibiram taxa de degradação mais acentuada nos primeiros 90 dias, reduzindo de 13,46 MPa para aproximadamente 8,2 MPa, correspondendo a uma perda de 39,1% da resistência inicial.
 
 O tratamento com NaOH 3% (T1) apresentou trajetória errática, alternando entre ganhos e perdas de resistência, culminando em degradação similar ao T0 em 180 dias. Em contraste, os tratamentos T2 (6%) e T3 (9%) demonstraram estabilidade superior, com T3 mantendo resistência relativa acima de 75% até o dia 120, reduzindo-se posteriormente. Este padrão está consistente com o modelo exponencial de primeira ordem proposto na metodologia.
+
+A análise quantitativa da evolução temporal da UTS ao longo de 180 dias (Figura 5A) revela que todos os tratamentos seguem cinética de degradação exponencial, porém com taxas significativamente diferentes. O tratamento T3 (NaOH 9%) exibe a menor taxa de degradação, mantendo aproximadamente 70% da resistência inicial após 180 dias, enquanto T0 (natural) retém apenas 55% neste mesmo período. Esta diferença de 15 pontos percentuais é substancial para aplicações geotécnicas, representando margem adicional de segurança estrutural que pode determinar a viabilidade técnica do material em taludes expostos.
+
+**Figura 5A.** Evolução temporal da Resistência Última à Tração (UTS) para os quatro tratamentos alcalinos ao longo de 180 dias de exposição acelerada.
+
+![](../3-IMAGENS/painel_completo_analises_ggplot.png){width="95%"}
 
 As imagens de microscopia óptica das fraturas em corpos de prova de tração (Figura 3B para 30 dias, Figura 3C para 90 dias) revelaram que o modo de fratura transicionou de fratura dúctil (com deformação plástica pronunciada) em t=0 para fratura mais frágil nos períodos finais, particularmente em T0 e T1. O padrão de fratura em T2 e T3 permaneceu mais ductilífero, com maior absorção de energia antes da ruptura, indicando que a mercerização alcalina preservou a ductilidade residual—aspecto crítico para aplicações em taludes onde a capacidade de acomodação a pequenos deslocamentos é essencial.
 
@@ -137,19 +143,31 @@ As imagens de microscopia óptica das fraturas em corpos de prova de tração (F
 
 A visualização das curvas de tensão-deformação em dois momentos críticos (dia 30 e dia 90) permite avaliar qualitativamente como a mercerização afeta a resposta mecânica (Figuras 4A-B para dia 30; Figuras 4C-D para dia 90). No dia 30, todos os tratamentos exibem comportamento similar com fase elástica inicial seguida por deformação plástica controlada até a ruptura. Contudo, a inclinação da região elástica (módulo de Young aparente) varia significativamente, onde T0 apresenta módulo menor, enquanto T3 exibe rigidez superior, indicando maior proporção de celulose cristalina após mercerização. No dia 90, a divergência amplifica-se, com T0 passando a exibir ruptura quase-frágil com pouca deformação plástica residual, enquanto T2 e T3 preservam comportamento dúctil robusto, suportando maiores deformações antes da ruptura final.
 
-A quantificação da tenacidade (área sob a curva tensão-deformação) revela que T2 e T3 mantêm absorção de energia aproximadamente 40-60% superior a T0 mesmo após 90 dias de envelhecimento, demonstrando que o tratamento alcalino não apenas estende a vida útil via redução de taxa de degradação $k$, mas também preserva a integridade energética do material—propriedade crítica para desempenho em condições de sobrecarga acidental.
-
-**Figura 4.** Curvas de tensão-deformação representativas em dia 30 (A-B) e dia 90 (C-D) para todos os tratamentos. 
+**Figura 4.** Curvas de tensão-deformação representativas em dia 30 (A-B) e dia 90 (C-D) para todos os tratamentos.
 
 ![](../3-IMAGENS/tracao_90dias_todos_tratamentos.png){width="95%"}
 
-**Análise Agregada de Variabilidade.** A Figura 5 apresenta a síntese de múltiplas métricas de desempenho em função do tempo de exposição, permitindo visualização holística de como cada tratamento se posiciona no espaço multidimensional de propriedades mecânicas. Observa-se que a variabilidade (envelope de incerteza em torno da curva média) decresce para T2 e T3 com a exposição prolongada—indicativo de homogeneização microestrutural induzida pela mercerização—enquanto para T0 aumenta progressivamente, sugerindo que a degradação descorrelaciona as propriedades de diferentes fibras dentro da mesma amostra.
+A evolução da deformação máxima na ruptura ($\varepsilon_{\text{max}}$) ao longo do tempo (Figura 5B) evidencia o trade-off entre ganho de resistência e perda de ductilidade. Fibras naturais (T0) mantêm deformação máxima relativamente estável nos primeiros 60 dias (aproximadamente 8-9%), declinando abruptamente após este período para valores inferiores a 5% em 180 dias. Esta redução drástica indica transição para regime de ruptura frágil, onde o material perde capacidade de acomodação a deslocamentos diferenciais—característica indesejável para aplicações em taludes sujeitos a recalques. Em contraste, tratamentos T2 e T3 preservam deformabilidade acima de 6% ao longo de todo o período experimental, mantendo margem de segurança contra ruptura prematura. Esta preservação de ductilidade é atribuída à remoção de hemicelulose, componente amorfo que sob degradação UV forma ligações cruzadas rígidas que embrittilham a fibra [@Manimaran2018; @Loganathan2020].
 
-**Figura 5.** Painel integrado de análises mecânicas: UTS, deformação máxima, tenacidade e índice de variabilidade (coeficiente de variação) ao longo de 180 dias. ![Painel analítico multidimensional](../3-IMAGENS/painel_completo_analises_ggplot.png){width="95%"}
+**Figura 5B.** Evolução temporal da deformação máxima na ruptura (εₘₐₓ) para os quatro tratamentos ao longo de 180 dias, evidenciando perda de ductilidade em fibras naturais (T0) e preservação em tratamentos alcalinos.
 
-Estes resultados preliminares estabelecem os pilares factuais sobre os quais se fundamentam as modelagens probabilísticas subsequentes, validando que o comportamento de degradação não é meramente redução linear de resistência, mas processo complexo que envolve alterações concomitantes em ductilidade, distribuição de defeitos, e uniformidade microestrutural.
+![](../3-IMAGENS/painel_completo_analises_ggplot.png){width="95%"}
 
-### 3.1. Análise de Confiabilidade Estrutural: Regime de Falha por Desgaste versus Fragilização Progressiva
+A quantificação da tenacidade (área sob a curva tensão-deformação) ao longo do tempo (Figura 5C) integra simultaneamente resistência e ductilidade, fornecendo métrica unificada de capacidade de absorção de energia antes da ruptura. Os resultados mostram que T2 e T3 mantêm tenacidade aproximadamente 40-60% superior a T0 mesmo após 90 dias de envelhecimento, demonstrando que o tratamento alcalino não apenas estende a vida útil via redução de taxa de degradação $k$, mas também preserva a integridade energética do material—propriedade crítica para desempenho em condições de sobrecarga acidental. A tenacidade de T0 declina monotonicamente de aproximadamente 0,8 MJ/m³ (dia 0) para 0,3 MJ/m³ (dia 180), enquanto T3 mantém-se acima de 0,5 MJ/m³ ao final do período experimental.
+
+**Figura 5C.** Evolução temporal da tenacidade (energia de fratura) para os quatro tratamentos ao longo de 180 dias, demonstrando preservação superior em tratamentos alcalinos concentrados.
+
+![](../3-IMAGENS/painel_completo_analises_ggplot.png){width="95%"}
+
+A análise da variabilidade estatística (coeficiente de variação, CV) das propriedades mecânicas em função do tempo (Figura 5D) revela padrão contra-intuitivo. Para fibras naturais (T0), o CV aumenta progressivamente de 12% (dia 0) para 28% (dia 180), indicando que a degradação descorrelaciona as propriedades de diferentes fibras dentro da mesma amostra—algumas fibras degradam mais rapidamente que outras, amplificando a dispersão estatística. Este fenômeno é indesejável do ponto de vista de confiabilidade estrutural, pois implica que a resistência característica (percentil inferior da distribuição) degrada mais rapidamente que a resistência média. Em contraste, tratamentos T2 e T3 exibem CV decrescente ao longo do tempo, reduzindo de 15% para aproximadamente 10% em 180 dias. Este comportamento indica homogeneização microestrutural induzida pela mercerização, onde o tratamento alcalino "uniformiza" a resposta das fibras individuais, tornando o material mais previsível e confiável para dimensionamento estrutural.
+
+**Figura 5D.** Evolução temporal do coeficiente de variação (CV) das propriedades mecânicas ao longo de 180 dias, mostrando aumento de dispersão em fibras naturais e homogeneização em tratamentos alcalinos.
+
+![](../3-IMAGENS/painel_completo_analises_ggplot.png){width="95%"}
+
+A integração das quatro métricas analisadas (Figuras 5A-D) estabelece os pilares factuais sobre os quais se fundamentam as modelagens probabilísticas subsequentes, validando que o comportamento de degradação não é meramente redução linear de resistência, mas processo complexo que envolve alterações concomitantes em ductilidade, distribuição de defeitos, e uniformidade microestrutural. Os resultados demonstram que tratamentos alcalinos concentrados (T2 e T3) não apenas retardam a cinética de degradação, mas fundamentalmente transformam a natureza estocástica da falha, promovendo transição de um regime de ruptura imprevisível para um mecanismo controlado e previsível de desgaste.
+
+### 3.2. Análise de Confiabilidade Estrutural
 
 A caracterização probabilística da durabilidade foi conduzida mediante modelagem paramétrica de Weibull de dois parâmetros, conjugada à análise explícita do modo de falha governante. Distinguiu-se, rigorosamente, entre dois fenômenos frequentemente confundidos na literatura de biocompósitos, o esgotamento de resistência à tração (perda de carga máxima suportada) e a fragilização (perda de capacidade de deformação plástica antes da ruptura). 
 
@@ -206,7 +224,7 @@ Para a *Typha domingensis*, a seleção de NaOH 6% como concentração operacion
 
 **Figura 4.** Funções de confiabilidade acumulada $R(t)$ derivadas de estimação de Máxima Verossimilhança de parâmetros de Weibull, ilustrando deslocamento horizontal (ganho de vida útil) e mudança de inclinação (redução de dispersão estocástica) induzidos pela mercerização alcalina. ![Curvas de confiabilidade de Weibull](../3-IMAGENS/grafico_weibull_confiabilidade_ggplot.png){width="80%"}
 
-### 3.2. Hierarquia Causal da Degradação: Composição Química Governando Cinética de Falha
+### 3.3. Hierarquia Causal da Degradação: Composição Química Governando Cinética de Falha
 
 A validação estatística da hierarquia causal postulada (composição química → cinética de degradação → vida útil funcional) foi efetuada mediante regressão multivariada dos preditores de degradação, conjugada à análise de caminhos causais. A análise de regressão múltipla dos fatores governantes da taxa de degradação de primeira ordem revelou capacidade preditiva excepcional, explicando 99,8% da variância observada (R²_adj = 0,9972). 
 
@@ -231,7 +249,7 @@ A adequação do modelo de regressão múltipla foi validada rigorosamente media
 
 O diagrama de resíduos versus valores preditos não revelou padrões sistemáticos, descartando a presença de não-linearidades omitidas ou termos de interação relevantes. A análise de influência (distância de Cook) identificou uma única observação potencialmente alavancadora (tratamento NaOH 9%, t = 120 dias; D = 0,87), porém sua exclusão modificou os coeficientes de regressão em menos de 5%, confirmando robustez estatística do modelo ajustado e afastando a hipótese de dependência de outliers.
 
-### 3.3. Cinética de Fragilização: Deformação Plástica como Modo de Falha Governante
+### 3.4. Cinética de Fragilização: Deformação Plástica como Modo de Falha Governante
 
 A validação do modelo exponencial de degradação de primeira ordem exigiu caracterização temporal detalhada não apenas da resistência à tração ($\sigma_{\text{máx}}$), mas especialmente da capacidade de deformação plástica ($\varepsilon_{\text{máx}}$), esta última identificada como modo de falha mais sensível e governante. O ajuste da cinética de decaimento exponencial aos dados experimentais de extensão máxima revelou meia-vida de 19,5 dias para fibras não tratadas, com coeficiente de determinação R² = 0,78 após regressão não-linear. A significância da degradação de ductilidade foi quantificada pelos parâmetros $S_0$ (deformação inicial) e $k$ (constante de taxa), cujos intervalos de confiança bootstrap de 95%, obtidos por reamostragem não-paramétrica com 1000 iterações, confirmaram a magnitude estatística do decaimento. Especificamente, $k_{\text{ductilidade}} = 0,001471 \, [0,0011\text{--}0,0017] \, h^{-1}$ e $S_0 = 15,13 \, [13,36\text{--}16,46]\%$; a largura relativa dos intervalos (±22% para k, ±10% para $S_0$) reflete variabilidade natural do material mas permanece dentro de limites aceitáveis para fins de engenharia operacional.
 
@@ -250,7 +268,7 @@ A validação da adequação do modelo exponencial foi realizada mediante resíd
 
 A ductilidade residual pode ser computada para qualquer tempo via fórmula rearrangida da equação exponencial: $t_{\text{crítico}} = -\frac{1}{k} \ln\left(\frac{\varepsilon_{\text{alvo}}}{\varepsilon_0}\right)$. Desta, para fibras naturais (T0) atingirem o limiar de fragilização crítica ($\varepsilon < 2,0\%$), decorreria apenas $t_{\text{crítico}} = -\frac{1}{0,001471} \ln(0,132) \approx 1662$ horas (~69 dias), enquanto tratamento T3 (NaOH 9%) estenderia este prazo para ~210 dias, permitindo margem operacional triplicada. Esta quantificação explícita da janela de funcionalidade oferece ferramenta prática para especificação de cronograma de revegetação e planejamento de estratégias de substituição/manutenção.
 
-### 3.4. Validação Cruzada e Limite de Domínio do Modelo Preditivo
+### 3.5. Validação Cruzada e Limite de Domínio do Modelo Preditivo
 
 A confiabilidade das previsões de vida útil funcional foi quantificada mediante validação estatística robusta combinando reamostragem e simulações estocásticas. A reamostragem bootstrap não-paramétrica com 1000 iterações confirmou estabilidade numérica dos ajustes exponenciais, com as distribuições empíricas para taxa de degradação $k$ exibindo comportamento aproximadamente normal (teste de Kolmogorov-Smirnov: D = 0,087; p = 0,41), afastando preocupações com viés de estimação ou dependência de outliers [@Sodagar2025]. A análise de validação cruzada (*leave-one-out cross-validation*, LOOCV) foi implementada para avaliar a generalização do modelo a dados não visto. O erro quadrático médio (RMSE) em validação cruzada foi 0,000127 dia⁻¹, comparável ao RMSE de ajuste (0,000115 dia⁻¹), indicando ausência de *overfitting* significativo e confirmando capacidade preditiva em dados novos com degradação de desempenho negligenciável (relação RMSE_cv/RMSE_treino = 1,10).
 
@@ -261,7 +279,7 @@ A análise de robustez via simulação de Monte Carlo (Figura 4) avaliou comport
 
 A validação mecanística foi suportada por convergência entre previsões do modelo e observações espectroscópicas via FTIR. A formação de grupos carbonila (C=O) em 1735 cm⁻¹ (indicativa de oxidação de hemicelulose) e redução de vibrações aromáticas em 1505 cm⁻¹ (indicativa de degradação de lignina) correlacionaram-se positivamente (r = 0,82; p < 0,001) com a degradação de ductilidade, validando que a fotoxidação química subjacente é o mecanismo fisicamente plausível para a cinética observada. Constatação análoga foi documentada por @Tanasa2022 para fibras de cânhamo onde fotólise de lignina atua como gatilho para descoesão de parede celular secundária. A robustez desta correlação espectroscópica-mecânica confere legitimidade física ao modelo empírico.
 
-### 3.5. Análise de Poder Estatístico e Limitações do Delineamento Amostral
+### 3.6. Análise de Poder Estatístico e Limitações do Delineamento Amostral
 
 A avaliação retrospectiva do poder estatístico explorou a relação entre tamanho amostral, magnitude de efeito esperado e probabilidade de rejeição correta da hipótese nula. As curvas de poder (Figura 5), calculadas via abordagem de Monte Carlo com 10.000 simulações, indicaram que o tamanho amostral de n=44 (distribuído como n=11 por tratamento alcalino, repetido em 4 períodos temporais) posicionou o experimento em zona de sensibilidade adequada para detecção de efeitos de magnitude moderada a grande (tamanho de efeito Cohen's d = 0,6), com poder estatístico de 80% (probabilidade de erro Tipo II β = 0,20). Essa configuração reflete compromisso usual entre viabilidade operacional (custos de ensaios prolongados) e rigor estatístico.
 
