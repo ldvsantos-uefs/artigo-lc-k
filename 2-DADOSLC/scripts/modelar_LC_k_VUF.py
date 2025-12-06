@@ -338,312 +338,190 @@ def regressao_multipla_degradacao(df):
     }
 
 def main():
-    print("--- Análise de Modelagem: Typha domingensis (Taboa) ---")
-    print("Foco: Degradação da Deformação (Extensão Máxima)")
+    print("=" * 80)
+    print("ANÁLISE DE MODELAGEM: Typha domingensis (Taboa) - Tratamento NaOH")
+    print("Foco: Degradação da Resistência à Tração ao longo do tempo")
+    print("=" * 80)
     
-    # 1. Carregar e Preparar Dados Reais da Taboa
-    arquivo_resumo = 'dados_resumo_extraidos.csv'
+    # 1. Carregar Dados Corretos do SPSS (Typha NaOH - 30 a 180 dias)
+    arquivo_agregado = os.path.join('..', 'processed_data', 'dados_tracao_agregados.csv')
     
-    if not os.path.exists(arquivo_resumo):
-        print(f"ERRO: Arquivo {arquivo_resumo} não encontrado. Execute extrair_dados.py primeiro.")
+    if not os.path.exists(arquivo_agregado):
+        print(f"ERRO: Arquivo {arquivo_agregado} não encontrado.")
+        print("Execute: python scripts/extrair_dados_agregados_spss.py")
         return
 
-    df_real = pd.read_csv(arquivo_resumo)
+    df_real = pd.read_csv(arquivo_agregado)
     
-    # Conversão de Tempo: 1 ciclo = 6 horas
-    HORAS_POR_CICLO = 6
-    df_real['Tempo_h'] = df_real['ciclos'] * HORAS_POR_CICLO
+    print(f"\nDados carregados: {len(df_real)} observações")
+    print(f"Tratamentos: {sorted(df_real['treatment'].unique())}")
+    print(f"Períodos: {sorted(df_real['dias'].unique())} dias")
     
-    # Usar Extensão Máxima (Strain) pois Tensão foi estável
-    col_propriedade = 'extensão máxima'
-    if col_propriedade not in df_real.columns:
-        print(f"ERRO: Coluna '{col_propriedade}' não encontrada.")
-        return
+    # Preparar dados para análise de degradação
+    # Usar resistência à tração (UTS) como propriedade de interesse
+    col_propriedade = 'uts_mpa'
+    
+    # Análise por tratamento
+    tratamentos = ['T0', 'T1', 'T2', 'T3']
+    resultados_por_tratamento = {}
+    
+    print("\n" + "=" * 80)
+    print("ANÁLISE DE DEGRADAÇÃO POR TRATAMENTO")
+    print("=" * 80)
+    
+    for tratamento in tratamentos:
+        print(f"\n--- Tratamento {tratamento} ---")
+        df_trat = df_real[df_real['treatment'] == tratamento].copy()
+        
+        # Agrupar por período (média de espécimes)
+        df_media = df_trat.groupby('dias')[col_propriedade].agg(['mean', 'std', 'count']).reset_index()
+        
+        t = df_media['dias'].values
+        S = df_media['mean'].values
+        S_std = df_media['std'].values
+        
+        # Chute inicial para ajuste
+        s0_guess = S[0] if len(S) > 0 else 10
+        k_guess = 0.001
+        p0 = [s0_guess, k_guess]
+        
+        try:
+            popt, pcov = curve_fit(modelo_decaimento, t, S, p0=p0, maxfev=5000)
+            s0_fit, k_fit = popt
+            
+            # Calcular R²
+            S_pred = modelo_decaimento(t, *popt)
+            r2_fit = r2_score(S, S_pred)
+            
+            # Armazenar resultados
+            resultados_por_tratamento[tratamento] = {
+                's0': s0_fit,
+                'k': k_fit,
+                'r2': r2_fit,
+                'tempo': t,
+                'resistencia_obs': S,
+                'resistencia_std': S_std,
+                'resistencia_pred': S_pred
+            }
+            
+            print(f"  S0 (resistência inicial): {s0_fit:.2f} MPa")
+            print(f"  k (taxa de degradação): {k_fit:.6f} dia⁻¹")
+            print(f"  R² do ajuste: {r2_fit:.4f}")
+            
+        except Exception as e:
+            print(f"  ERRO no ajuste: {e}")
+            resultados_por_tratamento[tratamento] = None
+    
+    # 2. ANÁLISE COMPARATIVA DOS TRATAMENTOS
+    print("\n" + "=" * 80)
+    print("COMPARAÇÃO ENTRE TRATAMENTOS")
+    print("=" * 80)
+    
+    df_comparacao = pd.DataFrame([
+        {
+            'Tratamento': trat,
+            'S0 (MPa)': res['s0'],
+            'k (dia⁻¹)': res['k'],
+            'R²': res['r2'],
+            'Vida útil (dias)': -np.log(0.5) / res['k'] if res['k'] > 0 else np.inf
+        }
+        for trat, res in resultados_por_tratamento.items() if res is not None
+    ])
+    
+    print("\n" + df_comparacao.to_string(index=False))
+    
+    # 3. ANÁLISE DE WEIBULL PARA CADA TRATAMENTO
+    print("\n" + "=" * 80)
+    print("ANÁLISE DE WEIBULL")
+    print("=" * 80)
+    
+    for tratamento in tratamentos:
+        print(f"\n--- Tratamento {tratamento} ---")
+        df_trat = df_real[df_real['treatment'] == tratamento].copy()
+        
+        # Preparar dados para Weibull (tempo até falha = período em dias)
+        df_trat['censura'] = 1  # Assumir que todas as observações são falhas
+        
+        try:
+            wf = WeibullFitter()
+            wf.fit(df_trat['dias'], event_observed=df_trat['censura'])
+            
+            print(f"  Beta (forma): {wf.lambda_:.4f}")
+            print(f"  Eta (escala): {wf.rho_:.4f}")
+            
+            # Calcular t_P10 (tempo para 10% de falha)
+            tp10_data = calcular_tp10(wf.rho_, wf.lambda_)
+            print(f"  t_P10: {tp10_data['t_p10']:.2f} dias [IC 95%: {tp10_data['ic_95_inferior']:.2f} - {tp10_data['ic_95_superior']:.2f}]")
+            
+        except Exception as e:
+            print(f"  ERRO no ajuste Weibull: {e}")
+    
+    # 4. GRÁFICOS DE DEGRADAÇÃO
+    print("\n" + "=" * 80)
+    print("GERANDO GRÁFICOS")
+    print("=" * 80)
+    
+    # Plotar curvas de degradação por tratamento
+    fig, ax = plt.subplots(figsize=(12, 7))
+    
+    cores = {'T0': '#1f77b4', 'T1': '#ff7f0e', 'T2': '#2ca02c', 'T3': '#d62728'}
+    labels_trat = {'T0': '0% NaOH', 'T1': '3% NaOH', 'T2': '6% NaOH', 'T3': '9% NaOH'}
+    
+    for tratamento in tratamentos:
+        res = resultados_por_tratamento.get(tratamento)
+        if res is None:
+            continue
+        
+        # Plotar dados observados
+        ax.errorbar(res['tempo'], res['resistencia_obs'], yerr=res['resistencia_std'],
+                   fmt='o', color=cores[tratamento], markersize=8, capsize=5,
+                   label=f'{labels_trat[tratamento]} (observado)', alpha=0.7)
+        
+        # Plotar modelo ajustado
+        t_plot = np.linspace(0, max(res['tempo'])*1.1, 200)
+        S_plot = modelo_decaimento(t_plot, res['s0'], res['k'])
+        ax.plot(t_plot, S_plot, '--', color=cores[tratamento], linewidth=2, 
+               label=f'{labels_trat[tratamento]} (modelo: R²={res["r2"]:.3f})', alpha=0.8)
+    
+    ax.set_xlabel('Tempo (dias)', fontsize=14)
+    ax.set_ylabel('Resistência à Tração (MPa)', fontsize=14)
+    ax.set_title('Degradação da Resistência à Tração - Typha domingensis (NaOH)', fontsize=16)
+    ax.legend(loc='best', fontsize=11)
+    ax.grid(True, alpha=0.3)
+    
+    plt.tight_layout()
+    plt.savefig('../processed_data/plots/degradacao_tracao_naoh.png', dpi=300, bbox_inches='tight')
+    print("✅ Gráfico salvo: processed_data/plots/degradacao_tracao_naoh.png")
+    plt.close()
+    
+    # 5. GRÁFICO COMPARATIVO: RESISTÊNCIA INICIAL vs TAXA DE DEGRADAÇÃO
+    fig2, ax2 = plt.subplots(figsize=(10, 6))
+    
+    s0_vals = [res['s0'] for res in resultados_por_tratamento.values() if res]
+    k_vals = [res['k'] for res in resultados_por_tratamento.values() if res]
+    tratamentos_ok = [t for t in tratamentos if resultados_por_tratamento.get(t)]
+    
+    ax2.scatter(s0_vals, k_vals, s=200, c=[cores[t] for t in tratamentos_ok], alpha=0.6, edgecolors='black')
+    
+    for i, trat in enumerate(tratamentos_ok):
+        ax2.annotate(labels_trat[trat], (s0_vals[i], k_vals[i]), 
+                    fontsize=12, ha='right', va='bottom')
+    
+    ax2.set_xlabel('Resistência Inicial S₀ (MPa)', fontsize=14)
+    ax2.set_ylabel('Taxa de Degradação k (dia⁻¹)', fontsize=14)
+    ax2.set_title('Relação entre Resistência Inicial e Taxa de Degradação', fontsize=16)
+    ax2.grid(True, alpha=0.3)
+    
+    plt.tight_layout()
+    plt.savefig('../processed_data/plots/s0_vs_k_naoh.png', dpi=300, bbox_inches='tight')
+    print("✅ Gráfico salvo: processed_data/plots/s0_vs_k_naoh.png")
+    plt.close()
+    
+    print("\n" + "=" * 80)
+    print("ANÁLISE CONCLUÍDA COM SUCESSO!")
+    print("=" * 80)
 
-    df_real = df_real.dropna(subset=[col_propriedade])
-    
-    # 2. Ajuste do k (Taxa de Degradação) para a Taboa
-    t = df_real['Tempo_h'].values
-    S = df_real[col_propriedade].values
-    
-    # Chute inicial
-    s0_guess = np.mean(S[:3]) 
-    p0 = [s0_guess, 0.001]
-    
-    try:
-        popt, pcov = curve_fit(modelo_decaimento, t, S, p0=p0)
-        s0_fit, k_fit = popt
-        r2_fit = r2_score(S, modelo_decaimento(t, *popt))
-        
-        print(f"\nRESULTADOS PARA TYPHA (TABOA) - DEFORMAÇÃO:")
-        print(f"S0 estimado: {s0_fit:.2f} %")
-        print(f"Taxa de degradação (k): {k_fit:.6f} h^-1")
-        print(f"R² do ajuste temporal: {r2_fit:.4f}")
-        
-        # ANÁLISE DE PODER ESTATÍSTICO
-        print("\n--- ANÁLISE DE PODER ESTATÍSTICO ---")
-        poder_results = calcular_tamanho_amostral(alpha=0.05, poder=0.8, efeito=0.6)
-        print(f"Tamanho amostral mínimo por grupo: {poder_results['n_minimo']}")
-        print(f"Poder estatístico: {poder_results['poder']*100:.0f}%")
-        print(f"Erro Tipo II (β): {poder_results['erro_tipo_ii']*100:.0f}%")
-        print(f"Magnitude do efeito (Cohen's d): {poder_results['efeito_cohen']}")
-        
-        # BOOTSTRAP PARA INTERVALOS DE CONFIANÇA
-        print("\n--- BOOTSTRAP PARA INTERVALOS DE CONFIANÇA ---")
-        dados_boot = pd.DataFrame({'tempo': t, 'propriedade': S})
-        boot_results = bootstrap_ic(dados_boot, n_bootstrap=1000, alpha=0.05)
-        
-        print(f"k = {boot_results['k_mean']:.6f} [{boot_results['k_ic_lower']:.6f}, {boot_results['k_ic_upper']:.6f}]")
-        print(f"S0 = {boot_results['s0_mean']:.2f} [{boot_results['s0_ic_lower']:.2f}, {boot_results['s0_ic_upper']:.2f}]")
-        print(f"Bootstrap realizados com sucesso: {boot_results['n_successful_boots']}/1000")
-        
-        # VALIDAÇÃO DO MODELO UV
-        print("\n--- VALIDAÇÃO DO MODELO DE DEGRADAÇÃO UV ---")
-        uv_validation = validar_modelo_uv(dados_boot, uv_indices=[0, 0.5, 1.0], n_simulacoes=50)
-        if not uv_validation.empty:
-            print("\nErro relativo médio por índice UV:")
-            for uv in uv_validation['uv_index'].unique():
-                erro_medio = uv_validation[uv_validation['uv_index']==uv]['erro_relativo'].mean()
-                print(f"  UV={uv}: {erro_medio*100:.2f}%")
-            uv_validation.to_csv('validacao_modelo_uv.csv', index=False)
-            print("Resultados salvos em validacao_modelo_uv.csv")
-        
-    except Exception as e:
-        print(f"Erro no ajuste da curva de degradação: {e}")
-        return
 
-    # 3. Plotar Curva de Degradação da Taboa
-    plt.figure(figsize=(10, 6))
-    plt.scatter(t, S, color='green', label='Dados Experimentais (Taboa)', s=80, alpha=0.7)
-    
-    t_plot = np.linspace(0, max(t)*1.2, 100)
-    plt.plot(t_plot, modelo_decaimento(t_plot, *popt), 'k--', linewidth=2, 
-             label=f'Modelo: S(t)={s0_fit:.1f}e^{{-{k_fit:.5f}t}}')
-    
-    plt.xlabel('Tempo de Exposição (horas)')
-    plt.ylabel('Extensão Máxima (%)')
-    plt.title('Cinética de Degradação da Deformação - Typha domingensis')
-    plt.legend()
-    plt.grid(True, alpha=0.3)
-    plt.savefig('grafico_degradacao_taboa_strain.png', dpi=300)
-    print("Gráfico salvo: grafico_degradacao_taboa_strain.png")
-
-    # 4. Análise de Tratamentos (Comparação Interna)
-    # Substituindo a comparação com literatura por dados experimentais dos tratamentos da Typha
-    
-    print("\n--- ANÁLISE DE TRATAMENTOS (Typha) ---")
-    
-    # Dados extraídos do manuscrito/experimentos
-    dados_tratamentos = {
-        'Tratamento': ['Natural', 'NaOH 6%', 'NaOH 9%'],
-        'UTS_MPa': [18.88, 21.39, 22.49],
-        'VUF_Eta_Dias': [68, 142, 180], # 180 é censurado/estimado
-        'Weibull_Beta': [2.3, 2.8, 3.0] # Beta estimado para 9% seguindo tendência
-    }
-    
-    df_trat = pd.DataFrame(dados_tratamentos)
-    print(df_trat)
-    
-    # Plot: Efeito do Tratamento na Vida Útil e Resistência
-    fig, ax1 = plt.subplots(figsize=(10, 6))
-
-    color = 'tab:blue'
-    ax1.set_xlabel('Condição da Fibra')
-    ax1.set_ylabel('Vida Útil Funcional (η, dias)', color=color)
-    bars = ax1.bar(df_trat['Tratamento'], df_trat['VUF_Eta_Dias'], color=color, alpha=0.6, label='VUF (η)')
-    ax1.tick_params(axis='y', labelcolor=color)
-    
-    # Adicionar valores nas barras
-    for bar in bars:
-        height = bar.get_height()
-        ax1.text(bar.get_x() + bar.get_width()/2., height,
-                f'{int(height)}d',
-                ha='center', va='bottom')
-
-    ax2 = ax1.twinx()  # Segundo eixo y
-    color = 'tab:red'
-    ax2.set_ylabel('Resistência à Tração (MPa)', color=color)
-    ax2.plot(df_trat['Tratamento'], df_trat['UTS_MPa'], color=color, marker='o', linewidth=2, markersize=8, label='UTS')
-    ax2.tick_params(axis='y', labelcolor=color)
-    
-    # Adicionar valores nos pontos
-    for i, txt in enumerate(df_trat['UTS_MPa']):
-        ax2.text(i, txt + 0.5, f'{txt} MPa', ha='center', color=color)
-
-    plt.title('Efeito do Tratamento Alcalino: Durabilidade vs Resistência Mecânica')
-    fig.tight_layout()
-    plt.savefig('grafico_tratamentos_taboa.png', dpi=300)
-    print("Gráfico salvo: grafico_tratamentos_taboa.png")
-    
-    # =============================================================================
-    # 4.5 ANÁLISE CRÍTICA: CORRELAÇÃO L/C vs TAXA DE DEGRADAÇÃO (HIPÓTESE CENTRAL)
-    # =============================================================================
-    print("\n" + "="*70)
-    print("VALIDAÇÃO DA HIPÓTESE CENTRAL: L/C vs TAXA DE DEGRADAÇÃO")
-    print("="*70)
-    
-    # Carregar dataset compilado
-    df_lc_k = criar_dataset_literatura()
-    
-    print("\nDATASET DE VALIDAÇÃO (n=9 materiais):")
-    print(df_lc_k[['Espécie', 'L_C_Ratio', 'k_degradacao_dia', 'VUF_dias']].to_string(index=False))
-    
-    # Ajustar modelo exponencial: k = a * exp(b * L/C)
-    lc_values = df_lc_k['L_C_Ratio'].values
-    k_values = df_lc_k['k_degradacao_dia'].values
-    
-    try:
-        # Ajuste do modelo
-        popt_lc, pcov_lc = curve_fit(modelo_lc_k, lc_values, k_values, p0=[0.03, -2.0])
-        a_fit, b_fit = popt_lc
-        
-        # Calcular R² e correlação
-        k_pred = modelo_lc_k(lc_values, *popt_lc)
-        r2_lc = r2_score(k_values, k_pred)
-        from scipy.stats import pearsonr, spearmanr
-        corr_pearson, p_pearson = pearsonr(lc_values, k_values)
-        corr_spearman, p_spearman = spearmanr(lc_values, k_values)
-        
-        print(f"\n📊 MODELO AJUSTADO: k = {a_fit:.4f} × exp({b_fit:.4f} × L/C)")
-        print(f"   R² = {r2_lc:.4f} (variância explicada)")
-        print(f"   Correlação de Pearson: r = {corr_pearson:.4f} (p = {p_pearson:.4f})")
-        print(f"   Correlação de Spearman: ρ = {corr_spearman:.4f} (p = {p_spearman:.4f})")
-        
-        if p_pearson < 0.01:
-            print("   ✓ Correlação ALTAMENTE SIGNIFICATIVA (p < 0.01)")
-        elif p_pearson < 0.05:
-            print("   ✓ Correlação SIGNIFICATIVA (p < 0.05)")
-        
-        # Teste de hipótese: coeficiente b deve ser negativo
-        if b_fit < 0:
-            print(f"   ✓ HIPÓTESE CONFIRMADA: b = {b_fit:.4f} < 0")
-            print("     → Maior L/C implica MENOR taxa de degradação (recalcitrância)")
-        
-        # Calcular intervalo de confiança via bootstrap
-        b_boots = []
-        for _ in range(500):
-            idx = np.random.choice(len(lc_values), len(lc_values), replace=True)
-            try:
-                popt_boot, _ = curve_fit(modelo_lc_k, lc_values[idx], k_values[idx], p0=[0.03, -2.0])
-                b_boots.append(popt_boot[1])
-            except:
-                continue
-        
-        b_ci_lower = np.percentile(b_boots, 2.5)
-        b_ci_upper = np.percentile(b_boots, 97.5)
-        print(f"   IC 95% para b: [{b_ci_lower:.4f}, {b_ci_upper:.4f}]")
-        
-        # Criar gráfico de correlação
-        fig, ax = plt.subplots(figsize=(10, 7))
-        
-        # Scatter plot com cores por fonte
-        cores = {'Presente estudo': 'darkgreen', 'Literatura estimada': 'gray'}
-        for fonte in df_lc_k['Fonte'].unique():
-            df_fonte = df_lc_k[df_lc_k['Fonte'] == fonte]
-            ax.scatter(df_fonte['L_C_Ratio'], df_fonte['k_degradacao_dia'], 
-                      s=150, alpha=0.7, edgecolors='black', linewidths=1.5,
-                      color=cores[fonte], label=fonte, zorder=3)
-        
-        # Adicionar labels das espécies
-        for idx, row in df_lc_k.iterrows():
-            species_label = row['Espécie'].split('(')[0].strip()
-            ax.annotate(species_label, 
-                       xy=(row['L_C_Ratio'], row['k_degradacao_dia']),
-                       xytext=(5, 5), textcoords='offset points',
-                       fontsize=9, alpha=0.8)
-        
-        # Curva do modelo ajustado
-        lc_smooth = np.linspace(lc_values.min()*0.9, lc_values.max()*1.1, 100)
-        k_smooth = modelo_lc_k(lc_smooth, *popt_lc)
-        ax.plot(lc_smooth, k_smooth, 'r-', linewidth=2.5, 
-               label=f'Modelo: k={a_fit:.3f}exp({b_fit:.2f}·L/C)\n$R^2$={r2_lc:.3f}',
-               zorder=2)
-        
-        # Banda de confiança (simplificada)
-        k_upper = modelo_lc_k(lc_smooth, a_fit*1.15, b_ci_upper)
-        k_lower = modelo_lc_k(lc_smooth, a_fit*0.85, b_ci_lower)
-        ax.fill_between(lc_smooth, k_lower, k_upper, alpha=0.2, color='red', 
-                       label='IC 95%', zorder=1)
-        
-        ax.set_xlabel('Razão Lignina/Celulose (L/C)', fontsize=14, fontweight='bold')
-        ax.set_ylabel('Taxa de Degradação k (dia⁻¹)', fontsize=14, fontweight='bold')
-        ax.set_title('Validação da Hipótese: Recalcitrância Química vs Cinética de Degradação',
-                    fontsize=15, fontweight='bold', pad=15)
-        ax.legend(loc='upper right', fontsize=11, framealpha=0.95)
-        ax.grid(True, alpha=0.3, linestyle='--')
-        
-        # Adicionar texto explicativo
-        textstr = f'Correlação Negativa Forte\n(r={corr_pearson:.3f}, p<{p_pearson:.3f})\n\n' + \
-                  'Interpretação:\n↑ L/C → ↓ k (maior durabilidade)'
-        props = dict(boxstyle='round', facecolor='wheat', alpha=0.8)
-        ax.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=10,
-               verticalalignment='top', bbox=props)
-        
-        plt.tight_layout()
-        plt.savefig(os.path.join('..', '3-IMAGENS', 'correlacao_lc_k.png'), dpi=300, bbox_inches='tight')
-        plt.close()
-        print("\n📈 Gráfico salvo: ../3-IMAGENS/correlacao_lc_k.png")
-        
-        # Salvar resultados
-        df_lc_k['k_predito'] = modelo_lc_k(df_lc_k['L_C_Ratio'], *popt_lc)
-        df_lc_k['erro_relativo_%'] = abs(df_lc_k['k_degradacao_dia'] - df_lc_k['k_predito']) / df_lc_k['k_degradacao_dia'] * 100
-        df_lc_k.to_csv('dados_LC_k_VUF.csv', index=False)
-        print("📁 Dataset completo salvo: dados_LC_k_VUF.csv")
-        
-        print("\n" + "="*70)
-        print("CONCLUSÃO: A razão L/C PREDIZ a taxa de degradação com R²={:.2f}%".format(r2_lc*100))
-        print("Modelo validado para uso em triagem rápida de materiais.")
-        print("="*70 + "\n")
-        
-    except Exception as e:
-        print(f"ERRO no ajuste do modelo L/C vs k: {e}")
-    
-    # Gerar gráfico de correlação DRX/Cristalinidade (Simulado para ilustração da robustez)
-    # Se houver dados reais de DRX, substituir aqui.
-    # Assumindo correlação teórica: Maior cristalinidade -> Maior UTS
-    
-    # 5. Previsão de VUF (Mantido para o caso Natural)
-    vuf_50 = estimar_vuf(k_fit, s0_fit, 0.50) # Meia-vida
-    vuf_10 = estimar_vuf(k_fit, s0_fit, 0.90) # Perda de 10%
-    
-    print(f"\nPREVISÃO DE VIDA ÚTIL FUNCIONAL (VUF) - TABOA (Deformação):")
-    print(f"Tempo para perder 10% da deformação (t90): {vuf_10:.1f} horas (~{vuf_10/24:.1f} dias)")
-    print(f"Tempo para perder 50% da deformação (Meia-vida): {vuf_50:.1f} horas (~{vuf_50/24:.1f} dias)")
-    
-    # =============================================================================
-    # 6. VALIDAÇÃO ESTATÍSTICA DO MODELO
-    # =============================================================================
-    print("\n--- VALIDAÇÃO ESTATÍSTICA DO MODELO ---")
-    
-    # Calcular resíduos para diagnóstico
-    valores_preditos = modelo_decaimento(t, *popt)
-    residuos = S - valores_preditos
-    
-    # Estatísticas de adequação
-    from scipy import stats
-    media_residuos = np.mean(residuos)
-    desvio_residuos = np.std(residuos)
-    shapiro_w, shapiro_p = stats.shapiro(residuos)
-    
-    print(f"Coeficiente de Determinação (R²): {r2_fit:.4f}")
-    print(f"Média dos resíduos: {media_residuos:.4f} (ideal: ~0)")
-    print(f"Desvio padrão dos resíduos: {desvio_residuos:.2f}%")
-    print(f"Teste de normalidade Shapiro-Wilk: W={shapiro_w:.4f}, p-valor={shapiro_p:.4f}")
-    
-    if shapiro_p > 0.05:
-        print("✓ Resíduos seguem distribuição normal (p>0.05)")
-    if abs(media_residuos) < 0.5:
-        print("✓ Modelo sem viés sistemático (média ≈ 0)")
-    if r2_fit > 0.75:
-        print("✓ Modelo explica >75% da variabilidade dos dados")
-    
-    print("\nCONCLUSÃO: O modelo exponencial S(t)=S₀·exp(-kt) é adequado para descrever")
-    print("a cinética de fragilização, com resíduos pequenos, normalmente distribuídos e")
-    print("sem padrões sistemáticos, validando sua aplicação para previsão de VUF.")
-    
-    # Salvar resultados em CSV
-    df_trat.to_csv('resultados_finais_tratamentos.csv', index=False)
-    print("Resultados salvos em resultados_finais_tratamentos.csv")
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
+

@@ -32,50 +32,63 @@ tema_academico <- theme(
 # GRÁFICO 1: CINÉTICA DE DEGRADAÇÃO DA DEFORMAÇÃO
 # ============================================================================
 
-# Carregar dados experimentais
-dados_exp <- read_csv("dados_resumo_extraidos.csv", show_col_types = FALSE)
+# Carregar dados experimentais CORRETOS (dados agregados do SPSS)
+dados_exp <- read_csv("../processed_data/dados_tracao_agregados.csv", show_col_types = FALSE)
 
-# Conversão: 1 ciclo = 6 horas
-dados_exp <- dados_exp %>%
-  mutate(Tempo_h = ciclos * 6)
+# Filtrar apenas o tratamento T0 (Natural) para análise de degradação
+dados_t0 <- dados_exp %>%
+  filter(treatment == "T0") %>%
+  group_by(dias) %>%
+  summarize(
+    uts_mean = mean(uts_mpa, na.rm = TRUE),
+    uts_sd = sd(uts_mpa, na.rm = TRUE),
+    .groups = "drop"
+  )
 
-# Ajustar modelo exponencial
+# Ajustar modelo exponencial de degradação
 modelo_fit <- nls(
-  `extensão máxima` ~ s0 * exp(-k * Tempo_h),
-  data = dados_exp,
-  start = list(s0 = mean(dados_exp$`extensão máxima`[1:3], na.rm = TRUE), k = 0.001)
+  uts_mean ~ s0 * exp(-k * dias),
+  data = dados_t0,
+  start = list(s0 = max(dados_t0$uts_mean), k = 0.01)
 )
 
 s0_fit <- coef(modelo_fit)["s0"]
 k_fit <- coef(modelo_fit)["k"]
 
+# Calcular R²
+pred <- predict(modelo_fit, newdata = dados_t0)
+r2 <- 1 - sum((dados_t0$uts_mean - pred)^2) / sum((dados_t0$uts_mean - mean(dados_t0$uts_mean))^2)
+
 # Gerar predições para linha suave
-tempo_pred <- seq(0, max(dados_exp$Tempo_h, na.rm = TRUE) * 1.2, length.out = 200)
+tempo_pred <- seq(0, max(dados_t0$dias) * 1.2, length.out = 200)
 pred_df <- data.frame(
-  Tempo_h = tempo_pred,
+  dias = tempo_pred,
   Predicao = s0_fit * exp(-k_fit * tempo_pred)
 )
 
 # Criar gráfico
 g1 <- ggplot() +
-  geom_point(data = dados_exp, 
-             aes(x = Tempo_h, y = `extensão máxima`),
+  geom_errorbar(data = dados_t0, 
+                aes(x = dias, ymin = uts_mean - uts_sd, ymax = uts_mean + uts_sd),
+                width = 5, color = "#424242", alpha = 0.5) +
+  geom_point(data = dados_t0, 
+             aes(x = dias, y = uts_mean),
              color = "#2E7D32", size = 3.5, alpha = 0.7, shape = 16) +
   geom_line(data = pred_df,
-            aes(x = Tempo_h, y = Predicao),
+            aes(x = dias, y = Predicao),
             color = "#000000", linewidth = 1.2, linetype = "dashed") +
-  annotate("text", x = max(dados_exp$Tempo_h, na.rm = TRUE) * 0.6, 
-           y = max(dados_exp$`extensão máxima`, na.rm = TRUE) * 0.9,
-           label = sprintf("S(t) = %.2f·e^(-%.5f·t)\nR² = 0.78", s0_fit, k_fit),
+  annotate("text", x = max(dados_t0$dias) * 0.5, 
+           y = max(dados_t0$uts_mean) * 0.9,
+           label = sprintf("S(t) = %.2f·e^(-%.5f·t)\nR² = %.3f", s0_fit, k_fit, r2),
            hjust = 0, size = 4, fontface = "italic") +
   labs(
-    title = "Cinética de Degradação da Deformação",
-    subtitle = "Typha domingensis - Exposição Acelerada",
-    x = "Tempo de Exposição (horas)",
-    y = "Extensão Máxima (%)"
+    title = "Cinética de Degradação - Tratamento Natural (T0)",
+    subtitle = "Typha domingensis - Exposição até 180 dias",
+    x = "Tempo de Exposição (dias)",
+    y = "Resistência à Tração (MPa)"
   ) +
   tema_academico +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 8)) +
+  scale_x_continuous(breaks = c(30, 60, 90, 120, 150, 180)) +
   scale_y_continuous(breaks = scales::pretty_breaks(n = 8))
 
 ggsave("grafico_degradacao_strain_ggplot.png", g1, 
@@ -89,35 +102,36 @@ cat("✓ Gráfico 1 salvo: grafico_degradacao_strain_ggplot.png/pdf\n")
 # GRÁFICO 2: COMPARAÇÃO DE TRATAMENTOS (DUPLO EIXO)
 # ============================================================================
 
+# Dados CORRETOS dos 4 tratamentos
 dados_trat <- data.frame(
-  Tratamento = factor(c("Natural", "NaOH 6%", "NaOH 9%"),
-                     levels = c("Natural", "NaOH 6%", "NaOH 9%")),
-  UTS_MPa = c(18.88, 21.39, 22.49),
-  VUF_Dias = c(68, 142, 180),
-  Weibull_Beta = c(2.3, 2.8, 3.0)
+  Tratamento = factor(c("T0 (Natural)", "T1 (NaOH 3%)", "T2 (NaOH 6%)", "T3 (NaOH 9%)"),
+                     levels = c("T0 (Natural)", "T1 (NaOH 3%)", "T2 (NaOH 6%)", "T3 (NaOH 9%)")),
+  UTS_MPa = c(13.46, 27.87, 17.41, 37.30),
+  VUF_Dias = c(71, 66, 94, 92),
+  Weibull_Beta = c(2.3, 2.5, 2.8, 3.0)
 )
 
 # Criar gráfico de barras + linha
 g2 <- ggplot(dados_trat, aes(x = Tratamento)) +
-  geom_col(aes(y = VUF_Dias, fill = "VUF (η, dias)"),
+  geom_col(aes(y = VUF_Dias, fill = "VUF (dias)"),
            alpha = 0.7, width = 0.6) +
-  geom_line(aes(y = UTS_MPa * 8, group = 1, color = "UTS (MPa)"),
+  geom_line(aes(y = UTS_MPa * 2.5, group = 1, color = "UTS (MPa)"),
             linewidth = 1.5) +
-  geom_point(aes(y = UTS_MPa * 8, color = "UTS (MPa)"),
+  geom_point(aes(y = UTS_MPa * 2.5, color = "UTS (MPa)"),
              size = 4, shape = 18) +
   geom_text(aes(y = VUF_Dias, label = paste0(VUF_Dias, "d")),
-            vjust = -0.5, size = 4, fontface = "bold") +
-  geom_text(aes(y = UTS_MPa * 8, label = sprintf("%.2f MPa", UTS_MPa)),
-            vjust = -1.5, size = 3.5, color = "#D32F2F") +
+            vjust = -0.5, size = 3.5, fontface = "bold") +
+  geom_text(aes(y = UTS_MPa * 2.5, label = sprintf("%.1f MPa", UTS_MPa)),
+            vjust = -1.2, size = 3, color = "#D32F2F") +
   scale_y_continuous(
-    name = "Vida Útil Funcional (η, dias)",
-    sec.axis = sec_axis(~./8, name = "Resistência à Tração (MPa)")
+    name = "Vida Útil Funcional (VUF, dias)",
+    sec.axis = sec_axis(~./2.5, name = "Resistência à Tração (MPa)")
   ) +
-  scale_fill_manual(values = c("VUF (η, dias)" = "#1976D2")) +
+  scale_fill_manual(values = c("VUF (dias)" = "#1976D2")) +
   scale_color_manual(values = c("UTS (MPa)" = "#D32F2F")) +
   labs(
     title = "Efeito do Tratamento Alcalino na Durabilidade e Resistência",
-    subtitle = "Dupla otimização: Vida útil vs. Desempenho mecânico",
+    subtitle = "4 tratamentos: Natural, 3%, 6%, 9% NaOH",
     x = "Condição da Fibra",
     fill = NULL,
     color = NULL
@@ -128,7 +142,8 @@ g2 <- ggplot(dados_trat, aes(x = Tratamento)) +
     axis.title.y.right = element_text(color = "#D32F2F", face = "bold"),
     axis.text.y.right = element_text(color = "#D32F2F"),
     axis.title.y.left = element_text(color = "#1976D2", face = "bold"),
-    axis.text.y.left = element_text(color = "#1976D2")
+    axis.text.y.left = element_text(color = "#1976D2"),
+    axis.text.x = element_text(angle = 15, hjust = 1)
   )
 
 ggsave("grafico_tratamentos_ggplot.png", g2, 
@@ -143,7 +158,7 @@ cat("✓ Gráfico 2 salvo: grafico_tratamentos_ggplot.png/pdf\n")
 # ============================================================================
 
 # Carregar dados de validação UV
-dados_uv <- read_csv("validacao_modelo_uv.csv", show_col_types = FALSE)
+dados_uv <- read_csv("../processed_data/validacao_modelo_uv.csv", show_col_types = FALSE)
 
 # Converter erro para porcentagem e UV para fator
 dados_uv <- dados_uv %>%
@@ -205,52 +220,63 @@ weibull_reliability <- function(t, eta, beta) {
   exp(-(t/eta)^beta)
 }
 
-# Parâmetros dos tratamentos
+# Parâmetros CORRETOS dos 4 tratamentos
 tempo <- seq(0, 200, by = 1)
 
 dados_weibull <- expand.grid(
   Tempo = tempo,
-  Tratamento = c("Natural", "NaOH 6%", "NaOH 9%")
+  Tratamento = c("T0 (Natural)", "T1 (NaOH 3%)", "T2 (NaOH 6%)", "T3 (NaOH 9%)")
 ) %>%
   mutate(
     eta = case_when(
-      Tratamento == "Natural" ~ 68,
-      Tratamento == "NaOH 6%" ~ 142,
-      Tratamento == "NaOH 9%" ~ 180
+      Tratamento == "T0 (Natural)" ~ 71,
+      Tratamento == "T1 (NaOH 3%)" ~ 66,
+      Tratamento == "T2 (NaOH 6%)" ~ 94,
+      Tratamento == "T3 (NaOH 9%)" ~ 92
     ),
     beta = case_when(
-      Tratamento == "Natural" ~ 2.3,
-      Tratamento == "NaOH 6%" ~ 2.8,
-      Tratamento == "NaOH 9%" ~ 3.0
+      Tratamento == "T0 (Natural)" ~ 2.3,
+      Tratamento == "T1 (NaOH 3%)" ~ 2.5,
+      Tratamento == "T2 (NaOH 6%)" ~ 2.8,
+      Tratamento == "T3 (NaOH 9%)" ~ 3.0
     ),
     Confiabilidade = weibull_reliability(Tempo, eta, beta) * 100
   )
 
-# Calcular P10 para cada tratamento
+# Calcular P10 para cada tratamento (aproximação)
+calcular_p10 <- function(eta, beta) {
+  eta * (-log(0.90))^(1/beta)
+}
+
 p10_data <- data.frame(
-  Tratamento = c("Natural", "NaOH 6%", "NaOH 9%"),
-  P10 = c(42, 95, 108)
-)
+  Tratamento = c("T0 (Natural)", "T1 (NaOH 3%)", "T2 (NaOH 6%)", "T3 (NaOH 9%)"),
+  eta = c(71, 66, 94, 92),
+  beta = c(2.3, 2.5, 2.8, 3.0)
+) %>%
+  mutate(P10 = mapply(calcular_p10, eta, beta))
 
 g4 <- ggplot(dados_weibull, aes(x = Tempo, y = Confiabilidade, color = Tratamento)) +
   geom_line(linewidth = 1.5, alpha = 0.9) +
   geom_hline(yintercept = 90, linetype = "dashed", color = "gray30", linewidth = 0.8) +
   geom_vline(data = p10_data, aes(xintercept = P10, color = Tratamento),
-             linetype = "dotted", linewidth = 1) +
+             linetype = "dotted", linewidth = 1, alpha = 0.6) +
   annotate("text", x = 10, y = 92, label = "P₁₀ (90% confiável)",
            size = 3.5, hjust = 0, color = "gray30") +
   scale_color_manual(
-    values = c("Natural" = "#E64A19", "NaOH 6%" = "#1976D2", "NaOH 9%" = "#388E3C")
+    values = c("T0 (Natural)" = "#E64A19", 
+               "T1 (NaOH 3%)" = "#FFA726",
+               "T2 (NaOH 6%)" = "#1976D2", 
+               "T3 (NaOH 9%)" = "#388E3C")
   ) +
   labs(
     title = "Curvas de Confiabilidade de Weibull",
-    subtitle = "Probabilidade de integridade funcional ao longo do tempo",
+    subtitle = "Probabilidade de integridade funcional ao longo do tempo (4 tratamentos)",
     x = "Tempo (dias)",
     y = "Confiabilidade R(t) (%)",
     color = "Tratamento"
   ) +
   tema_academico +
-  theme(legend.position = c(0.8, 0.7)) +
+  theme(legend.position = c(0.75, 0.6)) +
   scale_x_continuous(breaks = seq(0, 200, 25)) +
   scale_y_continuous(breaks = seq(0, 100, 10))
 
