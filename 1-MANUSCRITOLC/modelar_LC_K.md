@@ -143,8 +143,8 @@ A Tabela 1 sumariza os parâmetros de desempenho, evidenciando que o tratamento 
 | **Tratamento** | **L/C** | **k (h⁻¹)** | **VUF η (dias)** | **β (Weibull)** | **UTS (MPa)** | **Incremento VUF (%)** |
 |:--------------|:-------:|:-----------:|:----------------:|:---------------:|:-------------:|:----------------------:| '
 | Natural       | 0.450    | 0.001     | 68               | 2.300             | 18.880         |,                       |
-| NaOH 6%       | 0.580    | 0.001     | 142              | 2.800             | 21.390         | +109%                  |
-| NaOH 9%       | 0.620    | 0.001     | 180              | 3.000             | 22.490         | +165%                  |
+| NaOH 6%       | 0.580    | 7.300e-04     | 142              | 2.800             | 21.390         | +109%                  |
+| NaOH 9%       | 0.620    | 6.200e-04     | 180              | 3.000             | 22.490         | +165%                  |
 
 A análise das funções de taxa de risco $h(t)$ derivadas dos parâmetros de Weibull fornece insights adicionais sobre os mecanismos de falha. Para materiais com $\beta > 1$, a função de risco $h(t) = (\beta/\eta) \cdot (t/\eta)^{\beta-1}$ é monotonicamente crescente, indicando que a probabilidade instantânea de falha aumenta com o tempo de exposição acumulado. No caso específico do tratamento NaOH 9% ($\beta=3,0$; $\eta=180$ dias), a função de risco apresenta concavidade positiva pronunciada, característica de degradação acelerada nas fases finais da vida útil. Este comportamento contrasta com o regime de falhas infantis ($\beta < 1$), típico de defeitos de manufatura, e com o regime de taxa constante ($\beta \approx 1$), associado a falhas aleatórias independentes do histórico de carregamento.
 
@@ -152,7 +152,7 @@ A diferença observada nos valores de $\beta$ entre tratamentos reflete alteraç
 
 A análise morfométrica (Figura 1) elucidou a base física dessa estabilização. Fibras não tratadas exibiram um aumento de 105% na porosidade superficial associado à redução da rugosidade, padrão consistente com a erosão da matriz amorfa e colapso das paredes celulares. Em contraste, a mercerização alcalina induziu a conversão polimórfica de Celulose I (estrutura monoclínica, grupo espacial P2₁) para Celulose II (estrutura monoclínica, grupo espacial P2₁), elevando a cristalinidade para valores superiores a 60%. Esta transformação alotrópica não é meramente uma reorganização cristalográfica, mas uma mudança termodinâmica irreversível que reorienta as cadeias poliméricas de uma configuração paralela (Celulose I) para uma configuração antiparalela (Celulose II), resultando em maior densidade de ligações de hidrogênio intercadeias (de 2.800 para 3.200 ligações/unidade de glicose).
 
-O empacotamento molecular mais denso restringiu a difusão de radicais livres (principalmente •OH e •OOH gerados por fotólise da água adsorvida) e preservou a integridade do esqueleto fibrilar, validando o mecanismo de proteção estrutural responsável pela redução da taxa de degradação $k$. A análise por difração de raios X confirmou que o índice de cristalinidade aumentou de 52.300% para 63.800%, enquanto a largura de meia altura (FWHM) do pico (002) diminuiu de 2.100° para 1.700° (2θ), indicando cristalitos de maior tamanho médio (de 7.200 nm para 9.500 nm, calculados pela equação de Scherrer). Esta reorganização microestrutural explica mecanisticamente a redução observada na constante de degradação $k$, que passou de 0.001 h⁻¹ para 0.001 h⁻¹, correspondendo a um aumento da meia-vida de degradação ($t_{1/2} = \ln(2)/k$) de 468 horas para 1118 horas.
+O empacotamento molecular mais denso restringiu a difusão de radicais livres (principalmente •OH e •OOH gerados por fotólise da água adsorvida) e preservou a integridade do esqueleto fibrilar, validando o mecanismo de proteção estrutural responsável pela redução da taxa de degradação $k$. A análise por difração de raios X confirmou que o índice de cristalinidade aumentou de 52.300% para 63.800%, enquanto a largura de meia altura (FWHM) do pico (002) diminuiu de 2.100° para 1.700° (2θ), indicando cristalitos de maior tamanho médio (de 7.200 nm para 9.500 nm, calculados pela equação de Scherrer). Esta reorganização microestrutural explica mecanisticamente a redução observada na constante de degradação $k$, que passou de 0.001 h⁻¹ para 6.200e-04 h⁻¹, correspondendo a um aumento da meia-vida de degradação ($t_{1/2} = \ln(2)/k$) de 468 horas para 1118 horas.
 
 **Figura 1.** Análise morfométrica computacional de fibras de *Typha domingensis* (Natural). ![Análise MEV Taboa](../3-IMAGENS/analise_mev_Typha_Domingensis_Natural.png){width="100%"}
 
@@ -177,12 +177,12 @@ A evolução temporal dos danos superficiais (Figura 2) ilustra visualmente essa
 
 | **Preditor** | **Coeficiente β** | **Erro Padrão** | **t-valor** | **p-valor** | **Significância** |
 | :----------------- | :----------------------: | :--------------------: | :---------------: | :---------------: | :----------------------: |
-| Intercepto         |         +0.003         |         0.000         |       31.280       |      <0.001      |           ***           |
-| L/C                |         -0.003         |         0.000         |      -14.190      |      <0.001      |           ***           |
-| Densidade Fraturas |        +0.000        |        0.000        |       0.240       |       0.810       |            ns            |
-| Tempo (dias)       |        +0.000        |        0.000        |       17.650       |      <0.001      |           ***           |
+| Intercepto         |         +0.003         |         1.000e-04         |       31.280       |      <0.001      |           ***           |
+| L/C                |         -0.003         |         2.000e-04         |      -14.190      |      <0.001      |           ***           |
+| Densidade Fraturas |        +1.100e-05        |        4.600e-05        |       0.240       |       0.810       |            ns            |
+| Tempo (dias)       |        +4.800e-05        |        3.000e-06        |       17.650       |      <0.001      |           ***           |
 
-**Métricas de ajuste:** R²=0.998; RMSE=0.000; F=1238.700.
+**Métricas de ajuste:** R²=0.998; RMSE=1.150e-04; F=1238.700.
 
 A magnitude dos coeficientes padronizados revela a hierarquia de importância relativa dos preditores. O coeficiente negativo para L/C ($\beta_{std}=-0,82$) indica que o aumento da recalcitrância química (maior razão lignina/celulose) exerce efeito protetor dominante, reduzindo a taxa de degradação em magnitude 28% superior ao efeito acumulativo do tempo de exposição ($\beta_{std}=+0,64$). Esta assimetria sugere que intervenções na composição química, mesmo que realizadas em estágios iniciais do processamento, exercem controle mais efetivo sobre a vida útil do que estratégias baseadas em proteção superficial aplicada *post-facto*.
 
@@ -270,7 +270,7 @@ A regressão múltipla (R²=99.800%) demonstrou que a taxa de degradação $k$ �
 
 A modificação alcalina graduada corroborou a hierarquia preditiva proposta, com NaOH 9% estendendo VUF de 68 para 180 dias (+165%) via remoção seletiva de hemicelulose que eleva L/C de 0.450 para 0.620 e aumenta cristalinidade de ~52% para >60%, validando que durabilidade é função direta da otimização da arquitetura química;
 
-A transição de celulose I para celulose II (mercerização) confere estabilidade termodinâmica superior e reduz acessibilidade à hidrólise enzimática, explicando mecanisticamente a redução de $k$ de 0.001 h⁻¹ (Natural) para 0.001 h⁻¹ (NaOH 9%), contrariando paradigmas de que apenas proteção superficial seria suficiente;
+A transição de celulose I para celulose II (mercerização) confere estabilidade termodinâmica superior e reduz acessibilidade à hidrólise enzimática, explicando mecanisticamente a redução de $k$ de 0.001 h⁻¹ (Natural) para 6.200e-04 h⁻¹ (NaOH 9%), contrariando paradigmas de que apenas proteção superficial seria suficiente;
 
 A modelagem estocástica confirmou que a degradação segue padrão de desgaste progressivo previsível (β=3.000 para NaOH 9%), transformando incerteza intrínseca das fibras naturais em parâmetros de confiabilidade de engenharia ($P_{10}$) e viabilizando especificação segura para obras temporárias;
 

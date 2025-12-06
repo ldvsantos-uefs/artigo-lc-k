@@ -54,7 +54,10 @@ def normalize_number(s: str) -> str:
         val = float(s)
     except ValueError:
         return orig
-    # format with 3 decimal places, remove trailing zeros? requirement: 3 casas decimais
+    # Use scientific notation for very small magnitudes, otherwise 3 decimal places
+    if val != 0 and abs(val) < 0.001:
+        # three significant figures in scientific notation (e.g., 6.200e-04)
+        return f"{val:.3e}"
     return f"{val:.3f}"
 
 
