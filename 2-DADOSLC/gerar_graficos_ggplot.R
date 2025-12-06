@@ -139,50 +139,55 @@ ggsave("grafico_tratamentos_ggplot.pdf", g2,
 cat("✓ Gráfico 2 salvo: grafico_tratamentos_ggplot.png/pdf\n")
 
 # ============================================================================
-# GRÁFICO 3: VALIDAÇÃO DO MODELO UV (ERRO RELATIVO)
+# GRÁFICO 3: VALIDAÇÃO DO MODELO UV (DISTRIBUIÇÃO DE ERROS)
 # ============================================================================
 
 # Carregar dados de validação UV
 dados_uv <- read_csv("validacao_modelo_uv.csv", show_col_types = FALSE)
 
-# Calcular estatísticas por condição UV
-stats_uv <- dados_uv %>%
-  group_by(uv_index) %>%
-  summarise(
-    erro_medio = mean(erro_relativo) * 100,
-    erro_sd = sd(erro_relativo) * 100,
-    erro_min = min(erro_relativo) * 100,
-    erro_max = max(erro_relativo) * 100,
-    n = n()
-  ) %>%
+# Converter erro para porcentagem e UV para fator
+dados_uv <- dados_uv %>%
   mutate(
-    uv_label = paste0("UV = ", uv_index),
-    status = ifelse(erro_medio < 10, "Excelente", 
-                   ifelse(erro_medio < 20, "Aceitável", "Revisar"))
+    erro_pct = erro_relativo * 100,
+    uv_fator = factor(uv_index, labels = c("UV = 0 (Controle)", "UV = 0.5 (Sombra)", "UV = 1.0 (Exposto)"))
   )
 
-g3 <- ggplot(stats_uv, aes(x = factor(uv_index), y = erro_medio)) +
-  geom_col(aes(fill = status), alpha = 0.8, width = 0.6) +
-  geom_errorbar(aes(ymin = erro_medio - erro_sd, ymax = erro_medio + erro_sd),
-                width = 0.2, linewidth = 0.8) +
-  geom_text(aes(label = sprintf("%.1f%%", erro_medio)),
-            vjust = -2, size = 4.5, fontface = "bold") +
-  geom_hline(yintercept = 10, linetype = "dashed", color = "red", linewidth = 0.8) +
-  annotate("text", x = 2.5, y = 11, label = "Limiar de validação (10%)",
-           color = "red", size = 3.5, hjust = 0) +
-  scale_fill_manual(values = c("Excelente" = "#4CAF50", 
-                                "Aceitável" = "#FF9800",
-                                "Revisar" = "#F44336")) +
+# Criar gráfico de boxplot com jitter
+g3 <- ggplot(dados_uv, aes(x = uv_fator, y = erro_pct)) +
+  # Adicionar região de aceitação (fundo)
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = 0, ymax = 10, 
+           fill = "green", alpha = 0.05) +
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = 10, ymax = 20, 
+           fill = "yellow", alpha = 0.05) +
+  
+  # Boxplot para distribuição estatística
+  geom_boxplot(aes(fill = uv_fator), alpha = 0.7, outlier.shape = NA, width = 0.5) +
+  
+  # Pontos individuais para mostrar dispersão real (Monte Carlo)
+  geom_jitter(width = 0.2, size = 2, alpha = 0.4, color = "gray30") +
+  
+  # Linhas de referência
+  geom_hline(yintercept = 10, linetype = "dashed", color = "#2E7D32", linewidth = 0.8) +
+  geom_hline(yintercept = 20, linetype = "dashed", color = "#E65100", linewidth = 0.8) +
+  
+  # Anotações de texto
+  annotate("text", x = 0.5, y = 10.5, label = "Limite de Alta Precisão (10%)", 
+           color = "#2E7D32", size = 3.5, hjust = 0, fontface = "italic") +
+  annotate("text", x = 0.5, y = 20.5, label = "Limite Aceitável (20%)", 
+           color = "#E65100", size = 3.5, hjust = 0, fontface = "italic") +
+  
+  # Estilização
+  scale_fill_brewer(palette = "Blues") +
   labs(
-    title = "Validação do Modelo de Degradação UV",
-    subtitle = "Erro relativo médio por índice UV (50 simulações Monte Carlo)",
-    x = "Índice UV",
-    y = "Erro Relativo Médio (%)",
-    fill = "Status"
+    title = "Robustez do Modelo de Degradação UV",
+    subtitle = "Distribuição do Erro Relativo em 50 Simulações de Monte Carlo",
+    x = "Condição de Exposição (Índice UV)",
+    y = "Erro Relativo (%)",
+    fill = "Condição"
   ) +
   tema_academico +
-  theme(legend.position = "bottom") +
-  scale_y_continuous(breaks = seq(0, 30, 5), limits = c(0, 30))
+  theme(legend.position = "none") +
+  scale_y_continuous(breaks = seq(0, 35, 5), limits = c(0, max(dados_uv$erro_pct) * 1.15))
 
 ggsave("grafico_validacao_uv_ggplot.png", g3, 
        width = 10, height = 6, dpi = 300, bg = "white")

@@ -5,7 +5,7 @@ Script para gerar arquivo Word da revisão de escopo a partir do Markdown.
 
 Uso: python gerar-docx.py
 
-Gera o arquivo revisao_artigo.docx a partir do Review_Article_Draft.md.
+Gera o arquivo revisao_artigo.docx a partir do modelar_LC_K.md.
 """
 
 import os
@@ -218,7 +218,7 @@ def main():
     # GERAR REVISÃO DE ESCOPO
     # ========================================================================
     # Versão PT (única versão)
-    md_pt = Path("Review_Article_Draft.md")
+    md_pt = Path("modelar_LC_K.md")
     docx_pt = Path("revisao_artigo.docx")
     result_pt = 1
 
