@@ -1,0 +1,10 @@
+Espécie,L_C_Ratio,k_degradacao_dia,VUF_dias,Fonte,k_predito,erro_relativo_%
+Typha domingensis (Natural),0.46,0.0118,42,Presente estudo,0.010640330252404713,9.827709725383784
+Typha domingensis (NaOH 6%),0.52,0.0073,95,Presente estudo,0.00858715240274806,17.6322246951789
+Typha domingensis (NaOH 9%),0.58,0.0062,108,Presente estudo,0.006930159556970213,11.776767047906665
+Juta (Natural),0.32,0.018,28,Literatura estimada,0.017546976482658714,2.516797318562693
+Juta (Tratada),0.38,0.0145,48,Literatura estimada,0.014161079373450193,2.3373836313779863
+Coco (Natural),0.68,0.0055,125,Literatura estimada,0.004848045332063062,11.853721235217042
+Sisal (Natural),0.41,0.0135,38,Literatura estimada,0.012721648403791369,5.765567379323193
+Sisal (Tratada),0.48,0.0092,75,Literatura estimada,0.009906489769687828,7.679236627041614
+Linho (Natural),0.28,0.0195,25,Literatura estimada,0.02024290880860373,3.8097887620704083

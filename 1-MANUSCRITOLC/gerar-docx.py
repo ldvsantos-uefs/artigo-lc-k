@@ -197,7 +197,7 @@ def main():
     
     # Arquivos comuns
     bib_file = Path("referencias_lc.bib")
-    csl_file = Path("springer-vancouver.csl")
+    csl_file = Path("apa.csl")
     apendices_pt = Path("apendices.md")
     
     # Verificar arquivos necessários
@@ -219,7 +219,7 @@ def main():
     # ========================================================================
     # Versão PT (única versão)
     md_pt = Path("modelar_LC_K.md")
-    docx_pt = Path("revisao_artigo.docx")
+    docx_pt = Path("modelo_LC_K.docx")
     result_pt = 1
 
     if not md_pt.exists():
