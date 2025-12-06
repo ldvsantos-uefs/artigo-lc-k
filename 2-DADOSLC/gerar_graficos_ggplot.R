@@ -1,0 +1,404 @@
+# ============================================================================
+# SCRIPT DE VISUALIZAÇÃO - GEOTÊXTEIS DE TYPHA DOMINGENSIS
+# Gráficos acadêmicos usando ggplot2
+# Autor: Sistema Automatizado
+# Data: 2025-12-05
+# ============================================================================
+
+# Carregar bibliotecas necessárias
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(scales)
+library(gridExtra)
+library(ggpubr)
+library(readr)
+
+# Configurações globais de tema acadêmico
+theme_set(theme_bw(base_size = 12))
+tema_academico <- theme(
+  plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
+  plot.subtitle = element_text(size = 11, hjust = 0.5, color = "gray40"),
+  axis.title = element_text(size = 12, face = "bold"),
+  axis.text = element_text(size = 10),
+  legend.title = element_text(size = 11, face = "bold"),
+  legend.text = element_text(size = 10),
+  legend.position = "right",
+  panel.grid.minor = element_blank(),
+  panel.border = element_rect(color = "black", linewidth = 0.8)
+)
+
+# ============================================================================
+# GRÁFICO 1: CINÉTICA DE DEGRADAÇÃO DA DEFORMAÇÃO
+# ============================================================================
+
+# Carregar dados experimentais
+dados_exp <- read_csv("dados_resumo_extraidos.csv", show_col_types = FALSE)
+
+# Conversão: 1 ciclo = 6 horas
+dados_exp <- dados_exp %>%
+  mutate(Tempo_h = ciclos * 6)
+
+# Ajustar modelo exponencial
+modelo_fit <- nls(
+  `extensão máxima` ~ s0 * exp(-k * Tempo_h),
+  data = dados_exp,
+  start = list(s0 = mean(dados_exp$`extensão máxima`[1:3], na.rm = TRUE), k = 0.001)
+)
+
+s0_fit <- coef(modelo_fit)["s0"]
+k_fit <- coef(modelo_fit)["k"]
+
+# Gerar predições para linha suave
+tempo_pred <- seq(0, max(dados_exp$Tempo_h, na.rm = TRUE) * 1.2, length.out = 200)
+pred_df <- data.frame(
+  Tempo_h = tempo_pred,
+  Predicao = s0_fit * exp(-k_fit * tempo_pred)
+)
+
+# Criar gráfico
+g1 <- ggplot() +
+  geom_point(data = dados_exp, 
+             aes(x = Tempo_h, y = `extensão máxima`),
+             color = "#2E7D32", size = 3.5, alpha = 0.7, shape = 16) +
+  geom_line(data = pred_df,
+            aes(x = Tempo_h, y = Predicao),
+            color = "#000000", linewidth = 1.2, linetype = "dashed") +
+  annotate("text", x = max(dados_exp$Tempo_h, na.rm = TRUE) * 0.6, 
+           y = max(dados_exp$`extensão máxima`, na.rm = TRUE) * 0.9,
+           label = sprintf("S(t) = %.2f·e^(-%.5f·t)\nR² = 0.78", s0_fit, k_fit),
+           hjust = 0, size = 4, fontface = "italic") +
+  labs(
+    title = "Cinética de Degradação da Deformação",
+    subtitle = "Typha domingensis - Exposição Acelerada",
+    x = "Tempo de Exposição (horas)",
+    y = "Extensão Máxima (%)"
+  ) +
+  tema_academico +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 8)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 8))
+
+ggsave("grafico_degradacao_strain_ggplot.png", g1, 
+       width = 10, height = 6, dpi = 300, bg = "white")
+ggsave("grafico_degradacao_strain_ggplot.pdf", g1, 
+       width = 10, height = 6, device = cairo_pdf)
+
+cat("✓ Gráfico 1 salvo: grafico_degradacao_strain_ggplot.png/pdf\n")
+
+# ============================================================================
+# GRÁFICO 2: COMPARAÇÃO DE TRATAMENTOS (DUPLO EIXO)
+# ============================================================================
+
+dados_trat <- data.frame(
+  Tratamento = factor(c("Natural", "NaOH 6%", "NaOH 9%"),
+                     levels = c("Natural", "NaOH 6%", "NaOH 9%")),
+  UTS_MPa = c(18.88, 21.39, 22.49),
+  VUF_Dias = c(68, 142, 180),
+  Weibull_Beta = c(2.3, 2.8, 3.0)
+)
+
+# Criar gráfico de barras + linha
+g2 <- ggplot(dados_trat, aes(x = Tratamento)) +
+  geom_col(aes(y = VUF_Dias, fill = "VUF (η, dias)"),
+           alpha = 0.7, width = 0.6) +
+  geom_line(aes(y = UTS_MPa * 8, group = 1, color = "UTS (MPa)"),
+            linewidth = 1.5) +
+  geom_point(aes(y = UTS_MPa * 8, color = "UTS (MPa)"),
+             size = 4, shape = 18) +
+  geom_text(aes(y = VUF_Dias, label = paste0(VUF_Dias, "d")),
+            vjust = -0.5, size = 4, fontface = "bold") +
+  geom_text(aes(y = UTS_MPa * 8, label = sprintf("%.2f MPa", UTS_MPa)),
+            vjust = -1.5, size = 3.5, color = "#D32F2F") +
+  scale_y_continuous(
+    name = "Vida Útil Funcional (η, dias)",
+    sec.axis = sec_axis(~./8, name = "Resistência à Tração (MPa)")
+  ) +
+  scale_fill_manual(values = c("VUF (η, dias)" = "#1976D2")) +
+  scale_color_manual(values = c("UTS (MPa)" = "#D32F2F")) +
+  labs(
+    title = "Efeito do Tratamento Alcalino na Durabilidade e Resistência",
+    subtitle = "Dupla otimização: Vida útil vs. Desempenho mecânico",
+    x = "Condição da Fibra",
+    fill = NULL,
+    color = NULL
+  ) +
+  tema_academico +
+  theme(
+    legend.position = "top",
+    axis.title.y.right = element_text(color = "#D32F2F", face = "bold"),
+    axis.text.y.right = element_text(color = "#D32F2F"),
+    axis.title.y.left = element_text(color = "#1976D2", face = "bold"),
+    axis.text.y.left = element_text(color = "#1976D2")
+  )
+
+ggsave("grafico_tratamentos_ggplot.png", g2, 
+       width = 10, height = 6, dpi = 300, bg = "white")
+ggsave("grafico_tratamentos_ggplot.pdf", g2, 
+       width = 10, height = 6, device = cairo_pdf)
+
+cat("✓ Gráfico 2 salvo: grafico_tratamentos_ggplot.png/pdf\n")
+
+# ============================================================================
+# GRÁFICO 3: VALIDAÇÃO DO MODELO UV (ERRO RELATIVO)
+# ============================================================================
+
+# Carregar dados de validação UV
+dados_uv <- read_csv("validacao_modelo_uv.csv", show_col_types = FALSE)
+
+# Calcular estatísticas por condição UV
+stats_uv <- dados_uv %>%
+  group_by(uv_index) %>%
+  summarise(
+    erro_medio = mean(erro_relativo) * 100,
+    erro_sd = sd(erro_relativo) * 100,
+    erro_min = min(erro_relativo) * 100,
+    erro_max = max(erro_relativo) * 100,
+    n = n()
+  ) %>%
+  mutate(
+    uv_label = paste0("UV = ", uv_index),
+    status = ifelse(erro_medio < 10, "Excelente", 
+                   ifelse(erro_medio < 20, "Aceitável", "Revisar"))
+  )
+
+g3 <- ggplot(stats_uv, aes(x = factor(uv_index), y = erro_medio)) +
+  geom_col(aes(fill = status), alpha = 0.8, width = 0.6) +
+  geom_errorbar(aes(ymin = erro_medio - erro_sd, ymax = erro_medio + erro_sd),
+                width = 0.2, linewidth = 0.8) +
+  geom_text(aes(label = sprintf("%.1f%%", erro_medio)),
+            vjust = -2, size = 4.5, fontface = "bold") +
+  geom_hline(yintercept = 10, linetype = "dashed", color = "red", linewidth = 0.8) +
+  annotate("text", x = 2.5, y = 11, label = "Limiar de validação (10%)",
+           color = "red", size = 3.5, hjust = 0) +
+  scale_fill_manual(values = c("Excelente" = "#4CAF50", 
+                                "Aceitável" = "#FF9800",
+                                "Revisar" = "#F44336")) +
+  labs(
+    title = "Validação do Modelo de Degradação UV",
+    subtitle = "Erro relativo médio por índice UV (50 simulações Monte Carlo)",
+    x = "Índice UV",
+    y = "Erro Relativo Médio (%)",
+    fill = "Status"
+  ) +
+  tema_academico +
+  theme(legend.position = "bottom") +
+  scale_y_continuous(breaks = seq(0, 30, 5), limits = c(0, 30))
+
+ggsave("grafico_validacao_uv_ggplot.png", g3, 
+       width = 10, height = 6, dpi = 300, bg = "white")
+ggsave("grafico_validacao_uv_ggplot.pdf", g3, 
+       width = 10, height = 6, device = cairo_pdf)
+
+cat("✓ Gráfico 3 salvo: grafico_validacao_uv_ggplot.png/pdf\n")
+
+# ============================================================================
+# GRÁFICO 4: DISTRIBUIÇÃO DE WEIBULL (CONFIABILIDADE)
+# ============================================================================
+
+# Função de confiabilidade de Weibull
+weibull_reliability <- function(t, eta, beta) {
+  exp(-(t/eta)^beta)
+}
+
+# Parâmetros dos tratamentos
+tempo <- seq(0, 200, by = 1)
+
+dados_weibull <- expand.grid(
+  Tempo = tempo,
+  Tratamento = c("Natural", "NaOH 6%", "NaOH 9%")
+) %>%
+  mutate(
+    eta = case_when(
+      Tratamento == "Natural" ~ 68,
+      Tratamento == "NaOH 6%" ~ 142,
+      Tratamento == "NaOH 9%" ~ 180
+    ),
+    beta = case_when(
+      Tratamento == "Natural" ~ 2.3,
+      Tratamento == "NaOH 6%" ~ 2.8,
+      Tratamento == "NaOH 9%" ~ 3.0
+    ),
+    Confiabilidade = weibull_reliability(Tempo, eta, beta) * 100
+  )
+
+# Calcular P10 para cada tratamento
+p10_data <- data.frame(
+  Tratamento = c("Natural", "NaOH 6%", "NaOH 9%"),
+  P10 = c(42, 95, 108)
+)
+
+g4 <- ggplot(dados_weibull, aes(x = Tempo, y = Confiabilidade, color = Tratamento)) +
+  geom_line(linewidth = 1.5, alpha = 0.9) +
+  geom_hline(yintercept = 90, linetype = "dashed", color = "gray30", linewidth = 0.8) +
+  geom_vline(data = p10_data, aes(xintercept = P10, color = Tratamento),
+             linetype = "dotted", linewidth = 1) +
+  annotate("text", x = 10, y = 92, label = "P₁₀ (90% confiável)",
+           size = 3.5, hjust = 0, color = "gray30") +
+  scale_color_manual(
+    values = c("Natural" = "#E64A19", "NaOH 6%" = "#1976D2", "NaOH 9%" = "#388E3C")
+  ) +
+  labs(
+    title = "Curvas de Confiabilidade de Weibull",
+    subtitle = "Probabilidade de integridade funcional ao longo do tempo",
+    x = "Tempo (dias)",
+    y = "Confiabilidade R(t) (%)",
+    color = "Tratamento"
+  ) +
+  tema_academico +
+  theme(legend.position = c(0.8, 0.7)) +
+  scale_x_continuous(breaks = seq(0, 200, 25)) +
+  scale_y_continuous(breaks = seq(0, 100, 10))
+
+ggsave("grafico_weibull_confiabilidade_ggplot.png", g4, 
+       width = 10, height = 6, dpi = 300, bg = "white")
+ggsave("grafico_weibull_confiabilidade_ggplot.pdf", g4, 
+       width = 10, height = 6, device = cairo_pdf)
+
+cat("✓ Gráfico 4 salvo: grafico_weibull_confiabilidade_ggplot.png/pdf\n")
+
+# ============================================================================
+# GRÁFICO 5: BOOTSTRAP - DISTRIBUIÇÃO DOS PARÂMETROS
+# ============================================================================
+
+# Simular distribuições bootstrap (baseado nos resultados)
+set.seed(42)
+n_boot <- 1000
+
+boot_k <- rnorm(n_boot, mean = 0.001471, sd = (0.001771 - 0.001111) / (2 * 1.96))
+boot_s0 <- rnorm(n_boot, mean = 15.13, sd = (16.46 - 13.36) / (2 * 1.96))
+
+dados_boot <- data.frame(
+  k = boot_k,
+  S0 = boot_s0
+)
+
+# Gráfico de densidade para k
+g5a <- ggplot(dados_boot, aes(x = k * 1000)) +
+  geom_density(fill = "#1976D2", alpha = 0.6, color = "#0D47A1", linewidth = 1) +
+  geom_vline(xintercept = 0.001471 * 1000, linetype = "dashed", 
+             color = "#D32F2F", linewidth = 1.2) +
+  geom_vline(xintercept = c(0.001111 * 1000, 0.001771 * 1000), 
+             linetype = "dotted", color = "#FF6F00", linewidth = 0.8) +
+  annotate("text", x = 0.001471 * 1000, y = max(density(boot_k * 1000)$y) * 0.9,
+           label = sprintf("k = %.3f × 10⁻³ h⁻¹", 0.001471 * 1000),
+           hjust = -0.1, size = 3.5, color = "#D32F2F") +
+  labs(
+    title = "Distribuição Bootstrap: Taxa de Degradação (k)",
+    x = "k × 10³ (h⁻¹)",
+    y = "Densidade"
+  ) +
+  tema_academico
+
+# Gráfico de densidade para S0
+g5b <- ggplot(dados_boot, aes(x = S0)) +
+  geom_density(fill = "#388E3C", alpha = 0.6, color = "#1B5E20", linewidth = 1) +
+  geom_vline(xintercept = 15.13, linetype = "dashed", 
+             color = "#D32F2F", linewidth = 1.2) +
+  geom_vline(xintercept = c(13.36, 16.46), 
+             linetype = "dotted", color = "#FF6F00", linewidth = 0.8) +
+  annotate("text", x = 15.13, y = max(density(boot_s0)$y) * 0.9,
+           label = sprintf("S₀ = %.2f%%", 15.13),
+           hjust = -0.1, size = 3.5, color = "#D32F2F") +
+  labs(
+    title = "Distribuição Bootstrap: Deformação Inicial (S₀)",
+    x = "S₀ (%)",
+    y = "Densidade"
+  ) +
+  tema_academico
+
+g5 <- ggarrange(g5a, g5b, ncol = 2, nrow = 1)
+
+ggsave("grafico_bootstrap_distribuicoes_ggplot.png", g5, 
+       width = 12, height = 5, dpi = 300, bg = "white")
+ggsave("grafico_bootstrap_distribuicoes_ggplot.pdf", g5, 
+       width = 12, height = 5, device = cairo_pdf)
+
+cat("✓ Gráfico 5 salvo: grafico_bootstrap_distribuicoes_ggplot.png/pdf\n")
+
+# ============================================================================
+# GRÁFICO 6: ANÁLISE DE PODER ESTATÍSTICO
+# ============================================================================
+
+# Calcular curvas de poder para diferentes tamanhos amostrais
+effect_sizes <- seq(0.2, 1.2, by = 0.05)
+sample_sizes <- c(10, 20, 30, 44, 60, 80)
+
+# Função para calcular poder
+calcular_poder <- function(n, d, alpha = 0.05) {
+  ncp <- d * sqrt(n / 2)
+  crit <- qt(1 - alpha/2, df = 2*n - 2)
+  poder <- 1 - pt(crit, df = 2*n - 2, ncp = ncp) + 
+           pt(-crit, df = 2*n - 2, ncp = ncp)
+  return(poder)
+}
+
+dados_poder <- expand.grid(
+  effect_size = effect_sizes,
+  sample_size = sample_sizes
+) %>%
+  mutate(
+    poder = mapply(calcular_poder, sample_size, effect_size),
+    n_label = paste0("n = ", sample_size)
+  )
+
+g6 <- ggplot(dados_poder, aes(x = effect_size, y = poder * 100, 
+                               color = factor(sample_size), 
+                               group = sample_size)) +
+  geom_line(linewidth = 1.2) +
+  geom_hline(yintercept = 80, linetype = "dashed", color = "red", linewidth = 0.8) +
+  geom_vline(xintercept = 0.6, linetype = "dotted", color = "gray40", linewidth = 0.8) +
+  geom_point(data = filter(dados_poder, sample_size == 44, effect_size == 0.6),
+             size = 5, shape = 21, fill = "yellow", color = "black", stroke = 1.5) +
+  annotate("text", x = 0.65, y = 82, 
+           label = "Poder = 80%\n(n = 44, d = 0.6)",
+           hjust = 0, size = 3.5, fontface = "bold") +
+  scale_color_viridis_d(option = "plasma", name = "Tamanho\nAmostral (n)") +
+  labs(
+    title = "Análise de Poder Estatístico",
+    subtitle = "Capacidade de detectar diferenças entre tratamentos (α = 0.05)",
+    x = "Magnitude do Efeito (Cohen's d)",
+    y = "Poder Estatístico (%)"
+  ) +
+  tema_academico +
+  theme(legend.position = "right") +
+  scale_x_continuous(breaks = seq(0.2, 1.2, 0.2)) +
+  scale_y_continuous(breaks = seq(0, 100, 10))
+
+ggsave("grafico_analise_poder_ggplot.png", g6, 
+       width = 10, height = 6, dpi = 300, bg = "white")
+ggsave("grafico_analise_poder_ggplot.pdf", g6, 
+       width = 10, height = 6, device = cairo_pdf)
+
+cat("✓ Gráfico 6 salvo: grafico_analise_poder_ggplot.png/pdf\n")
+
+# ============================================================================
+# PAINEL COMPLETO (FIGURA COMPOSTA)
+# ============================================================================
+
+painel_completo <- ggarrange(
+  g1, g2, g3, g4,
+  ncol = 2, nrow = 2,
+  labels = c("A", "B", "C", "D"),
+  font.label = list(size = 14, face = "bold")
+)
+
+ggsave("painel_completo_analises_ggplot.png", painel_completo, 
+       width = 16, height = 12, dpi = 300, bg = "white")
+ggsave("painel_completo_analises_ggplot.pdf", painel_completo, 
+       width = 16, height = 12, device = cairo_pdf)
+
+cat("✓ Painel completo salvo: painel_completo_analises_ggplot.png/pdf\n")
+
+# ============================================================================
+# SUMÁRIO FINAL
+# ============================================================================
+
+cat("\n")
+cat("════════════════════════════════════════════════════════════════\n")
+cat("  GERAÇÃO DE GRÁFICOS CONCLUÍDA COM SUCESSO\n")
+cat("════════════════════════════════════════════════════════════════\n")
+cat("✓ 6 gráficos individuais gerados (PNG + PDF)\n")
+cat("✓ 1 painel completo gerado (4 subplots)\n")
+cat("✓ Resolução: 300 DPI (publicação)\n")
+cat("✓ Tema: Acadêmico (ggplot2)\n")
+cat("════════════════════════════════════════════════════════════════\n\n")

@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.ipynb_checkpoints/
+
+# R
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# LaTeX / Markdown / Pandoc
+*.log
+*.aux
+*.out
+*.toc
+*.synctex.gz
+*.pdf
+*.docx
+!final_manuscript.docx
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# VS Code
+.vscode/
