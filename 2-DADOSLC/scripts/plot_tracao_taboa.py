@@ -97,9 +97,56 @@ def main():
     # ensure numeric
     df['strain'] = pd.to_numeric(df['strain'], errors='coerce')
     df['stress'] = pd.to_numeric(df['stress'], errors='coerce')
+
+    # filter out rows without days (these are metadata tables without day info)
+    before = len(df)
+    df = df[pd.notna(df['days'])]
+    after = len(df)
+    print(f"Filtradas entradas sem 'days': {before - after} linhas removidas ({before} -> {after})")
+
     days_to_plot = [30, 90]
     for d in days_to_plot:
         plot_for_day(df, d, OUT_DIR)
+
+        # plots separados por tratamento
+        df_day = df[df['days'] == d]
+        treatments = sorted(df_day['treatment'].dropna().unique())
+        for tr in treatments:
+            # create a small single-plot summary for this treatment
+            out_subdir = OUT_DIR / 'by_treatment'
+            out_subdir.mkdir(parents=True, exist_ok=True)
+            fig, ax = plt.subplots(figsize=(6,4))
+            sel = df_day[df_day['treatment'] == tr]
+            specimens = sel['specimen'].unique()
+            max_str = 0.0
+            series = []
+            for sp in specimens:
+                s = sel[sel['specimen'] == sp]['strain'].values
+                t = sel[sel['specimen'] == sp]['stress'].values
+                if len(s) < 2:
+                    continue
+                max_str = max(max_str, np.nanmax(s))
+                series.append((s, t))
+                ax.plot(s, t, color='gray', linewidth=0.8, alpha=0.8)
+
+            if series:
+                grid = np.linspace(0, max_str, 300)
+                interp_vals = [interp_series(s,t,grid) for s,t in series]
+                arr = np.vstack(interp_vals)
+                mean = np.nanmean(arr, axis=0)
+                std = np.nanstd(arr, axis=0)
+                ax.plot(grid, mean, color='C0', linewidth=2.0, label='média')
+                ax.fill_between(grid, mean-std, mean+std, color='C0', alpha=0.3, label='±1σ')
+
+            ax.set_xlabel('Deformação')
+            ax.set_ylabel('Tensão / Esforço')
+            ax.set_title(f"{tr} - {d} dias")
+            ax.legend()
+            fn = out_subdir / f"tracao_{d}dias_{tr}.png"
+            fig.tight_layout()
+            fig.savefig(fn, dpi=200)
+            plt.close(fig)
+            print(f"Salvo: {fn}")
 
 
 if __name__ == '__main__':
