@@ -299,7 +299,7 @@ class MEVTemporalAnalyzer:
         
         tratamentos = df_agg['Tratamento'].unique()
         cores = {'ST': 'red', 'DC': 'blue'}
-        labels = {'ST': 'Sem Tratamento', 'DC': 'Dupla Camada'}
+        labels = {'ST': 'Sem Tratamento', 'DC': '9% NaOH'}
         
         # 1. Densidade de Fraturas
         ax1 = axes[0, 0]
