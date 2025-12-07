@@ -1,0 +1,30 @@
+%% Fluxograma decisório para seleção de tratamento das fibras de Typha
+%% Abra este arquivo diretamente no Visual Studio Code ou em qualquer editor compatível com Mermaid
+%% para visualizar/ajustar o diagrama sem depender do script Python de download.
+
+flowchart TD
+    A["Início: Definir Requisitos do Projeto"] --> B{"Vida Útil Requerida?"}
+    B -->|"Curta < 90 dias"| C{"Agressividade UV?"}
+    B -->|"Média 90-180 dias"| D["Considerar Tratamento Alcalino"]
+    B -->|"Longa > 180 dias"| E["Tratamento Combinado (NaOH + Silano)"] --> F["Aplicação: Estruturas Permanentes"]
+
+    C -->|"Baixa/Sombreado"| G["Uso de Fibras Naturais (T0)"] --> H["Aplicação: Revegetação Temporária"]
+    C -->|"Alta/Exposto"| D
+    C -->|"Moderada"| I["Tratamento Superficial (Ác. Acético 5%)"] --> J["Aplicação: Elementos Não Estruturais"]
+
+    D --> K{"Requisito de Ductilidade?"}
+    K -->|"Alta (> 2,5%)"| L["Tratamento Otimizado NaOH 6% (T2)"]
+    K -->|"Moderada (2,0-2,5%)"| M["Tratamento Híbrido (NaOH 6% + Ác. Acético)"]
+    K -->|"Baixa (< 2,0%)"| N["Tratamento Máxima Resistência NaOH 9% (T3)"]
+
+    L --> O{"Validação Experimental?"}
+    O -->|"Atende"| P["Aplicação: Bioengenharia de Taludes"]
+    O -->|"Não Atende"| D
+    
+    M --> Q{"Validação Experimental?"}
+    Q -->|"Atende"| R["Aplicação: Elementos Semi-Estruturais"]
+    Q -->|"Não Atende"| D
+    
+    N --> S{"Validação Experimental?"}
+    S -->|"Atende"| T["Aplicação: Reforço de Solo Rígido"]
+    S -->|"Não Atende"| D
