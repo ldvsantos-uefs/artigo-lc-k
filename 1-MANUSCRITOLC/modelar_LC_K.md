@@ -15,7 +15,7 @@ A variabilidade na durabilidade de geotêxteis naturais apresenta desafios signi
 
 **Palavras-chave**: Modelagem de degradação; Razão Lignina/Celulose; Vida útil funcional; Geotêxteis naturais; Bioengenharia de solos.
 
-![](../3-IMAGENS/abstract_grafico.png){width="80%"}
+![Gráfico abstrato ilustrando a degradação de geotêxteis](../3-IMAGENS/abstract_grafico.png){width="80%"}
 
 ## 1. Introdução
 
@@ -31,7 +31,7 @@ Sistemas geotêxteis de fibras naturais transcendem a função passiva de refor�
 
 Além de suas fibras exibirem características mecânicas adequadas para reforço, sua biomassa carrega um arsenal de compostos bioativos, incluindo polifenóis e polissacarídeos, que exibem atividade alelopática e potencial para modular a rizosfera, suprimindo a germinação de ervas daninhas e estimulando processos biogeoquímicos benéficos [@Grace1989; @Manning2018].
 
-Apesar desse potencial multifuncional, a viabilidade técnica de geocompostos baseados em *Typha domingensis* permanece indeterminada devido à falta de dados sobre sua resiliência mecânica a longo prazo. Em contraste, estudos envolvendo fibras tradicionais como sisal (*Agave sisalana*), curauá (*Ananas erectifolius*) e linho (*Linum usitatissimum*) já caracterizaram seu comportamento sob envelhecimento acelerado, revelando perdas de desempenho e variabilidade mecânica [@Silveira2021]. 
+Apesar desse potencial multifuncional, a viabilidade técnica de geocompostos baseados em *Typha domingensis* permanece indeterminada devido à falta de dados sobre sua resiliência mecânica a longo prazo. Em contraste, estudos envolvendo fibras tradicionais como sisal (*Agave sisalana*), curauá (*Ananas erectifolius*) e linho (*Linum usitatissimum*) já caracterizaram seu comportamento sob envelhecimento acelerado, revelando perdas de desempenho e variabilidade mecânica [@Silveira2021].
 
 A resposta da *Typha* à degradação foto-oxidativa, no entanto, permanece uma incógnita crítica. Mais importante ainda, falta na literatura um modelo unificado que explique a variabilidade nas taxas de degradação entre diferentes espécies e tratamentos, conectando a composição química fundamental à vida útil em serviço.
 
@@ -58,7 +58,7 @@ A identificação botânica formal foi realizada pelo Laboratório de Botânica 
 
 Os protótipos de geotêxteis foram manufaturados pelo Laboratório de Erosão e Sedimentação da Universidade Federal de Sergipe, seguindo um processo em quatro etapas: (1) corte e secagem das fibras; (2) agrupamento; (3) tecelagem; e (4) tratamento químico alcalino. A extração da biomassa utilizou ferramentas de lâmina lisa para preservar a integridade das fibras, com incisões realizadas acima do sistema radicular para permitir a rebrota.
 
-O tratamento químico visou modificar a superfície das fibras para reduzir a hidrofilicidade e retardar a degradação. As mantas geotêxteis foram imersas em soluções de hidróxido de sódio (NaOH) nas concentrações de 3% (0,75 mol/L), 6% (1,5 mol/L) e 9% (2,25 mol/L) por um período de 24 horas, mantendo-se uma relação de banho constante. 
+O tratamento químico visou modificar a superfície das fibras para reduzir a hidrofilicidade e retardar a degradação. As mantas geotêxteis foram imersas em soluções de hidróxido de sódio (NaOH) nas concentrações de 3% (0,75 mol/L), 6% (1,5 mol/L) e 9% (2,25 mol/L) por um período de 24 horas, mantendo-se uma relação de banho constante.
 
 Após a reação, o material foi lavado em água corrente até neutralização e seco ao ar. A secagem ocorreu à sombra por aproximadamente 8 dias.
 
@@ -77,7 +77,7 @@ Para avaliação da cinética de biodegradação, seções de 20 cm × 20 cm for
 
 ### 2.2. Caracterização Físico-Química e Microestrutural
 
-A análise dos grupos funcionais foi realizada em um espectrômetro FTIR (PerkinElmer, Spectrum Two), operando no modo de transmissão. As amostras foram preparadas pelo método de pastilha de KBr (1 mg de fibra moída para 100 mg de KBr espectroscópico). Os espectros foram adquiridos na faixa de 4000 a 400 cm⁻¹, com resolução de 4 cm⁻¹ e acúmulo de 32 varreduras. 
+A análise dos grupos funcionais foi realizada em um espectrômetro FTIR (PerkinElmer, Spectrum Two), operando no modo de transmissão. As amostras foram preparadas pelo método de pastilha de KBr (1 mg de fibra moída para 100 mg de KBr espectroscópico). Os espectros foram adquiridos na faixa de 4000 a 400 cm⁻¹, com resolução de 4 cm⁻¹ e acúmulo de 32 varreduras.
 
 A interpretação das bandas vibracionais baseou-se nos trabalhos seminais de @Pandey1999 e @Faix1991, focando na banda de 1735 cm⁻¹ (estiramento C=O de hemiceluloses) e 1505 cm⁻¹ (vibração do anel aromático da lignina) para avaliar a remoção seletiva de componentes amorfos.
 
@@ -91,7 +91,7 @@ Onde $I_{002}$ é a intensidade máxima do pico de difração do plano cristalin
 
 A morfologia superficial e o modo de fratura foram examinados em um microscópio eletrônico de varredura (Hitachi, TM3000). As amostras foram fixadas em suportes de alumínio com fita de carbono condutiva e metalizadas com uma fina camada de ouro (Au) em um sputter coater (Denton Vacuum, Desk V) para evitar o carregamento eletrostático. As imagens foram adquiridas com tensão de aceleração de 15 kV sob alto vácuo.
 
-A estabilidade térmica foi avaliada em um analisador termogravimétrico (Shimadzu, TGA-50). Amostras de aproximadamente 10 mg foram aquecidas de 25°C a 600°C a uma taxa de 10°C/min, sob fluxo dinâmico de nitrogênio (N₂) de 50 mL/min. 
+A estabilidade térmica foi avaliada em um analisador termogravimétrico (Shimadzu, TGA-50). Amostras de aproximadamente 10 mg foram aquecidas de 25°C a 600°C a uma taxa de 10°C/min, sob fluxo dinâmico de nitrogênio (N₂) de 50 mL/min.
 
 As curvas de perda de massa (TG) e suas derivadas (DTG) foram utilizadas para identificar os estágios de decomposição da hemicelulose, celulose e lignina, conforme metodologia descrita por @Popescu2011.
 
