@@ -204,6 +204,11 @@ def main():
         ax.set_title(f"Tensão vs. Deformação - {target_days} Dias", fontsize=14, fontweight="bold")
         ax.grid(True, alpha=0.3, linestyle="--")
         
+        # Definir escala fixa para facilitar comparação visual entre 30 e 90 dias
+        # O usuário relatou que 30 dias vai até ~14 MPa. Definindo 20 MPa para garantir cobertura de todos os tratamentos (ex: T3 ~18 MPa)
+        ax.set_ylim(0, 20)
+        ax.set_xlim(0, 0.15) # Fixar também o x para comparação justa, se necessário. Mas o usuário pediu escala de tensão.
+        
         # Remover duplicatas de labels
         handles, labels = ax.get_legend_handles_labels()
         by_label = dict(zip(labels, handles))
