@@ -13,11 +13,14 @@ import matplotlib.gridspec as gridspec
 # Caminhos
 base_path = Path(r"c:\Users\vidal\OneDrive\Documentos\13 - CLONEGIT\artigo-posdoc\1-ARTIGO_LC_K")
 img_path = base_path / "3-IMAGENS"
+plots_path = base_path / "2-DADOSLC" / "processed_data" / "plots"
 
 # Carregar imagens
+# Painel (a) está em 3-IMAGENS
 img_a = mpimg.imread(img_path / "degradacao_tracao_naoh.png")
-img_b = mpimg.imread(img_path / "tracao_30dias_todos_tratamentos.png")
-img_c = mpimg.imread(img_path / "tracao_90dias_todos_tratamentos.png")
+# Painéis (b) e (c) estão em processed_data/plots (gerados recentemente)
+img_b = mpimg.imread(plots_path / "tracao_30dias_todos_tratamentos.png")
+img_c = mpimg.imread(plots_path / "tracao_90dias_todos_tratamentos.png")
 
 # Criar figura com layout: (a) em cima, (b) e (c) embaixo
 fig = plt.figure(figsize=(12, 10))
