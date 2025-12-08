@@ -231,6 +231,21 @@ def main():
         if result_pt == 0:
             sucessos += 1
 
+    # ========================================================================
+    # GERAR MATERIAL SUPLEMENTAR
+    # ========================================================================
+    md_suplementar = Path("material_suplementar.md")
+    docx_suplementar = Path("material_suplementar.docx")
+    
+    if md_suplementar.exists():
+        print(f"\n[INFO] Encontrado {md_suplementar.name} - gerando DOCX...")
+        total += 1
+        result_suplementar = gerar_docx(md_suplementar, docx_suplementar, bib_file, csl_file)
+        if result_suplementar == 0:
+            sucessos += 1
+    else:
+        print(f"\n[AVISO] Arquivo {md_suplementar.name} não encontrado. Pulando geração do material suplementar.")
+
     # Gerar PDF opcionalmente
     # Use argumento de linha de comando: python gerar-docx.py --pdf
     if len(sys.argv) > 1 and sys.argv[1] in ("--pdf", "-p"):
