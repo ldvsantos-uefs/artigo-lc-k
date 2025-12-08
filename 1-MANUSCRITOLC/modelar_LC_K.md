@@ -169,7 +169,7 @@ Esse comportamento pode ser atribuído à remoção da hemicelulose, cuja degrad
 
  Sob a ótica da aplicação geotécnica, onde a manutenção de $\varepsilon_{\text{máx}} > 2,3\%$ é pré-requisito para a compatibilidade com as deformações do solo [@Veylon2015], o tratamento com NaOH 6% (T2) apresenta-se como um ponto operacional favorável. Embora o tratamento T3 (NaOH 9%) estenda o prazo de fragilização para cerca de 210 dias, ele induz uma rigidez inicial maior ($\varepsilon_{\text{max}} = 1,9\%$), enquanto o T2 equilibra a longevidade com uma ductilidade funcional de 2,8%.
 
-**Figura 4.** Caracterização microestrutural e mecânica da degradação: (a) Evolução temporal da resistência à tração e padrões de fratura, (b) Curvas de tensão-deformação representativas em 90 dias para todos os tratamentos.
+**Figura 4.** Caracterização microestrutural e mecânica da degradação: (a) Evolução temporal da resistência à tração e padrões de fratura, (b) Curvas de tensão-deformação representativas em 30 dias e (c) em 90 dias para todos os tratamentos.
 
 ![ ](../3-IMAGENS/figura5_paineis_ab.png){width="95%"}
 
