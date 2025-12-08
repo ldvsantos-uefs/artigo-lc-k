@@ -273,23 +273,17 @@ Para decisões regulatórias críticas e a validação final de produtos comerci
 
 ## Conclusões
 
-A integração metodológica indica que a recalcitrância química, expressa pela razão lignina/celulose, influencia a cinética de degradação. Isso permite que a modulação da arquitetura lignocelulósica via mercerização alcalina reduza a variabilidade natural e viabilize a previsão de vida útil funcional a partir da composição química basal, com menor dependência de testes prolongados.
+Os resultados obtidos neste estudo permitem concluir que a razão lignina/celulose (L/C) confirmou-se como o fator determinante na cinética de degradação das fibras de *Typha domingensis*, exercendo influência superior ao tempo de exposição na perda de propriedades mecânicas. A densidade de fraturas superficiais, analisada via MEV, comportou-se como uma manifestação secundária desse processo de degradação química.
 
-A regressão múltipla estabeleceu uma hierarquia causal onde a composição L/C exerce influência predominante sobre a taxa de degradação, superando o efeito do tempo de exposição. A densidade de fraturas superficiais revelou-se consequência mensurável mediada pela razão L/C, o que questiona paradigmas de mecânica da fratura que tratam defeitos como causas primárias em vez de manifestações secundárias da degradação química.
+O tratamento alcalino com NaOH a 6% (T2) estabeleceu-se como o ponto de equilíbrio operacional, estendendo a Vida Útil Funcional (VUF) em 127% em comparação ao controle, sem comprometer a ductilidade necessária para aplicações geotécnicas. Em contrapartida, a concentração de 9%, apesar de aumentar a resistência inicial, induziu fragilização excessiva, tornando o material menos adequado para funções que exigem acomodação de deformações.
 
-A modificação alcalina graduada demonstrou que existe um ponto ótimo operacional que equilibra durabilidade e flexibilidade. O tratamento com NaOH 6% (T2) estendeu a vida útil funcional em +127% em relação ao controle, preservando a ductilidade necessária para aplicações geotécnicas e oferecendo vantagens econômicas no processamento. Em contraste, concentrações alcalinas elevadas, embora maximizem a resistência mecânica, podem induzir fragilização incompatível com a aplicação de campo.
+A análise microestrutural e espectroscópica corroborou o mecanismo físico-químico da estabilização, indicando que a mercerização promoveu a conversão polimórfica de Celulose I para II e o aumento da cristalinidade. Essas alterações correlacionaram-se fortemente com a retenção das propriedades mecânicas, sugerindo que a estabilidade química exerce papel no desempenho macroscópico.
 
-A transição polimórfica da celulose induzida pela mercerização pode conferir estabilidade termodinâmica superior, evidenciada pelo aumento na densidade de ligações de hidrogênio. Esse mecanismo reduz a acessibilidade à hidrólise e sugere uma explicação para a redução da taxa de degradação observada no material tratado, conferindo maior longevidade à fibra.
+Adicionalmente, a caracterização morfológica revelou que o tratamento alcalino induz uma reorganização matricial que, embora aumente a porosidade aparente, gera uma estrutura de vazios ordenados que não compromete a resistência mecânica. Simultaneamente, observou-se uma homogeneização das propriedades físicas, evidenciada pela redução do coeficiente de variação da resistência, o que contribui diretamente para o aumento da confiabilidade do material.
 
-A modelagem estocástica revelou que o tratamento alcalino promove a transição de um regime de falhas aleatórias para um regime determinístico de desgaste progressivo. Essa mudança transforma a incerteza inerente aos materiais naturais em parâmetros de confiabilidade estrutural análogos aos de produtos de engenharia convencionais, habilitando a especificação segura mediante percentis de confiabilidade.
+A modelagem de confiabilidade via distribuição de Weibull indicou que a modificação química promove uma transição no comportamento de falha, reduzindo a variabilidade natural e permitindo a previsão de desempenho com base em parâmetros determinísticos de desgaste.
 
-A viabilidade técnica da *Typha domingensis* modificada alcalinamente estabelece uma alternativa local com recalcitrância otimizada. O material tratado demonstrou capacidade de cobrir a janela crítica para o estabelecimento vegetal em taludes com alta confiabilidade, competindo com geossintéticos convencionais importados através da superioridade em biodegradabilidade e ciclo de carbono controlado.
-
-O protocolo quantitativo consolida a transição de uma abordagem empírica para uma metodologia baseada em confiabilidade química e mecânica. A ferramenta de especificação integra a previsão de vida útil à composição basal, eliminando a dependência de testes de campo prolongados e viabilizando a qualificação acelerada de novos biomateriais em ciclos industriais compatíveis com o desenvolvimento de produtos.
-
-Em termos práticos, a implementação deste protocolo tem potencial para reduzir o tempo de validação de novos materiais, desde que a correlação entre composicional e mecânica seja validada para cada nova espécie.
-
-Economicamente, a otimização dos fatores de segurança baseada na confiabilidade projeta uma redução de custos da confecção de geotêxteis com fibras naturais, consolidando a viabilidade da bioengenharia em larga escala como alternativa competitiva aos geossintéticos convencionais.
+Por fim, a validação do modelo hierárquico demonstrou robustez para cenários de baixa e média irradiância UV, permitindo a estimativa da vida útil funcional a partir de parâmetros composicionais. Contudo, para ambientes de alta radiação (UV índice 1.0), observou-se um aumento na variabilidade preditiva, indicando a necessidade de fatores de correção para aplicações em climas áridos ou de alta altitude.
 
 ## Referências
 
