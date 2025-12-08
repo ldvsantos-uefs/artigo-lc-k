@@ -277,7 +277,7 @@ A integração metodológica indica que a recalcitrância química, expressa pel
 
 A regressão múltipla estabeleceu uma hierarquia causal onde a composição L/C exerce influência predominante sobre a taxa de degradação, superando o efeito do tempo de exposição. A densidade de fraturas superficiais revelou-se consequência mensurável mediada pela razão L/C, o que questiona paradigmas de mecânica da fratura que tratam defeitos como causas primárias em vez de manifestações secundárias da degradação química.
 
-A modificação alcalina graduada demonstrou que existe um ponto ótimo operacional que equilibra durabilidade e flexibilidade. O tratamento com NaOH 6% (T2) estendeu a vida útil funcional em +127% em relação ao controle, preservando a ductilidade necessária para aplicações geotécnicas e oferecendo vantagens econômicas no processamento. Em contraste, concentrações alcalinas elevadas (9%), embora maximizem a resistência mecânica, podem induzir fragilização incompatível com a aplicação de campo.
+A modificação alcalina graduada demonstrou que existe um ponto ótimo operacional que equilibra durabilidade e flexibilidade. O tratamento com NaOH 6% (T2) estendeu a vida útil funcional em +127% em relação ao controle, preservando a ductilidade necessária para aplicações geotécnicas e oferecendo vantagens econômicas no processamento. Em contraste, concentrações alcalinas elevadas, embora maximizem a resistência mecânica, podem induzir fragilização incompatível com a aplicação de campo.
 
 A transição polimórfica da celulose induzida pela mercerização pode conferir estabilidade termodinâmica superior, evidenciada pelo aumento na densidade de ligações de hidrogênio. Esse mecanismo reduz a acessibilidade à hidrólise e sugere uma explicação para a redução da taxa de degradação observada no material tratado, conferindo maior longevidade à fibra.
 
@@ -287,9 +287,9 @@ A viabilidade técnica da *Typha domingensis* modificada alcalinamente estabelec
 
 O protocolo quantitativo consolida a transição de uma abordagem empírica para uma metodologia baseada em confiabilidade química e mecânica. A ferramenta de especificação integra a previsão de vida útil à composição basal, eliminando a dependência de testes de campo prolongados e viabilizando a qualificação acelerada de novos biomateriais em ciclos industriais compatíveis com o desenvolvimento de produtos.
 
-Em termos práticos, a implementação deste protocolo tem potencial para reduzir em até 98% o tempo de validação de novos materiais, substituindo ensaios de campo de 180 dias por caracterizações laboratoriais de 72 horas (desde que a correlação entre composicional e mecânica seja validada para cada nova espécie).
+Em termos práticos, a implementação deste protocolo tem potencial para reduzir o tempo de validação de novos materiais, desde que a correlação entre composicional e mecânica seja validada para cada nova espécie.
 
-Economicamente, a otimização dos fatores de segurança baseada na confiabilidade (FS 1,8 versus 2,5 convencional) projeta uma redução de custos de material da ordem de 28% (intervalo estimado: 22–34%, dependendo de preços regionais de matéria-prima), consolidando a viabilidade da bioengenharia em larga escala como alternativa competitiva aos geossintéticos convencionais.
+Economicamente, a otimização dos fatores de segurança baseada na confiabilidade projeta uma redução de custos da confecção de geotêxteis com fibras naturais, consolidando a viabilidade da bioengenharia em larga escala como alternativa competitiva aos geossintéticos convencionais.
 
 ## Referências
 
