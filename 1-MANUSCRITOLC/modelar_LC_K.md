@@ -1,5 +1,5 @@
 ﻿---
-title: "Modelo Preditivo de Degradação de Geotêxteis Naturais Baseada na Recalcitrância Química"
+title: "Modelo Preditivo de Degradação de Geotêxteis Naturais Baseada na Recalcitrância Química<b>Predictive Model for the Degradation of Natural Geotextiles Based on Chemical Recalcitrance"
 author: "Diego Vidal"
 bibliography: referencias_lc.bib
 csl: apa.csl
