@@ -10,7 +10,7 @@ A coleta das amostras de *Typha domingensis* foi realizada na região do Baixo S
 
 **Figura S1.** Mapa de localização das áreas de coleta de *Typha domingensis* no Baixo São Francisco.
 
-![](../3-IMAGENS/coleta.png){width="80%"}
+![](../3-IMAGENS/mapa_tigre_python.png){width="80%"}
 
 ## S2. Análise Detalhada de Poder Estatístico
 
