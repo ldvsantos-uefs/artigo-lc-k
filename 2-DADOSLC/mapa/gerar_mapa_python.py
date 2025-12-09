@@ -14,14 +14,24 @@ except ImportError:
     print("Aviso: 'contextily' não encontrado. O mapa será gerado sem fundo de satélite/rua.")
 
 # Configurações de Fonte
-plt.rcParams['font.family'] = 'serif'
-plt.rcParams['font.serif'] = ['Times New Roman'] + plt.rcParams['font.serif']
+plt.rcParams['font.family'] = 'sans-serif'
+plt.rcParams['font.serif'] = ['Aptos'] + plt.rcParams['font.serif']
 
-def add_north_arrow(ax, x, y, arrow_length=0.1):
-    """Adiciona uma seta norte simples ao eixo."""
-    ax.annotate('N', xy=(x, y + arrow_length), xytext=(x, y),
-                arrowprops=dict(facecolor='black', width=5, headwidth=15),
-                ha='center', va='center', fontsize=12, xycoords=ax.transAxes)
+def add_north_arrow(ax, x, y, size=0.03):
+    """Adiciona uma seta norte estilizada (Agulha de Bússola)."""
+    # Coordenadas relativas para a agulha (Losango alongado)
+    # Parte Esquerda (Branca/Vazia)
+    left_x = [x, x - size*0.6, x]
+    left_y = [y + size, y, y - size]
+    ax.fill(left_x, left_y, transform=ax.transAxes, color='white', edgecolor='black', linewidth=1)
+    
+    # Parte Direita (Preta)
+    right_x = [x, x + size*0.6, x]
+    right_y = [y + size, y, y - size]
+    ax.fill(right_x, right_y, transform=ax.transAxes, color='black', edgecolor='black', linewidth=1)
+    
+    # Letra N
+    ax.text(x, y + size + 0.02, 'N', transform=ax.transAxes, ha='center', va='bottom', fontsize=12, fontweight='bold')
 
 def add_scale_bar(ax, length, location=(0.5, 0.05), linewidth=3):
     """
@@ -154,13 +164,17 @@ def main():
     ylim = ([bounds[1]-0.1, bounds[3]+0.1])
     
     # Plotar municípios vizinhos (recorte)
-    se_mun.cx[xlim[0]:xlim[1], ylim[0]:ylim[1]].plot(
+    # Excluir Pacatuba para não pintar o fundo de cinza
+    vizinhos = se_mun[se_mun['NM_MUN'] != 'Pacatuba']
+    vizinhos.cx[xlim[0]:xlim[1], ylim[0]:ylim[1]].plot(
         ax=ax_main, color='#f0f0f0', edgecolor='gray', linewidth=0.8, aspect=1
     )
     
     # Destaque Pacatuba
-    # Adicionando hachura (hatch='///') para destaque
-    pacatuba.plot(ax=ax_main, color='white', edgecolor='gray', linewidth=2.0, aspect=1, hatch='///')
+    # 1. Hachura Cinza (sem borda)
+    pacatuba.plot(ax=ax_main, facecolor='none', edgecolor='gray', linewidth=0, aspect=1, hatch='///')
+    # 2. Borda Azul (sem hachura)
+    pacatuba.plot(ax=ax_main, facecolor='none', edgecolor='blue', linewidth=2.0, aspect=1)
     
     # Adicionar nome do Município
     # Ajuste manual da posição se necessário, ou usar centroide
@@ -239,7 +253,8 @@ def main():
     ax_main.grid(True, linestyle='--', alpha=0.5)
     
     # Norte e Escala (Manuais e simples)
-    add_north_arrow(ax_main, 0.95, 0.90)
+    # Posicionando o Norte no canto inferior direito para não sobrepor o inset
+    add_north_arrow(ax_main, 0.92, 0.15)
     # Escala aproximada visual (ajuste conforme necessário)
     # ax_main.text(0.95, 0.05, "Escala Gráfica", transform=ax_main.transAxes, ha='right')
 
@@ -253,7 +268,7 @@ def main():
     output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../3-IMAGENS"))
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
-    output_file = os.path.join(output_dir, "mapa_tigre_python.png")
+    output_file = os.path.join(output_dir, "mapa_tigre_en.png")
     
     try:
         plt.savefig(output_file, dpi=300, bbox_inches='tight')
