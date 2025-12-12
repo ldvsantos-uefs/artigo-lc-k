@@ -362,8 +362,77 @@ class MEVTemporalAnalyzer:
         plt.savefig(output_file, dpi=300, bbox_inches='tight')
         plt.close()
         print(f"\n📈 Gráfico salvo: {output_file}")
+
+        # --- VERSÃO EM INGLÊS ---
+        fig, axes = plt.subplots(2, 2, figsize=(14, 10))
+        fig.suptitle('Temporal Evolution of Microstructural Degradation', fontsize=16, fontweight='bold')
+        
+        labels_en = {'ST': 'Untreated', 'DC': '9% NaOH'}
+        
+        # 1. Fracture Density
+        ax1 = axes[0, 0]
+        for trat in tratamentos:
+            df_trat = df_agg[df_agg['Tratamento'] == trat]
+            ax1.errorbar(df_trat['Tempo_dias'], df_trat['densidade_fraturas_mm2_mean'],
+                        yerr=df_trat['densidade_fraturas_mm2_std'],
+                        marker='o', label=labels_en[trat], color=cores[trat], 
+                        linewidth=2, markersize=8, capsize=5)
+        ax1.set_xlabel('Exposure Time (days)', fontweight='bold')
+        ax1.set_ylabel('Fracture Density (mm⁻²)', fontweight='bold')
+        ax1.set_title('(A) Fracture Density')
+        ax1.legend()
+        ax1.grid(True, alpha=0.3)
+        
+        # 2. Severity
+        ax2 = axes[0, 1]
+        for trat in tratamentos:
+            df_trat = df_agg[df_agg['Tratamento'] == trat]
+            ax2.errorbar(df_trat['Tempo_dias'], df_trat['severidade_percent_mean'],
+                        yerr=df_trat['severidade_percent_std'],
+                        marker='s', label=labels_en[trat], color=cores[trat],
+                        linewidth=2, markersize=8, capsize=5)
+        ax2.set_xlabel('Exposure Time (days)', fontweight='bold')
+        ax2.set_ylabel('Damage Severity (%)', fontweight='bold')
+        ax2.set_title('(B) Fracture Severity')
+        ax2.legend()
+        ax2.grid(True, alpha=0.3)
+        
+        # 3. Porosity
+        ax3 = axes[1, 0]
+        for trat in tratamentos:
+            df_trat = df_agg[df_agg['Tratamento'] == trat]
+            ax3.errorbar(df_trat['Tempo_dias'], df_trat['porosidade_percent_mean'],
+                        yerr=df_trat['porosidade_percent_std'],
+                        marker='^', label=labels_en[trat], color=cores[trat],
+                        linewidth=2, markersize=8, capsize=5)
+        ax3.set_xlabel('Exposure Time (days)', fontweight='bold')
+        ax3.set_ylabel('Porosity (%)', fontweight='bold')
+        ax3.set_title('(C) Surface Porosity')
+        ax3.legend()
+        ax3.grid(True, alpha=0.3)
+        
+        # 4. Roughness
+        ax4 = axes[1, 1]
+        for trat in tratamentos:
+            df_trat = df_agg[df_agg['Tratamento'] == trat]
+            ax4.errorbar(df_trat['Tempo_dias'], df_trat['rugosidade_um_mean'],
+                        yerr=df_trat['rugosidade_um_std'],
+                        marker='D', label=labels_en[trat], color=cores[trat],
+                        linewidth=2, markersize=8, capsize=5)
+        ax4.set_xlabel('Exposure Time (days)', fontweight='bold')
+        ax4.set_ylabel('Roughness (µm)', fontweight='bold')
+        ax4.set_title('(D) Surface Roughness')
+        ax4.legend()
+        ax4.grid(True, alpha=0.3)
+        
+        plt.tight_layout()
+        output_file_en = self.output_dir / 'evolucao_temporal_fraturas_en.png'
+        plt.savefig(output_file_en, dpi=300, bbox_inches='tight')
+        plt.close()
+        print(f"📈 Gráfico (EN) salvo: {output_file_en}")
         
         return output_file
+
 
 # ============================================================================
 # EXECUÇÃO PRINCIPAL

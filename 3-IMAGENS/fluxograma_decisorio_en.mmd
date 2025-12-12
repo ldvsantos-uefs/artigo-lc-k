@@ -1,0 +1,30 @@
+%% Decision flowchart for Typha fiber treatment selection
+%% Open this file directly in Visual Studio Code or any Mermaid compatible editor
+%% to visualize/adjust the diagram without depending on the Python download script.
+
+flowchart TD
+    A["Start: Define Project Requirements"] --> B{"Required Service Life?"}
+    B -->|"Short < 90 days"| C{"UV Aggressiveness?"}
+    B -->|"Medium 90-180 days"| D["Consider Alkaline Treatment"]
+    B -->|"Long > 180 days"| E["Combined Treatment (NaOH + Silane)"] --> F["Application: Permanent Structures"]
+
+    C -->|"Low/Shaded"| G["Use Natural Fibers (T0)"] --> H["Application: Temporary Revegetation"]
+    C -->|"High/Exposed"| D
+    C -->|"Moderate"| I["Surface Treatment (5% Acetic Acid)"] --> J["Application: Non-Structural Elements"]
+
+    D --> K{"Ductility Requirement?"}
+    K -->|"High (> 2.5%)"| L["Optimized Treatment 6% NaOH (T2)"]
+    K -->|"Moderate (2.0-2.5%)"| M["Hybrid Treatment (6% NaOH + Acetic Acid)"]
+    K -->|"Low (< 2.0%)"| N["Max Strength Treatment 9% NaOH (T3)"]
+
+    L --> O{"Experimental Validation?"}
+    O -->|"Pass"| P["Application: Slope Bioengineering"]
+    O -->|"Fail"| D
+    
+    M --> Q{"Experimental Validation?"}
+    Q -->|"Pass"| R["Application: Semi-Structural Elements"]
+    Q -->|"Fail"| D
+    
+    N --> S{"Experimental Validation?"}
+    S -->|"Pass"| T["Application: Rigid Soil Reinforcement"]
+    S -->|"Fail"| D

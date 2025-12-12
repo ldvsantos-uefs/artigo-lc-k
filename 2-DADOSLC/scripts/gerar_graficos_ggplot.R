@@ -211,6 +211,38 @@ ggsave("grafico_validacao_uv_ggplot.pdf", g3,
 
 cat("✓ Gráfico 3 salvo: grafico_validacao_uv_ggplot.png/pdf\n")
 
+# --- VERSÃO EM INGLÊS (G3) ---
+g3_en <- ggplot(dados_uv, aes(x = uv_fator, y = erro_pct)) +
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = 0, ymax = 10, 
+           fill = "green", alpha = 0.05) +
+  annotate("rect", xmin = -Inf, xmax = Inf, ymin = 10, ymax = 20, 
+           fill = "yellow", alpha = 0.05) +
+  geom_boxplot(aes(fill = uv_fator), alpha = 0.7, outlier.shape = NA, width = 0.5) +
+  geom_jitter(width = 0.2, size = 2, alpha = 0.4, color = "gray30") +
+  geom_hline(yintercept = 10, linetype = "dashed", color = "#2E7D32", linewidth = 0.8) +
+  geom_hline(yintercept = 20, linetype = "dashed", color = "#E65100", linewidth = 0.8) +
+  annotate("text", x = 0.5, y = 10.5, label = "High Precision Limit (10%)", 
+           color = "#2E7D32", size = 3.5, hjust = 0, fontface = "italic") +
+  annotate("text", x = 0.5, y = 20.5, label = "Acceptable Limit (20%)", 
+           color = "#E65100", size = 3.5, hjust = 0, fontface = "italic") +
+  scale_fill_brewer(palette = "Blues", labels = c("UV = 0 (Control)", "UV = 0.5 (Shade)", "UV = 1.0 (Exposed)")) +
+  labs(
+    title = "UV Degradation Model Robustness",
+    subtitle = "Relative Error Distribution in 50 Monte Carlo Simulations",
+    x = "Exposure Condition (UV Index)",
+    y = "Relative Error (%)",
+    fill = "Condition"
+  ) +
+  tema_academico +
+  theme(legend.position = "none") +
+  scale_y_continuous(breaks = seq(0, 35, 5), limits = c(0, max(dados_uv$erro_pct) * 1.15)) +
+  scale_x_discrete(labels = c("UV = 0 (Control)", "UV = 0.5 (Shade)", "UV = 1.0 (Exposed)"))
+
+ggsave("grafico_validacao_uv_ggplot_en.png", g3_en, 
+       width = 10, height = 6, dpi = 300, bg = "white")
+cat("✓ Gráfico 3 (EN) salvo: grafico_validacao_uv_ggplot_en.png\n")
+
+
 # ============================================================================
 # GRÁFICO 4: DISTRIBUIÇÃO DE WEIBULL (CONFIABILIDADE)
 # ============================================================================
@@ -286,6 +318,38 @@ ggsave("grafico_weibull_confiabilidade_ggplot.pdf", g4,
        width = 10, height = 6, device = cairo_pdf)
 
 cat("✓ Gráfico 4 salvo: grafico_weibull_confiabilidade_ggplot.png/pdf\n")
+
+# --- VERSÃO EM INGLÊS (G4) ---
+g4_en <- ggplot(dados_weibull, aes(x = Tempo, y = Confiabilidade, color = Tratamento)) +
+  geom_line(linewidth = 1.5, alpha = 0.9) +
+  geom_hline(yintercept = 90, linetype = "dashed", color = "gray30", linewidth = 0.8) +
+  geom_vline(data = p10_data, aes(xintercept = P10, color = Tratamento),
+             linetype = "dotted", linewidth = 1, alpha = 0.6) +
+  annotate("text", x = 10, y = 92, label = "P₁₀ (90% reliability)",
+           size = 3.5, hjust = 0, color = "gray30") +
+  scale_color_manual(
+    values = c("T0 (Natural)" = "#E64A19", 
+               "T1 (NaOH 3%)" = "#FFA726",
+               "T2 (NaOH 6%)" = "#1976D2", 
+               "T3 (NaOH 9%)" = "#388E3C"),
+    labels = c("T0 (Natural)", "T1 (NaOH 3%)", "T2 (NaOH 6%)", "T3 (NaOH 9%)")
+  ) +
+  labs(
+    title = "Weibull Reliability Curves",
+    subtitle = "Probability of functional integrity over time (4 treatments)",
+    x = "Time (days)",
+    y = "Reliability R(t) (%)",
+    color = "Treatment"
+  ) +
+  tema_academico +
+  theme(legend.position = c(0.75, 0.6)) +
+  scale_x_continuous(breaks = seq(0, 200, 25)) +
+  scale_y_continuous(breaks = seq(0, 100, 10))
+
+ggsave("grafico_weibull_confiabilidade_ggplot_en.png", g4_en, 
+       width = 10, height = 6, dpi = 300, bg = "white")
+cat("✓ Gráfico 4 (EN) salvo: grafico_weibull_confiabilidade_ggplot_en.png\n")
+
 
 # ============================================================================
 # GRÁFICO 5: BOOTSTRAP - DISTRIBUIÇÃO DOS PARÂMETROS

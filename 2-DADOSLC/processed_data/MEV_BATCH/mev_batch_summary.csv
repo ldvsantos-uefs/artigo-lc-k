@@ -1,0 +1,6 @@
+,porosity,porosity,orientation_index,orientation_index,fibril_density,fibril_density,roughness,roughness
+,mean,std,mean,std,mean,std,mean,std
+Group,,,,,,,,
+NaOH 6% (T2),18.5143,4.0017,0.1961,0.0497,0.0361,0.006,0.1024,0.0145
+NaOH 9% (T3),13.6909,2.4482,0.2085,0.0418,0.0425,0.0091,0.1279,0.0286
+Natural (T0),47.7609,21.8111,0.2743,0.0349,0.02,0.0119,0.0682,0.0261

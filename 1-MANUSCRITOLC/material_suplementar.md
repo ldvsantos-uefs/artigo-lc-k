@@ -164,9 +164,20 @@ Este valor posiciona *Typha* em patamar intermediário quando comparado com outr
 
 *IC: Índice de Cristalinidade; FWHM: Full Width at Half Maximum*
 
-### S3.2 Espectroscopia FTIR - Bandas Características
+### S3.2 Análise Morfométrica (MEV)
 
-**Tabela S9.** Atribuição de bandas FTIR e razões de intensidade.
+**Tabela S9.** Parâmetros quantitativos de superfície obtidos via processamento de imagem (escala 100 µm, 500×).
+
+| Tratamento | Porosidade (%) | Densidade Relativa (%) | Rugosidade (u.a.) |
+|:-----------|:--------------:|:----------------------:|:-----------------:|
+| T0 (Natural)| 75,8 | 26,9 | 452 |
+| T1 (3% NaOH)| 84,9 | 24,0 | 221 |
+| T2 (6% NaOH)| 52,7 | 24,2 | 720 |
+| T3 (9% NaOH)| 26,3 | 26,5 | 1549 |
+
+### S3.3 Espectroscopia FTIR - Bandas Características
+
+**Tabela S10.** Atribuição de bandas FTIR e razões de intensidade.
 
 | Número de onda (cm⁻¹) | Atribuição | T0 | T2 | T3 | Variação T0→T3 |
 |:---------------------:|:-----------|:--:|:--:|:--:|:--------------:|
@@ -182,9 +193,9 @@ Este valor posiciona *Typha* em patamar intermediário quando comparado com outr
 
 *Intensidades normalizadas em relação à banda 1060 cm⁻¹ (C-O-C celulose).*
 
-### S3.3 Análise Termogravimétrica (TGA)
+### S3.4 Análise Termogravimétrica (TGA)
 
-**Tabela S10.** Temperaturas características de decomposição e resíduos.
+**Tabela S11.** Temperaturas características de decomposição e resíduos.
 
 | Tratamento | T₅% (°C) | T₁₀% (°C) | Tₘₐₓ₁ (°C) | Tₘₐₓ₂ (°C) | Resíduo 600°C (%) |
 |:-----------|:--------:|:---------:|:----------:|:----------:|:-----------------:|
@@ -200,7 +211,7 @@ Este valor posiciona *Typha* em patamar intermediário quando comparado com outr
 
 ### S4.1 Resistência à Tração - Valores Médios por Tempo
 
-**Tabela S11.** Resistência máxima à tração (MPa) ao longo do tempo de exposição.
+**Tabela S12.** Resistência máxima à tração (MPa) ao longo do tempo de exposição.
 
 | Tempo (dias) | T0 | T1 | T2 | T3 |
 |:------------:|:--:|:--:|:--:|:--:|
@@ -212,7 +223,7 @@ Este valor posiciona *Typha* em patamar intermediário quando comparado com outr
 | 150 | 3,8 ± 2,7 | 7,1 ± 3,8 | 11,9 ± 4,5 | 15,6 ± 4,1 |
 | 180 | 2,4 ± 2,1 | 5,3 ± 3,2 | 9,4 ± 4,2 | 13,1 ± 4,3 |
 
-**Tabela S12.** Deformação máxima na ruptura (%) ao longo do tempo.
+**Tabela S13.** Deformação máxima na ruptura (%) ao longo do tempo.
 
 | Tempo (dias) | T0 | T1 | T2 | T3 |
 |:------------:|:--:|:--:|:--:|:--:|
@@ -226,7 +237,7 @@ Este valor posiciona *Typha* em patamar intermediário quando comparado com outr
 
 ### S4.2 Parâmetros de Degradação Cinética
 
-**Tabela S13.** Constantes de degradação ($k$) e tempos de meia-vida ($t_{1/2}$).
+**Tabela S14.** Constantes de degradação ($k$) e tempos de meia-vida ($t_{1/2}$).
 
 | Propriedade | Tratamento | k (dia⁻¹) | IC 95% | t₁/₂ (dias) | R² |
 |:-----------|:----------:|:---------:|:------:|:-----------:|:--:|
@@ -269,7 +280,7 @@ Este valor posiciona *Typha* em patamar intermediário quando comparado com outr
 3. Metalização: Au/Pd (60:40), 15 nm espessura
 4. Sputter coater: 20 mA, 60 s
 5. Armazenamento em dessecador (<30% UR)
-6. Imageamento: 15 kV, alto vácuo, aumentos 100× a 5.000×
+6. Imageamento: 15 kV, alto vácuo, aumentos 100× a 5.000×. Para a análise quantitativa de porosidade e rugosidade, foram utilizadas imagens padronizadas com magnificação de 500× e escala de 100 µm.
 
 ### S6.3 Ensaio de Tração - Procedimento ASTM D5035
 

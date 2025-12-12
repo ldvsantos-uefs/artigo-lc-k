@@ -1,0 +1,23 @@
+{
+    "label": "Typha_Domingensis_Natural",
+    "image_file": "T1.500x.tif",
+    "timestamp": "2025-12-12T16:08:31.429075",
+    "metrics": {
+        "porosity": {
+            "porosity_percent": 72.27,
+            "num_pores": 47,
+            "mean_pore_area": 12092.87
+        },
+        "orientation": {
+            "orientation_index": 0.31,
+            "mean_angle_deg": 85.4
+        },
+        "structure": {
+            "fibril_density": 0.01035,
+            "num_junctions": 787
+        },
+        "texture": {
+            "roughness_std": 0.04843
+        }
+    }
+}

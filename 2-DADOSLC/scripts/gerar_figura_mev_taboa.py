@@ -180,9 +180,53 @@ class FiberAnalyzer:
         plt.close()
         print(f"Salvo em: {output_file}")
 
+        # --- VERSÃO EM INGLÊS ---
+        fig, axes = plt.subplots(2, 3, figsize=(15, 10))
+        fig.suptitle(f'SEM Morphometric Analysis - {label}', fontsize=16, fontweight='bold')
+        
+        # Original
+        axes[0,0].imshow(img, cmap='gray')
+        axes[0,0].set_title('Original Image')
+        axes[0,0].axis('off')
+        add_label(axes[0,0], '(a)')
+        
+        # Porosidade
+        axes[0,1].imshow(binary, cmap='gray')
+        axes[0,1].set_title(f'Porosity: {porosity_res["porosity_percent"]}%')
+        axes[0,1].axis('off')
+        add_label(axes[0,1], '(b)')
+        
+        # Orientação
+        axes[0,2].imshow(magnitude, cmap='jet')
+        axes[0,2].set_title(f'Orientation (OI={orient_res["orientation_index"]})')
+        axes[0,2].axis('off')
+        add_label(axes[0,2], '(c)')
+        
+        # Esqueleto
+        axes[1,0].imshow(skeleton, cmap='gray')
+        axes[1,0].set_title(f'Structure (D={struct_res["fibril_density"]})')
+        axes[1,0].axis('off')
+        add_label(axes[1,0], '(d)')
+        
+        # Rugosidade
+        axes[1,1].imshow(roughness, cmap='hot')
+        axes[1,1].set_title(f'Roughness (σ={texture_res["roughness_std"]})')
+        axes[1,1].axis('off')
+        add_label(axes[1,1], '(e)')
+        
+        # Resumo (Removido conforme solicitado)
+        axes[1,2].axis('off')
+        
+        plt.tight_layout()
+        output_file_en = self.output_dir / f"analise_mev_{label}_en.png"
+        plt.savefig(output_file_en, dpi=300, bbox_inches='tight')
+        plt.close()
+        print(f"Salvo em (EN): {output_file_en}")
+
+
 if __name__ == "__main__":
     # Caminhos absolutos
-    input_image = r"C:\Users\vidal\OneDrive\Documentos\13 - CLONEGIT\artigo-posdoc\1-ARTIGO_LC_K\2-DADOSLC\MEV\T1.300x.tif"
+    input_image = r"C:\Users\vidal\OneDrive\Documentos\13 - CLONEGIT\artigo-posdoc\1-ARTIGO_LC_K\2-DADOSLC\MEV\T1.500x.tif"
     output_folder = r"c:\Users\vidal\OneDrive\Documentos\13 - CLONEGIT\artigo-posdoc\1-ARTIGO_LC_K\3-IMAGENS"
     
     analyzer = FiberAnalyzer(output_folder)

@@ -164,9 +164,20 @@ This value positions *Typha* at an intermediate level compared to other lignocel
 
 *CI: Crystallinity Index; FWHM: Full Width at Half Maximum*
 
-### S3.2 FTIR Spectroscopy - Characteristic Bands
+### S3.2 Morphometric Analysis (SEM)
 
-**Table S9.** FTIR band assignments and intensity ratios.
+**Table S9.** Quantitative surface parameters obtained via image processing (100 µm scale, 500×).
+
+| Treatment | Porosity (%) | Relative Density (%) | Roughness (a.u.) |
+|:-----------|:--------------:|:----------------------:|:-----------------:|
+| T0 (Natural)| 75.8 | 26.9 | 452 |
+| T1 (3% NaOH)| 84.9 | 24.0 | 221 |
+| T2 (6% NaOH)| 52.7 | 24.2 | 720 |
+| T3 (9% NaOH)| 26.3 | 26.5 | 1549 |
+
+### S3.3 FTIR Spectroscopy - Characteristic Bands
+
+**Table S10.** FTIR band assignment and intensity ratios.
 
 | Wavenumber (cm⁻¹) | Assignment | T0 | T2 | T3 | Variation T0→T3 |
 |:---------------------:|:-----------|:--:|:--:|:--:|:--------------:|
@@ -182,9 +193,9 @@ This value positions *Typha* at an intermediate level compared to other lignocel
 
 *Intensities normalized to the 1060 cm⁻¹ band (C-O-C cellulose).*
 
-### S3.3 Thermogravimetric Analysis (TGA)
+### S3.4 Thermogravimetric Analysis (TGA)
 
-**Table S10.** Characteristic decomposition temperatures and residues.
+**Table S11.** Characteristic decomposition temperatures and residues.
 
 | Treatment | T₅% (°C) | T₁₀% (°C) | Tₘₐₓ₁ (°C) | Tₘₐₓ₂ (°C) | Residue 600°C (%) |
 |:-----------|:--------:|:---------:|:----------:|:----------:|:-----------------:|
@@ -200,7 +211,7 @@ This value positions *Typha* at an intermediate level compared to other lignocel
 
 ### S4.1 Tensile Strength - Mean Values Over Time
 
-**Table S11.** Maximum tensile strength (MPa) over exposure time.
+**Table S12.** Maximum tensile strength (MPa) over exposure time.
 
 | Time (days) | T0 | T1 | T2 | T3 |
 |:------------:|:--:|:--:|:--:|:--:|
@@ -212,7 +223,7 @@ This value positions *Typha* at an intermediate level compared to other lignocel
 | 150 | 3.8 ± 2.7 | 7.1 ± 3.8 | 11.9 ± 4.5 | 15.6 ± 4.1 |
 | 180 | 2.4 ± 2.1 | 5.3 ± 3.2 | 9.4 ± 4.2 | 13.1 ± 4.3 |
 
-**Table S12.** Maximum deformation at rupture (%) over time.
+**Table S13.** Maximum deformation at rupture (%) over time.
 
 | Time (days) | T0 | T1 | T2 | T3 |
 |:------------:|:--:|:--:|:--:|:--:|
@@ -226,7 +237,7 @@ This value positions *Typha* at an intermediate level compared to other lignocel
 
 ### S4.2 Degradation Kinetics Parameters
 
-**Table S13.** Degradation constants ($k$) and half-life times ($t_{1/2}$).
+**Table S14.** Degradation constants ($k$) and half-life times ($t_{1/2}$).
 
 | Property | Treatment | k (day⁻¹) | 95% CI | t₁/₂ (days) | R² |
 |:-----------|:----------:|:---------:|:------:|:-----------:|:--:|
@@ -285,7 +296,7 @@ This value positions *Typha* at an intermediate level compared to other lignocel
 3. Metallization: Au/Pd (60:40), 15 nm thickness
 4. Sputter coater: 20 mA, 60 s
 5. Storage in desiccator (<30% RH)
-6. Imaging: 15 kV, high vacuum, magnifications 100× to 5,000×
+6. Imaging: 15 kV, high vacuum, magnifications 100× to 5,000×. For quantitative porosity and roughness analysis, standardized images with 500× magnification and 100 µm scale were used.
 
 ### S6.3 Tensile Test - ASTM D5035 Procedure
 
