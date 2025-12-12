@@ -217,7 +217,7 @@ def main():
     # ========================================================================
     # GERAR REVISÃO DE ESCOPO
     # ========================================================================
-    # Versão PT (única versão)
+    # Versão PT
     md_pt = Path("modelar_LC_K.md")
     docx_pt = Path("modelo_LC_K.docx")
     result_pt = 1
@@ -230,6 +230,19 @@ def main():
         result_pt = gerar_docx(md_pt, docx_pt, bib_file, csl_file)
         if result_pt == 0:
             sucessos += 1
+    
+    # Versão EN (inglês)
+    md_en = Path("modelar_LC_K_EN.md")
+    docx_en = Path("modelo_LC_K_EN.docx")
+    
+    if md_en.exists():
+        print(f"\n[INFO] Encontrado {md_en.name} - gerando DOCX em inglês...")
+        total += 1
+        result_en = gerar_docx(md_en, docx_en, bib_file, csl_file)
+        if result_en == 0:
+            sucessos += 1
+    else:
+        print(f"\n[AVISO] Arquivo {md_en.name} não encontrado. Pulando geração da versão em inglês.")
 
     # ========================================================================
     # GERAR MATERIAL SUPLEMENTAR
@@ -245,6 +258,19 @@ def main():
             sucessos += 1
     else:
         print(f"\n[AVISO] Arquivo {md_suplementar.name} não encontrado. Pulando geração do material suplementar.")
+
+    # Material Suplementar EN (inglês)
+    md_suplementar_en = Path("material_suplementar_EN.md")
+    docx_suplementar_en = Path("material_suplementar_EN.docx")
+    
+    if md_suplementar_en.exists():
+        print(f"\n[INFO] Encontrado {md_suplementar_en.name} - gerando DOCX em inglês...")
+        total += 1
+        result_suplementar_en = gerar_docx(md_suplementar_en, docx_suplementar_en, bib_file, csl_file)
+        if result_suplementar_en == 0:
+            sucessos += 1
+    else:
+        print(f"\n[AVISO] Arquivo {md_suplementar_en.name} não encontrado. Pulando geração do material suplementar em inglês.")
 
     # Gerar PDF opcionalmente
     # Use argumento de linha de comando: python gerar-docx.py --pdf
