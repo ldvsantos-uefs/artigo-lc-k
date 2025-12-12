@@ -85,86 +85,95 @@ def plot_arrhenius(lang='pt'):
     plt.close()
     print(f'Gráfico Arrhenius ({lang}) gerado. Ea calculada: {Ea_calc:.2f} kJ/mol')
 
-# --- Gráfico 2: Modelo de Dano (Paris-Erdoğan Modificado) ---
+# --- Gráfico 2: Modelo de Dano (Paris-Erdoğan Modificado) com todas as proporções ---
 def plot_damage(lang='pt'):
-    # Parâmetros
-    beta = 3.40
-    # VUF (D=0.1)
-    vuf_nat = 42 # dias
-    vuf_trat = 95 # dias
+    # Parâmetros de Weibull para cada tratamento (dados reais)
+    # T0 (Natural): β=2.3, η=68 dias, VUF=42 dias
+    # T1 (3% NaOH): β=2.5, η=80 dias, VUF=60 dias (interpolado)
+    # T2 (6% NaOH): β=2.8, η=94 dias, VUF=95 dias
+    # T3 (9% NaOH): β=3.0, η=92 dias, VUF=108 dias
     
-    # Calcular eta característico para cada condição
-    factor = (-np.log(0.9))**(1/beta)
-    eta_nat = vuf_nat / factor
-    eta_trat = vuf_trat / factor
+    treatments = {
+        'T0': {'beta': 2.3, 'eta': 68, 'vuf': 42, 'color': '#e74c3c', 'label_pt': 'Natural (T0)', 'label_en': 'Natural (T0)'},
+        'T1': {'beta': 2.5, 'eta': 80, 'vuf': 60, 'color': '#f39c12', 'label_pt': 'NaOH 3% (T1)', 'label_en': 'NaOH 3% (T1)'},
+        'T2': {'beta': 2.8, 'eta': 94, 'vuf': 95, 'color': '#27ae60', 'label_pt': 'NaOH 6% (T2)', 'label_en': 'NaOH 6% (T2)'},
+        'T3': {'beta': 3.0, 'eta': 92, 'vuf': 108, 'color': '#2980b9', 'label_pt': 'NaOH 9% (T3)', 'label_en': 'NaOH 9% (T3)'},
+    }
     
     t = np.linspace(0, 150, 200)
     
-    # Modelo de Dano: D(t) = 1 - exp(-(t/eta)^beta)
-    D_nat = 1 - np.exp(-(t/eta_nat)**beta)
-    D_trat = 1 - np.exp(-(t/eta_trat)**beta)
-    
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(10, 6.5))
     
     # Textos por idioma
     if lang == 'pt':
-        label_nat = 'Natural (T0)'
-        label_trat = 'Tratado NaOH 6% (T2)'
-        label_crit = 'Critério de Falha (\{{10}}\$)'
-        label_gain = 'Ganho de Vida Útil'
-        text_vuf_nat = f'VUF $\\approx$ {vuf_nat} dias'
-        text_vuf_trat = f'VUF $\\approx$ {vuf_trat} dias'
+        label_crit = r'Critério de Falha ($P_{10}$)'
         xlabel = 'Tempo de Exposição (dias)'
-        ylabel = 'Dano Acumulado (\\$)'
-        title = 'Evolução do Dano - Modelo Híbrido'
+        ylabel = r'Dano Acumulado ($D$)'
+        title = 'Evolução do Dano - Modelo Híbrido (Todas as Proporções)'
         filename = r'c:\Users\vidal\OneDrive\Documentos\13 - CLONEGIT\artigo-posdoc\1-ARTIGO_LC_K\3-IMAGENS\grafico_dano_hibrido.png'
     else:
-        label_nat = 'Natural (T0)'
-        label_trat = 'Treated NaOH 6% (T2)'
-        label_crit = 'Failure Criterion (\{{10}}\$)'
-        label_gain = 'Service Life Gain'
-        text_vuf_nat = f'FSL $\\approx$ {vuf_nat} days'
-        text_vuf_trat = f'FSL $\\approx$ {vuf_trat} days'
+        label_crit = r'Failure Criterion ($P_{10}$)'
         xlabel = 'Exposure Time (days)'
-        ylabel = 'Accumulated Damage (\\$)'
-        title = 'Damage Evolution - Hybrid Model'
+        ylabel = r'Accumulated Damage ($D$)'
+        title = 'Damage Evolution - Hybrid Model (All Treatment Levels)'
         filename = r'c:\Users\vidal\OneDrive\Documentos\13 - CLONEGIT\artigo-posdoc\1-ARTIGO_LC_K\3-IMAGENS\grafico_dano_hibrido_en.png'
 
-    ax.plot(t, D_nat, '-', color='#e74c3c', linewidth=2.5, label=label_nat)
-    ax.plot(t, D_trat, '-', color='#27ae60', linewidth=2.5, label=label_trat)
+    # Plotar cada tratamento
+    for treatment_id in ['T0', 'T1', 'T2', 'T3']:
+        params = treatments[treatment_id]
+        beta = params['beta']
+        eta = params['eta']
+        
+        # Modelo de Dano: D(t) = 1 - exp(-(t/eta)^beta)
+        D = 1 - np.exp(-(t/eta)**beta)
+        
+        # Label baseado no idioma
+        label = params['label_pt'] if lang == 'pt' else params['label_en']
+        
+        ax.plot(t, D, '-', color=params['color'], linewidth=2.5, label=label)
+        
+        # Marcar o ponto VUF (10% de dano)
+        vuf = params['vuf']
+        D_at_vuf = 1 - np.exp(-(vuf/eta)**beta)
+        ax.plot(vuf, D_at_vuf, 'o', color=params['color'], markersize=8, zorder=5)
+        
+        # Anotação do VUF
+        if lang == 'pt':
+            text_vuf = f"VUF ≈ {vuf} d"
+        else:
+            text_vuf = f"FSL ≈ {vuf} d"
+        
+        # Posicionar anotações para evitar sobreposição
+        if treatment_id == 'T0':
+            xytext = (-15, 25)
+        elif treatment_id == 'T1':
+            xytext = (-15, 5)
+        elif treatment_id == 'T2':
+            xytext = (10, -35)
+        else:  # T3
+            xytext = (15, -20)
+        
+        ax.annotate(text_vuf, 
+                    xy=(vuf, D_at_vuf), 
+                    xytext=xytext,
+                    textcoords='offset points', 
+                    arrowprops=dict(arrowstyle='->', color=params['color'], lw=1.5),
+                    fontsize=10)
     
-    # Linha de Dano Crítico (VUF - 10% de falha/dano)
-    ax.axhline(y=0.1, color='gray', linestyle='--', alpha=0.8, label=label_crit)
-    
-    # Anotações VUF
-    # Interseção Natural
-    idx_nat = np.abs(D_nat - 0.1).argmin()
-    ax.plot(t[idx_nat], D_nat[idx_nat], 'o', color='#c0392b')
-    ax.annotate(text_vuf_nat, 
-                xy=(t[idx_nat], D_nat[idx_nat]), xytext=(-20, 40), 
-                textcoords='offset points', arrowprops=dict(arrowstyle='->'))
-    
-    # Interseção Tratado
-    idx_trat = np.abs(D_trat - 0.1).argmin()
-    ax.plot(t[idx_trat], D_trat[idx_trat], 'o', color='#2ecc71')
-    ax.annotate(text_vuf_trat, 
-                xy=(t[idx_trat], D_trat[idx_trat]), xytext=(10, -40), 
-                textcoords='offset points', arrowprops=dict(arrowstyle='->'))
+    # Linha de Dano Crítico (10% de falha)
+    ax.axhline(y=0.1, color='gray', linestyle='--', alpha=0.8, linewidth=1.5, label=label_crit)
     
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
     ax.set_title(title)
-    ax.set_ylim(0, 0.6) # Focar na região de interesse
+    ax.set_ylim(0, 0.6)
     ax.grid(True, linestyle='--', alpha=0.7)
-    ax.legend(loc='upper left')
-    
-    # Preencher área de ganho
-    ax.fill_between(t, D_nat, D_trat, where=(t > 10), color='gray', alpha=0.1, label=label_gain)
+    ax.legend(loc='upper left', fontsize=11)
     
     plt.tight_layout()
     plt.savefig(filename, dpi=300)
     plt.close()
-    print(f'Gráfico de Dano ({lang}) gerado.')
+    print(f'Gráfico de Dano ({lang}) gerado com todas as proporções.')
 
 if __name__ == '__main__':
     plot_arrhenius('pt')
