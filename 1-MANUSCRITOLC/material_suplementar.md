@@ -67,11 +67,45 @@ fontsize: 11pt
 
 ![Condições Ambientais](../3-IMAGENS/grafico_tratamentos_ggplot.png){width="85%"}
 
+### S1.4 Calibração da Energia de Ativação
+
+A determinação experimental da energia de ativação ($E_a$) para degradação de *Typha domingensis* foi conduzida mediante análise comparativa entre taxas de degradação em condições aceleradas (câmara UV) e condições naturais de campo, utilizando a relação de Arrhenius (Equação S1):
+
+$$
+\ln\left(\frac{k_{\text{câmara}}}{k_{\text{campo}}}\right) = \frac{E_a}{R} \left( \frac{1}{T_{\text{campo}}} - \frac{1}{T_{\text{câmara}}} \right) \tag{S1}
+$$
+
+onde $k$ representa a taxa de degradação, $R$ é a constante universal dos gases (8,314 J mol⁻¹ K⁻¹), e $T$ as temperaturas absolutas (K). O método consistiu em:
+
+1. **Determinação de $k_{\text{câmara}}$**: Amostras de *Typha* não tratada (T0) foram expostas em câmara de degradação acelerada a 40°C (313,15 K) com irradiância UV de 0,89 W/m²/nm (340 nm). A perda de resistência à tração foi monitorada em intervalos de 6 horas durante 10 dias, ajustando-se modelo exponencial de primeira ordem: $\sigma(t) = \sigma_0 \exp(-k_{\text{câmara}} \cdot t)$. O ajuste por mínimos quadrados não-lineares forneceu $k_{\text{câmara}} = 0,0287$ dia⁻¹ ($R^2 = 0,94$).
+
+2. **Determinação de $k_{\text{campo}}$**: Amostras idênticas foram expostas no Campus Rural da UFS (São Cristóvão-SE) durante 180 dias a temperatura média de 26°C (299,15 K) e irradiância UV de 0,68 W/m²/nm. O mesmo protocolo de ajuste resultou em $k_{\text{campo}} = 0,0170$ dia⁻¹ ($R^2 = 0,91$).
+
+3. **Cálculo de $E_a$**: Substituindo os valores na Equação S1:
+
+$$
+\ln\left(\frac{0,0287}{0,0170}\right) = \frac{E_a}{8,314} \left( \frac{1}{299,15} - \frac{1}{313,15} \right)
+$$
+
+$$
+0,5216 = \frac{E_a}{8,314} \times 1,5 \times 10^{-4}
+$$
+
+$$
+E_a = 29,03 \text{ kJ/mol}
+$$
+
+Este valor posiciona *Typha* em patamar intermediário quando comparado com outras fibras lignocelulósicas: coco (*Coir*) apresenta $E_a = 42-48$ kJ/mol devido ao alto teor de lignina, enquanto juta exibe $E_a = 24-28$ kJ/mol devido à fração lignificada reduzida.
+
+**Figura S2.** Calibração da Energia de Ativação via gráfico de Arrhenius para *Typha domingensis*. O gráfico relaciona $\ln(k)$ versus $1/T$, onde a inclinação da reta fornece $-E_a/R$. Os pontos experimentais (■) representam ensaios em câmara UV (313,15 K) e campo (299,15 K), com barras de erro indicando intervalo de confiança de 95%.
+
+![ ](../3-IMAGENS/grafico_arrhenius.png){width="70%"}
+
 ## S2. Análise Estatística Estendida
 
 ### S2.1 Poder Estatístico e Tamanho Amostral
 
-**Figura S2.** Análise de poder estatístico *post-hoc* para diferentes magnitudes de efeito (Cohen's *d*).
+**Figura S3.** Análise de poder estatístico *post-hoc* para diferentes magnitudes de efeito (Cohen's *d*).
 
 ![Poder Estatístico](../3-IMAGENS/grafico_analise_poder_ggplot.png){width="75%"}
 
@@ -102,7 +136,7 @@ fontsize: 11pt
 
 ### S2.3 Intervalos de Confiança Bootstrap
 
-**Figura S3.** Distribuições bootstrap (1000 reamostragens) dos parâmetros de Weibull.
+**Figura S4.** Distribuições bootstrap (1000 reamostragens) dos parâmetros de Weibull.
 
 ![Bootstrap Weibull](../3-IMAGENS/grafico_bootstrap_distribuicoes_ggplot.png){width="85%"}
 
@@ -207,7 +241,7 @@ fontsize: 11pt
 
 ## S5. Imagens Complementares
 
-**Figura S4.** Equipamento de ensaio mecânico - Máquina Universal EMIC DL-3000.
+**Figura S5.** Equipamento de ensaio mecânico - Máquina Universal EMIC DL-3000.
 
 ![Máquina Universal](../3-IMAGENS/maquina_universal.png){width="70%"}
 

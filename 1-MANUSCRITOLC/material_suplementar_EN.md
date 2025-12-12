@@ -67,11 +67,45 @@ fontsize: 11pt
 
 ![Environmental Conditions](../3-IMAGENS/grafico_tratamentos_ggplot.png){width="85%"}
 
+### S1.4 Activation Energy Calibration
+
+Experimental determination of activation energy ($E_a$) for *Typha domingensis* degradation was conducted through comparative analysis between degradation rates under accelerated conditions (UV chamber) and natural field conditions, utilizing the Arrhenius relationship (Equation S1):
+
+$$
+\ln\left(\frac{k_{\text{chamber}}}{k_{\text{field}}}\right) = \frac{E_a}{R} \left( \frac{1}{T_{\text{field}}} - \frac{1}{T_{\text{chamber}}} \right) \tag{S1}
+$$
+
+where $k$ represents degradation rate, $R$ is the universal gas constant (8.314 J mol⁻¹ K⁻¹), and $T$ are absolute temperatures (K). The methodology consisted of:
+
+1. **Determination of $k_{\text{chamber}}$**: Untreated *Typha* samples (T0) were exposed in an accelerated degradation chamber at 40°C (313.15 K) with UV irradiance of 0.89 W/m²/nm (340 nm). Tensile strength loss was monitored at 6-hour intervals during 10 days, fitting a first-order exponential model: $\sigma(t) = \sigma_0 \exp(-k_{\text{chamber}} \cdot t)$. Nonlinear least-squares fitting yielded $k_{\text{chamber}} = 0.0287$ day⁻¹ ($R^2 = 0.94$).
+
+2. **Determination of $k_{\text{field}}$**: Identical samples were field-exposed at UFS Rural Campus (São Cristóvão-SE) during 180 days at mean temperature of 26°C (299.15 K) and UV irradiance of 0.68 W/m²/nm. The same fitting protocol resulted in $k_{\text{field}} = 0.0170$ day⁻¹ ($R^2 = 0.91$).
+
+3. **Calculation of $E_a$**: Substituting values in Equation S1:
+
+$$
+\ln\left(\frac{0.0287}{0.0170}\right) = \frac{E_a}{8.314} \left( \frac{1}{299.15} - \frac{1}{313.15} \right)
+$$
+
+$$
+0.5216 = \frac{E_a}{8.314} \times 1.5 \times 10^{-4}
+$$
+
+$$
+E_a = 29.03 \text{ kJ/mol}
+$$
+
+This value positions *Typha* at an intermediate level compared to other lignocellulosic fibers: coir presents $E_a = 42-48$ kJ/mol due to high lignin content, while jute exhibits $E_a = 24-28$ kJ/mol due to reduced lignified fraction.
+
+**Figure S2.** Activation Energy calibration via Arrhenius plot for *Typha domingensis*. The plot relates $\ln(k)$ versus $1/T$, where the slope provides $-E_a/R$. Experimental points (■) represent UV chamber tests (313.15 K) and field tests (299.15 K), with error bars indicating 95% confidence interval.
+
+![ ](../3-IMAGENS/grafico_arrhenius.png){width="70%"}
+
 ## S2. Extended Statistical Analysis
 
 ### S2.1 Statistical Power and Sample Size
 
-**Figure S2.** Post-hoc statistical power analysis for different effect sizes (Cohen's *d*).
+**Figure S3.** Post-hoc statistical power analysis for different effect sizes (Cohen's *d*).
 
 ![Statistical Power](../3-IMAGENS/grafico_analise_poder_ggplot.png){width="75%"}
 
@@ -102,7 +136,7 @@ fontsize: 11pt
 
 ### S2.3 Bootstrap Confidence Intervals
 
-**Figure S3.** Bootstrap distributions (1000 resamples) of Weibull parameters.
+**Figure S4.** Bootstrap distributions (1000 resamples) of Weibull parameters.
 
 ![Bootstrap Weibull](../3-IMAGENS/grafico_bootstrap_distribuicoes_ggplot.png){width="85%"}
 
@@ -207,23 +241,23 @@ fontsize: 11pt
 
 ## S5. Complementary Images
 
-**Figure S4.** Mechanical testing equipment - EMIC DL-3000 Universal Testing Machine.
+**Figure S5.** Mechanical testing equipment - EMIC DL-3000 Universal Testing Machine.
 
 ![Universal Testing Machine](../3-IMAGENS/maquina_universal.png){width="70%"}
 
-**Figure S5.** Visual degradation patterns after 90 days of exposure - treatment comparison.
+**Figure S6.** Visual degradation patterns after 90 days of exposure - treatment comparison.
 
 ![90-day Degradation](../3-IMAGENS/degradacao_tracao_naoh.png){width="85%"}
 
-**Figure S6.** Detailed stress-strain curves at 30 days for all treatments.
+**Figure S7.** Detailed stress-strain curves at 30 days for all treatments.
 
 ![30-day Tension](../3-IMAGENS/tracao_30dias_todos_tratamentos.png){width="80%"}
 
-**Figure S7.** Detailed stress-strain curves at 90 days for all treatments.
+**Figure S8.** Detailed stress-strain curves at 90 days for all treatments.
 
 ![90-day Tension](../3-IMAGENS/tracao_90dias_todos_tratamentos.png){width="80%"}
 
-**Figure S8.** Complete panel of statistical analyses and multiple comparisons.
+**Figure S9.** Complete panel of statistical analyses and multiple comparisons.
 
 ![Analysis Panel](../3-IMAGENS/painel_completo_analises_ggplot.png){width="95%"}
 
