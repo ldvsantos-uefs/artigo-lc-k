@@ -308,6 +308,12 @@ The root mean square error (RMSE) obtained in cross-validation was 0.000127 day�
 
 Robustness analysis via Monte Carlo simulation (Figure 11) evaluated model behavior under variation of simulated environmental parameters. Generation of fifty degradation trajectories, with random perturbations of ±10% in rate constant $k$, revealed that the model maintains a mean relative error below 10% under control conditions (normalized UV irradiance = 0) and partial shading (UV = 0.5).
 
+**Figure 11.** Degradation model validation via Monte Carlo simulation.
+
+![ ](../3-IMAGENS/grafico_validacao_uv_ggplot_en.png){width="80%"}
+
+*Note: Distribution of relative errors under three normalized UV irradiance scenarios ($UV = 0$, samples protected from radiation; $UV = 0.5$, moderate irradiation; $UV = 1.0$, full outdoor exposure). Error distributions were obtained from 50 simulated trajectories, each incorporating random perturbations of ±10% in kinetic parameters $k$ and thickness variation in the interval [60–250 μm].*
+
 However, for high exposure conditions (UV = 1.0), variability increases, suggesting the need for nonlinear corrections for arid environments or high altitude, where UV irradiance is elevated during most of the day. Specifically, in the UV = 1.0 regime, the 95th error percentile reaches 28%, a critical threshold for conservative designs. This behavior was also observed by @Aldosary2025, who, when investigating UV irradiance in arid climates, reported a nonlinear increase in degradation parameter variability under UV > 1.0, with deviations exceeding 25%.
 
 Similarly, @Andrady2019 verified that in materials exposed to high-altitude environments, UV radiation response presents strongly nonlinear characteristics, demanding specific corrections for high irradiance regimes. @wieser2023 also demonstrated that nonlinearity in degradation response under intense UV elevates prediction error to approximately 28%, a value that defines a critical limit for conservative approaches in durability projects.
@@ -354,17 +360,13 @@ Substituting the values ($T_{\text{field}}=299.15\text{K}$, $T_{\text{chamber}}=
 
 #### 3.6.2. Cross-Validation and Microstructural Evolution
 
-Comparison between degradation trajectories projected through accelerated UV chamber assays (untreated control conditions) and empirical field records under different mercerization intensities [@Holanda2024] constitutes the foundation of hybrid model validation (Figure 11a). When tensile strength loss profiles were superimposed, accelerated prediction converged toward field data for the control (T0) with deviations not exceeding 12%, a value signaling parametric calibration fidelity without overestimating the model's predictive capacity under temporal extrapolation regimes [@Wei2014].
+Comparison between degradation trajectories projected through accelerated UV chamber assays (untreated control conditions) and empirical field records under different mercerization intensities [@Holanda2024] constitutes the foundation of hybrid model validation (Figure 10a). When tensile strength loss profiles were superimposed, accelerated prediction converged toward field data for the control (T0) with deviations not exceeding 12%, a value signaling parametric calibration fidelity without overestimating the model's predictive capacity under temporal extrapolation regimes [@Wei2014].
 
 Superimposed upon this numerical concordance, visual inspection of curves pertaining to T1 (3% NaOH) and T2 (6% NaOH) treatments unveils a protective gradient whose magnitude intensifies proportionally to applied alkaline concentration, demonstrating that mercerization not only retards degradation kinetics but accomplishes this through a dose-dependent mechanism that articulates coherently with selective hemicellulose removal and crystalline phase consolidation [@Luchese2024]. Adherence between accelerated model and field reality thus legitimizes both the calibrated activation energy ($E_a = 29.03$ kJ/mol) and the employed acceleration factor ($AF \approx 1.69$), confirming that the temperature-kinetics relationship described by the Arrhenius equation adequately captures the thermochemical physics underlying the degradative process [@Wei2014; @OrnaghiJr2024].
 
-Parallel to macroscopic validation, morphometric quantification of surface fracture density via scanning electron microscopy (Figure 11b) revealed microstructural damage dynamics adjusting to an exponentially increasing pattern, translating into progressive defect accumulation whose nucleation rate differs substantially among treatment regimes. Natural material (T0) experienced an abrupt increment from 45 to 185 mm⁻² over 180 days of exposure, a trajectory that contrasts visibly with the behavior of the most aggressive treatment (T3, 9% NaOH), whose final density stabilized at 128 mm⁻² after the same temporal interval.
+Parallel to macroscopic validation, morphometric quantification of surface fracture density via scanning electron microscopy (Figure 10b) revealed microstructural damage dynamics adjusting to an exponentially increasing pattern, translating into progressive defect accumulation whose nucleation rate differs substantially among treatment regimes. Natural material (T0) experienced an abrupt increment from 45 to 185 mm⁻² over 180 days of exposure, a trajectory that contrasts visibly with the behavior of the most aggressive treatment (T3, 9% NaOH), whose final density stabilized at 128 mm⁻² after the same temporal interval.
 
 This divergence correlates strongly ($r = 0.89$; $p < 0.001$) with hemicellulose depletion and concomitant crystallinity increase induced by mercerization [@Luchese2024; @Kwon2021], confirming that microstructural reorganization does not constitute mere superficial morphological alteration but mechanistically attenuates both microcrack nucleation and subsequent propagation through the fibrillar matrix.
-
-**Figure 11.** Degradation model validation via Monte Carlo simulation.
-
-![ ](../3-IMAGENS/grafico_validacao_uv_ggplot_en.png){width="80%"}
 
 When integrated, results from macroscopic validation and microstructural characterization demonstrate that the hybrid model captures degradation physics across multiple scales simultaneously—molecular, microstructural, and macroscopic—enabling extrapolations to distinct climatic scenarios with controlled uncertainty. The experimentally determined activation energy for *Typha domingensis* ($E_a = 29.03$ kJ/mol) positions itself at an intermediate level when confronted with the spectrum of natural and synthetic fibers reported in literature. Materials with elevated lignin content, notably coir (*Coir*), typically exhibit greater chemical recalcitrance that translates into superior activation energies.
 
@@ -381,12 +383,6 @@ In this formulation, $k_0$ represents basal degradation rate under controlled la
 The exponent $\gamma$, typically superior to unity for natural polymers, defines photochemical acceleration emerging from the autocatalytic nature of photooxidation [@OrnaghiJr2019; @Barneto2009]—mechanism wherein primary degradation products (free radicals, carbonyls) feedback the oxidative chain, exponentially amplifying the reaction rate as damage accumulates.
 
 Calibrating these additional parameters demands field trials distributed across multiple climatic sites, encompassing latitudinal and altitudinal gradients that capture significant variations in received UV irradiance [@Andrady2019]. Such process constitutes a priority for future work aiming to universalize the model for biomes where UV dose systematically exceeds humid tropical reference values [@Aldosary2025], transforming a locally validated tool into an instrument of broad geographical applicability.
-
-**Figure 12.** Degradation model validation via Monte Carlo simulation.
-
-![ ](../3-IMAGENS/grafico_validacao_uv_ggplot_en.png){width="80%"}
-
-*Note: Distribution of relative errors under three normalized UV irradiance scenarios ($UV = 0$, samples protected from radiation; $UV = 0.5$, moderate irradiation; $UV = 1.0$, full outdoor exposure). Error distributions were obtained from 50 simulated trajectories, each incorporating random perturbations of ±10% in kinetic parameters $k$ and thickness variation in the interval [60–250 μm].*
 
 Regarding spectroscopic observations via FTIR, the progressive intensification of carbonyl groups (C=O) at 1735 cm⁻¹—unequivocal signature of hemicellulose oxidation—and concomitant attenuation of aromatic vibrations at 1505 cm⁻¹, signaling lignin degradation, correlated positively ($r = 0.82$; $p < 0.001$) with mechanically measured ductility loss.
 

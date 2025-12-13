@@ -40,9 +40,9 @@ A hipótese central postula que a razão lignina/celulose (L/C) determina a reca
 O objetivo deste estudo consiste em validar esse modelo hierárquico conectando composição química fundamental (razão lignina/celulose) à Vida Útil Funcional (VUF) em 10% de probabilidade de falha, mediante análise de resistência à degradação de geotêxteis produzidos com fibras de *Typha domingensis* submetidas a modificações alcalinas. O sucesso da validação reside em demonstrar que o modelo ajustado pode prever, com incerteza aceitável, se o material manterá a ductilidade necessária durante a janela crítica de longo prazo, período essencial para o estabelecimento da cobertura vegetal em projetos de bioengenharia.
 
 
-## 2. Materiais e Métodos
+## 2. Metodologia
 
-### 2.1 Arquitetura Hierárquica do Modelo
+### 2.1. Preparação e Tratamento dos Geotêxteis
 
 A seleção da espécie *Typha domingensis* Pers. fundamentou-se em suas propriedades mecânicas e nos teores de celulose e lignina reportados na literatura.
 
@@ -143,7 +143,7 @@ A simulação híbrida integrou os dados cinéticos obtidos na simulação ($k_{
 
 ## 3. Resultados e Discussão
 
-### 3.1 Dinâmica Lignina/Celulose (L/C)
+### 3.1. Cinética de Degradação Mecânica
 
 Observa-se na evolução temporal da Resistência Última à Tração (UTS) e da deformação máxima um decaimento não-linear generalizado (Figura 6), com diferenças estatisticamente significativas entre os tratamentos confirmadas pelo teste de Kruskal-Wallis (H = 25.08, p < 0.001). Comparações múltiplas com correção de Bonferroni revelaram que o tratamento T3 (NaOH 9%) apresentou resistência média de 18.2 ± 8.2 MPa, estatisticamente superior ao controle T0 com alto poder de efeito (5.5 ± 3.3 MPa; p < 0.001, Mann-Whitney U; Cohen's d = -2.03), bem como aos tratamentos T1 (10.7 ± 6.4 MPa; p = 0.028, d = -1.03) e T2 (8.5 ± 6.2 MPa; p = 0.004, d = -1.34). Modelos GEE ajustados para a estrutura longitudinal dos dados corroboraram estes efeitos (p < 0.001 para T1, T2 e T3 vs T0) e revelaram declínio temporal estatisticamente significativo em todos os grupos (-0.091 MPa/dia, p < 0.001), com interação significativa para T3 (p = 0.001), indicando taxa de degradação mais acentuada.
 
@@ -179,7 +179,7 @@ Sob a ótica da aplicação geotécnica, onde a manutenção de $\varepsilon_{\t
 
 ![ ](../3-IMAGENS/figura5_paineis_ab.png){width="95%"}
 
-### 3.2 Resposta Mecânica a Degradação
+### 3.2. Análise de Confiabilidade Estrutural
 
 Fundamentada na distribuição de Weibull, a análise probabilística da durabilidade evidencia que o tratamento alcalino modifica substancialmente a física da ruptura das fibras, promovendo uma transição de um regime dominado por falhas aleatórias para um comportamento mais determinístico (Figura 7). Para a resistência à tração, os parâmetros estimados indicam diferenças claras entre os grupos: o controle T0 apresentou β = 2,3 e η = 68 dias, enquanto os tratamentos T2 (NaOH 6%) e T3 (NaOH 9%) exibiram β = 2,8; η = 94 dias e β = 3,0; η = 92 dias, respectivamente. O fato de o parâmetro de forma β ser superior a 1 confirma que o mecanismo de ruptura é governado por um processo de degradação progressiva.
 
@@ -353,10 +353,9 @@ Embora suficiente para os objetivos exploratórios deste estudo, decisões regul
 
 Ensaios experimentais validaram que a razão lignina/celulose (L/C) atua como o determinante primário da cinética de degradação das fibras de *Typha domingensis*, exercendo uma governança sobre a perda de propriedades mecânicas que supera a influência isolada da variável temporal. A densidade de fraturas superficiais, longe de ser um fenômeno aleatório, manifestou-se como uma consequência direta e secundária desse processo de degradação química intrínseco.
 
-Resultados da otimização do tratamento alcalino revelaram que a concentração de 6% de NaOH estabelece um ponto de equilíbrio operacional crítico, estendendo a Vida Útil Funcional (VUF) em 127% sem sacrificar a ductilidade necessária para a acomodação de deformações do solo. Em contrapartida, a elevação da concentração para 9%, embora promova incrementos na resistência inicial, induz uma fragilização excessiva que compromete a integridade funcional do geossintético sob tensões de serviço. Sob a ótica microestrutural, a mercerização promoveu a conversão polimórfica para Celulose II e a consequente elevação da cristalinidade, uma reorganização matricial que reduz a porosidade aparente (densificação) enquanto homogeneíza as propriedades físicas e amplia a confiabilidade estrutural. A análise morfométrica quantitativa via MEV evidenciou que a modificação alcalina induz redução de porosidade (75,8% - 26,3%) e aumento de rugosidade (452 - 1549), alterações microestruturais diretamente correlacionadas com o prolongamento da vida útil funcional.
+Resultados da otimização do tratamento alcalino revelaram que a concentração de 6% de NaOH estabelece um ponto de equilíbrio operacional crítico, estendendo a Vida Útil Funcional (VUF) em 127% sem sacrificar a ductilidade necessária para a acomodação de deformações do solo. Em contrapartida, a elevação da concentração para 9%, embora promova incrementos na resistência inicial, induz uma fragilização excessiva que compromete a integridade funcional do geossintético sob tensões de serviço. Sob a ótica microestrutural, a mercerização promoveu a conversão polimórfica para Celulose II e a consequente elevação da cristalinidade, uma reorganização matricial que reduz a porosidade aparente (densificação) enquanto homogeneíza as propriedades físicas e amplia a confiabilidade estrutural. A análise morfométrica quantitativa via MEV evidenciou que a modificação alcalina induz redução de porosidade (75,8% → 26,3%) e aumento de rugosidade (452 → 1549), alterações microestruturais diretamente correlacionadas com o prolongamento da vida útil funcional.
 
 Estimativas da VUF a partir de parâmetros composicionais tornam-se viáveis graças à robustez do modelo hierárquico validado, especialmente em cenários de média irradiância, ainda que a aplicação em ambientes de índice UV extremo demande a incorporação de fatores de correção específicos. Corroborando essa previsibilidade, a análise de Weibull evidenciou que a modificação química atenua a variabilidade natural das fibras, viabilizando prognósticos de desempenho fundamentados em parâmetros determinísticos de desgaste. A tecnologia desenvolvida, portanto, fornece as bases quantitativas necessárias para a especificação de estruturas de controle de erosão com previsibilidade de vida útil compatível com os requisitos de engenharia.
-
 ## Referências
 
 ::: {#refs}
