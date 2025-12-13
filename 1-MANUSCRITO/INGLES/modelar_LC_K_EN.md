@@ -1,5 +1,5 @@
 ---
-title: "Predictive Model for the Degradation of Natural Geotextiles Based on Chemical Recalcitrance"
+title: "Valorization of Underutilized Biomass into Durable Geotextiles: Alkaline-Treated Typha domingensis for Sustainable Slope Stabilization"
 author: "Diego Vidal"
 bibliography: referencias_lc.bib
 csl: apa.csl
@@ -11,13 +11,13 @@ lang: en
 
 ## Abstract
 
-The replacement of petrochemical geosynthetics with biodegradable materials constitutes an imperative for mitigating microplastic pollution in terrestrial and aquatic ecosystems. Although alkaline treatment is widely employed to extend the durability of natural fiber geotextiles, the definition of an optimized protocol for soil bioengineering lacks consensus. The present investigation validated a hierarchical model that connects fundamental chemical composition, specifically the lignin/cellulose ratio, to Functional Useful Life (FUL) at 10% failure probability, evaluating the degradation resistance of geotextiles manufactured from *Typha domingensis* fibers subjected to alkaline modifications. Tensile strength tests conducted over 180 days enabled parametrization of the degradation kinetics of fibers treated with NaOH (3%, 6%, and 9%). The integration of Scanning Electron Microscopy (SEM) images and spectroscopic analyses demonstrated that alkaline treatment modulates chemical recalcitrance through selective hemicellulose removal. The results indicate that 6% NaOH treatment established an operational equilibrium point, balancing FUL gain (95 days, +127% over control) with ductility preservation (ε_max = 2.8%), while 9% concentration induced excessive embrittlement. Temporal analysis revealed that the exponential decay model adequately describes embrittlement kinetics, evidencing that the lignin/cellulose ratio governs the degradation rate through an inverse exponential relationship. The main methodological contribution resides in confirming that the fitted model allows estimating temporal reliability from rapid compositional assays, reducing dependence on prolonged field tests and consolidating *Typha* fibers treated with 6% NaOH as a sustainable alternative for erosion control on tropical slopes, in alignment with circular economy principles and ecological footprint reduction in geotechnics.
+The conversion of abundant and underutilized plant biomass into high-value engineered materials represents a critical pathway toward circular bioeconomy and reduced carbon footprints in civil engineering. This study proposes a valorization route for *Typha domingensis*, an invasive wetland plant, by transforming its fibrous biomass into durable geotextiles through optimized alkaline chemical treatment. We validated a quantitative framework linking fundamental chemical composition (lignin/cellulose ratio) to functional service life (FSL) at 10% failure probability, assessed via 180-day tensile resistance assays on NaOH-treated fibers (3%, 6%, 9%). Integrated characterization (scanning electron microscopy, Fourier-transform infrared spectroscopy, and X-ray diffraction) revealed that alkaline treatment selectively removes hemicellulose and increases crystallinity (48.5% → 62.3%), thereby reducing hydrophilicity and moisture-driven degradation pathways. Temporal kinetic modeling (exponential decay, Weibull distribution) demonstrated that 6% NaOH treatment achieves an optimal technical-economic equilibrium: 95-day FSL (+127% over untreated control), preserved ductility ($\varepsilon_{\max} = 2.8\%$), and measurable cost-efficiency without excessive embrittlement observed at 9% concentration. Rapid compositional assays (FTIR, elemental analysis) enable prediction of long-term reliability, reducing the need for prolonged field testing. This work consolidates alkali-treated *Typha* fibers as a viable, predictably durable biomass-derived alternative to petroleum-based geosynthetics for tropical slope erosion control, advancing both circular economy principles and reduced environmental burden in geotechnical infrastructure.
 
-**Keywords**: Degradation modeling; Lignin/Cellulose ratio; Functional useful life; Natural geotextiles; Soil bioengineering.
+**Keywords**: biomass valorization; agro-waste; geotextiles; alkaline treatment; circular economy; durability modeling; sustainable civil engineering
 
 ## Graphical Abstract
 
-![](../3-IMAGENS/abstract_grafico.png){width="80%"}
+![Graphical abstract summarizing the study](../3-IMAGENS/abstract_grafico.png){width="80%"}
 
 ## 1. Introduction
 
@@ -114,7 +114,7 @@ Tensile strength and elongation at break were determined on a Universal Testing 
 
 #### 2.4.1. Degradation Kinetics and Reliability
 
-Mechanical degradation was modeled assuming first-order kinetics ($P(t) = P_0 \cdot e^{-k \cdot t}$), with parameters estimated by non-linear regression (Levenberg-Marquardt). The selection of the exponential model was comparatively validated against power ($P(t) = a \cdot t^b$) and logarithmic ($P(t) = a + b \cdot \ln(t)$) models using the Akaike Information Criterion (AIC) and the Bayesian Information Criterion (BIC). 
+Mechanical degradation was modeled assuming first-order kinetics ($P(t) = P_0 \cdot e^{-k \cdot t}$), with parameters estimated by non-linear regression (Levenberg-Marquardt). The selection of the exponential model was comparatively validated against power ($P(t) = a \cdot t^b$) and logarithmic ($P(t) = a + b \cdot \ln(t)$) models using the Akaike Information Criterion (AIC) and the Bayesian Information Criterion (BIC).
 
 For treated fibers (T2 and T3), the exponential model presented the best fit (lowest AIC), while for natural fibers (T0) and lightly treated (T1), results were statistically equivalent to the logarithmic model ($\Delta AIC < 2$). The exponential model was chosen due to its physicochemical foundation in first-order degradation kinetics, consistent with hydrolysis and oxidation of natural polymers.
 

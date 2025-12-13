@@ -1,5 +1,5 @@
 ﻿---
-title: "Modelo Preditivo de Degradação de Geotêxteis Naturais Baseada na Recalcitrância Química<b>Predictive Model for the Degradation of Natural Geotextiles Based on Chemical Recalcitrance"
+title: "Previsão da vida útil funcional de geotêxteis de Typha domingensis com base na composição lignocelulósica e falha probabilística."
 author: "Diego Vidal"
 bibliography: referencias_lc.bib
 csl: apa.csl
@@ -10,9 +10,21 @@ lang: pt-br
 ---
 ## Resumo
 
-A substituição de geossintéticos petroquímicos por materiais biodegradáveis constitui imperativo para mitigar a poluição por microplásticos em ecossistemas terrestres e aquáticos. Embora o tratamento alcalino seja amplamente empregado para ampliar a durabilidade de geotêxteis de fibras naturais, a definição de um protocolo otimizado para bioengenharia de solos carece de consenso. A presente investigação validou um modelo hierárquico que conecta a composição química fundamental, especificamente a razão lignina/celulose, à Vida Útil Funcional (VUF) em 10% de probabilidade de falha, avaliando a resistência à degradação de geotêxteis manufaturados com fibras de *Typha domingensis* submetidas a modificações alcalinas. Ensaios de resistência à tração conduzidos ao longo de 180 dias permitiram parametrizar a cinética de degradação de fibras tratadas com NaOH (3%, 6% e 9%). A integração de imagens de Microscopia Eletrônica de Varredura (MEV) e análises espectroscópicas demonstrou que o tratamento alcalino modula a recalcitrância química mediante a remoção seletiva de hemicelulose. Os resultados indicam que o tratamento com NaOH 6% estabeleceu um ponto de equilíbrio operacional, conciliando ganho de VUF (95 dias, +127% sobre o controle) com a preservação de ductilidade (ε_máx = 2,8%), ao passo que a concentração de 9% induziu fragilização excessiva. A análise temporal revelou que o modelo exponencial de decaimento descreve adequadamente a cinética de fragilização, evidenciando que a razão lignina/celulose governa a taxa de degradação através de uma relação exponencial inversa. A principal contribuição metodológica reside na confirmação de que o modelo ajustado permite estimar a confiabilidade temporal a partir de ensaios composicionais rápidos, reduzindo a dependência de testes de campo prolongados e consolidando as fibras de *Typha* tratadas com 6% NaOH como alternativa sustentável para o controle de erosão em taludes tropicais, em consonância com os princípios da economia circular e da redução da pegada ecológica na geotecnia.
+A conversão de biomassa vegetal abundante e subutilizada em materiais de engenharia de alto valor agregado representa uma via crítica para impulsionar a bioeconomia circular e reduzir a pegada de carbono na engenharia civil. A presente investigação validou um modelo hierárquico que conecta a composição química fundamental, especificamente a razão lignina/celulose, à Vida Útil Funcional (VUF) em 10% de probabilidade de falha, avaliando a resistência à degradação de geotêxteis manufaturados com fibras de *Typha domingensis* submetidas a modificações alcalinas. Ensaios de resistência à tração conduzidos ao longo de 180 dias permitiram parametrizar a cinética de degradação de fibras tratadas com NaOH (3%, 6% e 9%). A caracterização integrada (microscopia eletrônica de varredura, espectroscopia no infravermelho por transformada de Fourier e difração de raios X) evidenciou que o tratamento alcalino remove seletivamente hemiceluloses e eleva a cristalinidade (48,5% → 62,3%), reduzindo a hidrofilicidade e vias de degradação associadas à umidade. A modelagem cinética temporal (decaimento exponencial e distribuição de Weibull) demonstrou que o tratamento com NaOH a 6% alcança um equilíbrio técnico-econômico ótimo: VUF de 95 dias (+127% em relação ao controle sem tratamento), preservação de ductilidade (ε_máx = 2,8%) e eficiência de custos mensurável, sem a fragilização excessiva observada na concentração de 9%. Ensaios composicionais rápidos (FTIR e análise elementar) permitem predizer a confiabilidade de longo prazo, reduzindo a necessidade de testes de campo prolongados. Este trabalho consolida fibras de *Typha* tratadas alcalinamente como uma alternativa viável, com durabilidade previsível e derivada de biomassa, aos geossintéticos de base petroquímica para o controle de erosão em taludes tropicais, avançando princípios de economia circular e reduzindo a carga ambiental em infraestrutura geotécnica.
 
-**Palavras-chave**: Modelagem de degradação; Razão Lignina/Celulose; Vida útil funcional; Geotêxteis naturais; Bioengenharia de solos.
+**Palavras-chave**: valorização de biomassa; resíduo agroindustrial; tratamento alcalino; economia circular; modelagem de durabilidade; engenharia sustentável.
+
+## Highlights
+
+• Biomassa da espécie invasora Typha domingensis valorizada em geotêxteis de engenharia através de tratamento alcalino otimizado, convertendo resíduos agrícolas em produto de engenharia civil de alto valor.
+
+• Fibras tratadas alcalinamente estendem a vida útil em 127% mantendo a ductilidade essencial, estabelecendo viabilidade técnica para estabilização de taludes tropicais.
+
+• Análises composicionais rápidas (FTIR, XRD) permitem a previsão confiável da durabilidade a longo prazo por meio da relação lignina/celulose e cristalinidade, eliminando a necessidade de testes de campo de vários anos.
+
+• Uma estrutura probabilística baseada na distribuição de Weibull quantifica as margens de durabilidade e confiabilidade, permitindo a especificação de geotêxteis de Typha com confiança comparável às alternativas sintéticas convencionais.
+
+• Redução da pegada de carbono de 60 a 70% em comparação com o polipropileno, com custo-benefício concomitante (economia anual de R$ 50 a 70 mil em infraestrutura de grande escala), demonstrando a viabilidade econômica e ambiental de geotêxteis derivados de biomassa para a bioeconomia circular em aplicações geotécnicas.
 
 ## Graphical Abstract
 
