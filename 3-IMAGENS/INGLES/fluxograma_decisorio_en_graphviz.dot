@@ -38,8 +38,8 @@ digraph G {
     color="#111827";
     penwidth=1;
 
-          q0 [shape=parallelogram, fontsize=10, margin="0.08,0.05", label=<<B>Rapid assays</B><BR/>(L/C, CI, FTIR;<BR/>XRD/TGA)<BR/>→ estimate FUL<BR/>(P10)>];
-          i1 [shape=parallelogram, fontsize=10, margin="0.08,0.05", label=<Target service<BR/>life<BR/>(FUL / P10)>];
+          q0 [shape=parallelogram, fontsize=10, margin="0.08,0.05", label=<<B>Rapid assays</B><BR/>(L/C, CI, FTIR;<BR/>XRD/TGA)<BR/>→ estimate SL<BR/>(P10)>];
+          i1 [shape=parallelogram, fontsize=10, margin="0.08,0.05", label=<Target service<BR/>life<BR/>(SL / P10)>];
           i2 [shape=parallelogram, fontsize=10, margin="0.08,0.05", label=<Environmental<BR/>aggressiveness<BR/>(UV: 0 / 0.5<BR/>/ 1.0)>];
           i3 [shape=parallelogram, fontsize=10, margin="0.08,0.05", label=<Minimum<BR/>ductility<BR/>(ε_max)>];
   }
@@ -51,7 +51,7 @@ digraph G {
     color="#111827";
     penwidth=1;
 
-    d1 [shape=diamond, style="filled", fillcolor="#ffffff", label=<<B>Temporary use</B><BR/>(VUF ≤ 60 days)<BR/>AND UV ≤ 0.5?>];
+    d1 [shape=diamond, style="filled", fillcolor="#ffffff", label=<<B>Temporary use</B><BR/>(SL ≤ 60 days)<BR/>AND UV ≤ 0.5?>];
     d2 [shape=diamond, style="filled", fillcolor="#ffffff", label=<<B>UV ≥ 1.0 (high exposure)</B><BR/>OR ductility required<BR/>(ε_max ≥ 2.0%)?>];
   }
 
@@ -63,7 +63,7 @@ digraph G {
     penwidth=1;
 
     t0 [shape=box, label=<<B>T0 — Untreated</B><BR/>Temporary applications<BR/>(30–60 days)>];
-    t2 [shape=box, penwidth=3, label=<<B>T2 — 6% NaOH</B><BR/>Balanced option<BR/>(VUF ~95 days; ε_max ~2.8%)>];
+    t2 [shape=box, penwidth=3, label=<<B>T2 — 6% NaOH</B><BR/>Balanced option<BR/>(SL ~95 days; ε_max ~2.8%)>];
     t3 [shape=box, label=<<B>T3 — 9% NaOH</B><BR/>Highest durability<BR/>(stiffer; ε_max &lt; 2.0%)>];
   }
 
@@ -80,7 +80,7 @@ digraph G {
   }
 
   n1 [shape=note, style="filled", fillcolor="#ffffff", label=<<B>Note: UV = 1.0</B><BR/>→ error may reach ~28%<BR/>→ consider non-linear correction<BR/>/ local validation>];
-  s1 [shape=note, style="filled", fillcolor="#ffffff", label=<<B>Suggested specification targets:</B><BR/>R0 ≥ 20 kN/m; FUL ≥ 90 days (P10);<BR/>CI ≥ 60%; end-of-life: ε_max ≤ 2.0%>];
+  s1 [shape=note, style="filled", fillcolor="#ffffff", label=<<B>Suggested specification targets:</B><BR/>R0 ≥ 20 kN/m; SL ≥ 90 days (P10);<BR/>CI ≥ 60%; end-of-life: ε_max ≤ 2.0%>];
 
   // Primary flow
   q0 -> i1;

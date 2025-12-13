@@ -65,7 +65,7 @@ fontsize: 11pt
 
 **Figura S1.** Variação temporal das condições ambientais durante o período experimental (180 dias).
 
-![Condições Ambientais](../3-IMAGENS/grafico_tratamentos_ggplot.png){width="85%"}
+![Condições Ambientais](../../3-IMAGENS/PORTUGUES/grafico_tratamentos_ggplot.png){width="85%"}
 
 ### S1.4 Calibração da Energia de Ativação
 
@@ -99,7 +99,7 @@ Este valor posiciona *Typha* em patamar intermediário quando comparado com outr
 
 **Figura S2.** Calibração da Energia de Ativação via gráfico de Arrhenius para *Typha domingensis*. O gráfico relaciona $\ln(k)$ versus $1/T$, onde a inclinação da reta fornece $-E_a/R$. Os pontos experimentais (■) representam ensaios em câmara UV (313,15 K) e campo (299,15 K), com barras de erro indicando intervalo de confiança de 95%.
 
-![ ](../3-IMAGENS/grafico_arrhenius.png){width="70%"}
+![ ](../../3-IMAGENS/PORTUGUES/grafico_arrhenius.png){width="70%"}
 
 ## S2. Análise Estatística Estendida
 
@@ -107,7 +107,7 @@ Este valor posiciona *Typha* em patamar intermediário quando comparado com outr
 
 **Figura S3.** Análise de poder estatístico *post-hoc* para diferentes magnitudes de efeito (Cohen's *d*).
 
-![Poder Estatístico](../3-IMAGENS/grafico_analise_poder_ggplot.png){width="75%"}
+![Poder Estatístico](../../3-IMAGENS/PORTUGUES/grafico_analise_poder_ggplot.png){width="75%"}
 
 **Tabela S5.** Análise de poder estatístico para comparações entre tratamentos.
 
@@ -138,7 +138,7 @@ Este valor posiciona *Typha* em patamar intermediário quando comparado com outr
 
 **Figura S4.** Distribuições bootstrap (1000 reamostragens) dos parâmetros de Weibull.
 
-![Bootstrap Weibull](../3-IMAGENS/grafico_bootstrap_distribuicoes_ggplot.png){width="85%"}
+![Bootstrap Weibull](../../3-IMAGENS/PORTUGUES/grafico_bootstrap_distribuicoes_ggplot.png){width="85%"}
 
 **Tabela S7.** Intervalos de confiança bootstrap (95%) para parâmetros de Weibull.
 
@@ -254,7 +254,7 @@ Este valor posiciona *Typha* em patamar intermediário quando comparado com outr
 
 **Figura S5.** Equipamento de ensaio mecânico - Máquina Universal EMIC DL-3000.
 
-![Máquina Universal](../3-IMAGENS/maquina_universal.png){width="70%"}
+![Máquina Universal](../../3-IMAGENS/PORTUGUES/maquina_universal.png){width="70%"}
 
 ## S6. Protocolos Analíticos - Procedimentos Operacionais Padrão
 

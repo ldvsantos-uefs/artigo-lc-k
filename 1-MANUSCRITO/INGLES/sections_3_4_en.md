@@ -26,7 +26,7 @@ Morphological analysis (SEM) reflects these chemical alterations in geometric me
 
 **Figure 6.** Comparative scanning electron microscopy (SEM) analysis of natural fibers (*Typha domingensis*) versus alkali-treated fibers (3%, 6%, and 9% NaOH).
 
-![ ](../3-IMAGENS/figura_painel_comparativo_500x_en.png){width="90%"}
+![ ](../../3-IMAGENS/INGLES/figura_painel_comparativo_500x_en.png){width="90%"}
 
 *Note: Images at 500 µm × 500 µm scale. Comparative analysis (N=36) indicated a reduction in average porosity from 75.8% (Natural) to 26.3% (9% NaOH), contrasting with the increase in surface roughness (fibrillation) and crystalline reorganization observed in treated fibers.*
 
@@ -38,7 +38,7 @@ Longitudinal analysis evidences the superior performance of treatment T3 (9% NaO
 
 **Figure 7.** Microstructural and mechanical characterization of degradation: (a) Temporal evolution of tensile strength and fracture patterns, (b) Representative stress-strain curves at 30 days and (c) at 90 days for all treatments.
 
-![ ](../3-IMAGENS/figura5_paineis_ab_en.png){width="95%"}
+![ ](../../3-IMAGENS/INGLES/figura5_paineis_ab_en.png){width="95%"}
 
 Ductility can be considered a sensitive indicator of the functional limit state, anticipating the brittle transition that compromises the geotextile's ability to accommodate soil deformations. The untreated fiber collapses to ductility below 5% in 180 days, while alkaline treatments preserve deformability above 6%, delaying embrittlement. This preservation is associated with the removal of hemicelluloses, which, according to @Hatakka2011, @Santos2023_GeocompostosTypha, function in the natural state as preferential sites for moisture absorption and fungal attack. The stabilization of deformation capacity may therefore reflect a mechanical consequence of the reduction in biological and chemical susceptibility of the matrix [@Kabir2012].
 
@@ -65,17 +65,17 @@ The correlation between macroscopic performance and accumulated damage is substa
 
 **Figure 8.** Validation of the hybrid model and microstructural evolution being, (a) Comparison between accelerated model predictions (UV chamber) and field data for residual strength and (b) Temporal evolution of fracture density for all treatments.
 
-![ ](../3-IMAGENS/grafico_validacao_microestrutura_en.png){width="95%"}
+![ ](../../3-IMAGENS/INGLES/grafico_validacao_microestrutura_en.png){width="95%"}
 
 This microstructural evidence connects the scales of analysis, suggesting that improved durability results directly from a fibrous architecture less prone to defect nucleation under environmental stress [@Luchese2024; @Kwon2021].
 
 ### 3.3. Stochastic and Predictive Modeling
 
-The regime transition induced by mercerization appears to shift the failure behavior towards a pattern of greater determinism, as evidenced by the Weibull distribution (Figure 9). The increase in the shape modulus ($\beta$) from 2.3 (Control) to 3.0 (9% NaOH) is consistent with the reduction in failure time dispersion. @Rong2001 and @Luqman2023 associate this behavior with microstructural homogenization and the elimination of critical defects. From a geotechnical design perspective, the conservative metric $P_{10}$ quantifies the reliability gain: treatment T2 (6% NaOH) extends the functional service life to 95 days, surpassing the 42 days of the control and mitigating the risk of premature collapse in the stabilization phase [@Sekulic2017].
+The regime transition induced by mercerization appears to shift the failure behavior towards a pattern of greater determinism, as evidenced by the Weibull distribution (Figure 9). The increase in the shape modulus ($\beta$) from 2.3 (Control) to 3.0 (9% NaOH) is consistent with the reduction in failure time dispersion. @Rong2001 and @Luqman2023 associate this behavior with microstructural homogenization and the elimination of critical defects. From a geotechnical design perspective, the conservative metric $P_{10}$ quantifies the reliability gain: treatment T2 (6% NaOH) extends the service life (SL) to 95 days, surpassing the 42 days of the control and mitigating the risk of premature collapse in the stabilization phase [@Sekulic2017].
 
-**Figure 9.** Reliability curves and functional service life estimates (Weibull) for the different treatments.
+**Figure 9.** Reliability curves and service life (SL) estimates (Weibull) for the different treatments.
 
-![ ](../3-IMAGENS/grafico_weibull_confiabilidade_ggplot_en.png){width="95%"}
+![ ](../../3-IMAGENS/INGLES/grafico_weibull_confiabilidade_ggplot_en.png){width="95%"}
 
 The integration of thermal-kinetic dynamics via hybrid calibration supports the system's predictability under environmental variability. Wherein, the activation energy ($E_a = 29.03$ kJ/mol), determined via the Arrhenius equation by comparing degradation rates in the field ($k \approx 0.0118$ day⁻¹) and in the UV chamber ($k \approx 0.0199$ day⁻¹), suggests that the failure mechanism lies in the range of coupled hydrolysis and photo-oxidation of lignocellulosic matrices [@OrnaghiJr2024; @Wei2014]. The consistency between accelerated projections and empirical records (Figure 8a) indicates the viability of short-duration tests in capturing degradation physics, allowing for robust temporal extrapolations [@Wei2014].
 
@@ -85,13 +85,13 @@ Physical validity limits manifest under high irradiance regimes, where the linea
 
 ### 3.4. Protocol and Geotechnical Implications
 
-The technical specification of natural geotextiles recommends replacing deterministic averages with probabilistic safety margins, aligning with structural reliability practices via the adoption of the $P_{10}$ percentile, as advocated by @ISO2394 and @Phoon2021. Empirical evidence supports the definition of performance thresholds based on a minimum initial strength of 20 kN/m, VUF ≥ 90 days, and crystallinity index greater than 60%, establishing the reduction of maximum strain ($\varepsilon_{\text{max}}$) to 2.0% as the terminal functionality criterion.
+The technical specification of natural geotextiles recommends replacing deterministic averages with probabilistic safety margins, aligning with structural reliability practices via the adoption of the $P_{10}$ percentile, as advocated by @ISO2394 and @Phoon2021. Empirical evidence supports the definition of performance thresholds based on a minimum initial strength of 20 kN/m, SL ≥ 90 days, and crystallinity index greater than 60%, establishing the reduction of maximum strain ($\varepsilon_{\text{max}}$) to 2.0% as the terminal functionality criterion.
 
-Treatment selection (Figure 10) is based on the integration of rapid characterization tests (L/C, CI, FTIR) with VUF estimates weighted by environmental aggressiveness and ductility requirements. Untreated material is restricted to temporary interventions in low-aggressiveness scenarios (30–60 days) [@Pritchard2000; @Methacanon2010], while the 6% NaOH treatment (T2) presents itself as a technical-economic equilibrium point for tropical slopes. This concentration extends the VUF to 95 days (+127%) preserving functional ductility (2.8%), unlike the 9% concentration (T3) which, although maximizing durability, induces embrittlement ($\varepsilon_{\text{max}} < 2.0%$) compatible only with rigid reinforcement or base containment applications [@Syed2021; @Kafodya2020; @Holanda2024].
+Treatment selection (Figure 10) is based on the integration of rapid characterization tests (L/C, CI, FTIR) with SL estimates weighted by environmental aggressiveness and ductility requirements. Untreated material is restricted to temporary interventions in low-aggressiveness scenarios (30–60 days) [@Pritchard2000; @Methacanon2010], while the 6% NaOH treatment (T2) presents itself as a technical-economic equilibrium point for tropical slopes. This concentration extends the SL to 95 days (+127%) preserving functional ductility (2.8%), unlike the 9% concentration (T3) which, although maximizing durability, induces embrittlement ($\varepsilon_{\text{max}} < 2.0%$) compatible only with rigid reinforcement or base containment applications [@Syed2021; @Kafodya2020; @Holanda2024].
 
 **Figure 10.** Decision flowchart for selection of *Typha domingensis* fiber treatment ($P_{10}$ criterion and accelerated qualification protocol).
 
-![ ](../3-IMAGENS/fluxograma_decisorio_en.png){width="90%"}
+![ ](../../3-IMAGENS/INGLES/fluxograma_decisorio_en.png){width="90%"}
 
 The viability of large-scale adoption is supported by the environmental and economic advantage over conventional geosynthetics. The carbon footprint reduced by 60–70% compared to polypropylene [@Shamsuddoha2025; @Soares2023] combines with operational efficiency in large-scale works (10,000 m²), where the incremental cost of treatment (R$ 180–220/ton) is absorbed by the extension of service life and consequent reduction in maintenance frequency, generating estimated savings between R$ 50,000 and R$ 70,000 annually.
 
@@ -99,7 +99,7 @@ The applicability of the protocol is subordinate to the local irradiance regime,
 
 ## 4. Conclusion
 
-The validation of the hierarchical model connecting chemical recalcitrance to functional service life represents the central contribution of this study, indicating that the durability of natural geotextiles is not a stochastic artifact, but a deterministic response to compositional architecture. The experimental trajectory evidenced that the removal of hemicelluloses and the consequent crystalline reorganization induced by mercerization can act as a governing mechanism for the retardation of mechanical degradation.
+The validation of the hierarchical model connecting chemical recalcitrance to service life (SL) represents the central contribution of this study, indicating that the durability of natural geotextiles is not a stochastic artifact, but a deterministic response to compositional architecture. The experimental trajectory evidenced that the removal of hemicelluloses and the consequent crystalline reorganization induced by mercerization can act as a governing mechanism for the retardation of mechanical degradation.
 
 The identification of the 6% NaOH treatment as the technical-economic optimum transcends mere parameter optimization, delimiting a boundary condition where the reliability gain does not compromise the essential deformability for soil-geotextile interaction. While the 9% concentration maximizes tensile strength, the resulting embrittlement violates ductility requirements for slope stabilization, exemplifying the trade-off between chemical recalcitrance and mechanical compliance.
 

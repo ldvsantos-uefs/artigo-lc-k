@@ -37,7 +37,7 @@
 <text xml:space="preserve" text-anchor="start" x="71.46" y="-409.26" font-family="Arial" font-weight="bold" font-size="10.00" fill="#111827">Rapid assays</text>
 <text xml:space="preserve" text-anchor="start" x="69.21" y="-399.26" font-family="Arial" font-size="10.00" fill="#111827">(L/C, CI, FTIR;</text>
 <text xml:space="preserve" text-anchor="start" x="78.59" y="-389.26" font-family="Arial" font-size="10.00" fill="#111827">XRD/TGA)</text>
-<text xml:space="preserve" text-anchor="start" x="66.59" y="-379.26" font-family="Arial" font-size="10.00" fill="#111827">→ estimate FUL</text>
+<text xml:space="preserve" text-anchor="start" x="66.59" y="-379.26" font-family="Arial" font-size="10.00" fill="#111827">→ estimate SL</text>
 <text xml:space="preserve" text-anchor="start" x="90.96" y="-369.26" font-family="Arial" font-size="10.00" fill="#111827">(P10)</text>
 </g>
 <!-- i1 -->
@@ -46,7 +46,7 @@
 <path fill="#ffffff" stroke="#111827" d="M395.15,-422.96C395.15,-422.96 298.72,-422.96 298.72,-422.96 292.72,-422.96 284.7,-417.31 282.67,-411.66 282.67,-411.66 259.79,-347.86 259.79,-347.86 257.77,-342.21 261.74,-336.56 267.74,-336.56 267.74,-336.56 364.17,-336.56 364.17,-336.56 370.17,-336.56 378.19,-342.21 380.22,-347.86 380.22,-347.86 403.1,-411.66 403.1,-411.66 405.12,-417.31 401.15,-422.96 395.15,-422.96"/>
 <text xml:space="preserve" text-anchor="start" x="300.69" y="-388.26" font-family="Arial" font-size="10.00" fill="#111827">Target service</text>
 <text xml:space="preserve" text-anchor="start" x="325.07" y="-376.26" font-family="Arial" font-size="10.00" fill="#111827">life</text>
-<text xml:space="preserve" text-anchor="start" x="305.94" y="-364.26" font-family="Arial" font-size="10.00" fill="#111827">(FUL / P10)</text>
+<text xml:space="preserve" text-anchor="start" x="305.94" y="-364.26" font-family="Arial" font-size="10.00" fill="#111827">(SL / P10)</text>
 </g>
 <!-- q0&#45;&gt;i1 -->
 <g id="edge1" class="edge">
@@ -59,7 +59,7 @@
 <title>d1</title>
 <polygon fill="#ffffff" stroke="#111827" points="577.99,-324.28 473.71,-276.76 577.99,-229.24 682.27,-276.76 577.99,-324.28"/>
 <text xml:space="preserve" text-anchor="start" x="535.24" y="-284.36" font-family="Arial" font-weight="bold" font-size="12.00" fill="#111827">Temporary use</text>
-<text xml:space="preserve" text-anchor="start" x="534.49" y="-272.36" font-family="Arial" font-size="12.00" fill="#111827">(VUF ≤ 60 days)</text>
+<text xml:space="preserve" text-anchor="start" x="534.49" y="-272.36" font-family="Arial" font-size="12.00" fill="#111827">(SL ≤ 60 days)</text>
 <text xml:space="preserve" text-anchor="start" x="536.74" y="-260.36" font-family="Arial" font-size="12.00" fill="#111827">AND UV ≤ 0.5?</text>
 </g>
 <!-- i1&#45;&gt;d1 -->
@@ -152,7 +152,7 @@
 <path fill="#ffffff" stroke="#111827" stroke-width="3" d="M1256.36,-237.52C1256.36,-237.52 1101.83,-237.52 1101.83,-237.52 1095.83,-237.52 1089.83,-231.52 1089.83,-225.52 1089.83,-225.52 1089.83,-202 1089.83,-202 1089.83,-196 1095.83,-190 1101.83,-190 1101.83,-190 1256.36,-190 1256.36,-190 1262.36,-190 1268.36,-196 1268.36,-202 1268.36,-202 1268.36,-225.52 1268.36,-225.52 1268.36,-231.52 1262.36,-237.52 1256.36,-237.52"/>
 <text xml:space="preserve" text-anchor="start" x="1135.97" y="-221.36" font-family="Arial" font-weight="bold" font-size="12.00" fill="#111827">T2 — 6% NaOH</text>
 <text xml:space="preserve" text-anchor="start" x="1135.59" y="-209.36" font-family="Arial" font-size="12.00" fill="#111827">Balanced option</text>
-<text xml:space="preserve" text-anchor="start" x="1098.47" y="-197.36" font-family="Arial" font-size="12.00" fill="#111827">(VUF ~95 days; ε_max ~2.8%)</text>
+<text xml:space="preserve" text-anchor="start" x="1098.47" y="-197.36" font-family="Arial" font-size="12.00" fill="#111827">(SL ~95 days; ε_max ~2.8%)</text>
 </g>
 <!-- d2&#45;&gt;t2 -->
 <g id="edge8" class="edge">
@@ -209,7 +209,7 @@
 <polyline fill="none" stroke="#111827" points="1521.25,-173.52 1521.25,-167.52"/>
 <polyline fill="none" stroke="#111827" points="1527.25,-167.52 1521.25,-167.52"/>
 <text xml:space="preserve" text-anchor="start" x="1330.73" y="-157.36" font-family="Arial" font-weight="bold" font-size="12.00" fill="#111827">Suggested specification targets:</text>
-<text xml:space="preserve" text-anchor="start" x="1327.36" y="-145.36" font-family="Arial" font-size="12.00" fill="#111827">R0 ≥ 20 kN/m; FUL ≥ 90 days (P10);</text>
+<text xml:space="preserve" text-anchor="start" x="1327.36" y="-145.36" font-family="Arial" font-size="12.00" fill="#111827">R0 ≥ 20 kN/m; SL ≥ 90 days (P10);</text>
 <text xml:space="preserve" text-anchor="start" x="1328.86" y="-133.36" font-family="Arial" font-size="12.00" fill="#111827">CI ≥ 60%; end&#45;of&#45;life: ε_max ≤ 2.0%</text>
 </g>
 <!-- t2&#45;&gt;s1 -->

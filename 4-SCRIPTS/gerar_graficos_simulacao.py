@@ -1,6 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.ticker as ticker
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+IMG_DIR_PT = ROOT_DIR / '3-IMAGENS' / 'PORTUGUES'
+IMG_DIR_EN = ROOT_DIR / '3-IMAGENS' / 'INGLES'
 
 # Configuração de estilo para publicação
 plt.style.use('seaborn-v0_8-whitegrid')
@@ -43,14 +48,14 @@ def plot_arrhenius(lang='pt'):
         text_field = f'Campo (26°C)\nk={k_values[0]}'
         text_chamber = f'Câmara (40°C)\nk={k_values[1]}'
         title = 'Calibração da Energia de Ativação'
-        filename = r'c:\Users\vidal\OneDrive\Documentos\13 - CLONEGIT\artigo-posdoc\1-ARTIGO_LC_K\3-IMAGENS\grafico_arrhenius.png'
+        filename = IMG_DIR_PT / 'grafico_arrhenius.png'
     else:
         label_exp = 'Experimental Points'
         label_fit = 'Arrhenius Fit'
         text_field = f'Field (26°C)\nk={k_values[0]}'
         text_chamber = f'Chamber (40°C)\nk={k_values[1]}'
         title = 'Activation Energy Calibration'
-        filename = r'c:\Users\vidal\OneDrive\Documentos\13 - CLONEGIT\artigo-posdoc\1-ARTIGO_LC_K\3-IMAGENS\grafico_arrhenius_en.png'
+        filename = IMG_DIR_EN / 'grafico_arrhenius_en.png'
 
     # Pontos experimentais
     ax.plot(inv_T, ln_k, 'o', color='black', markersize=10, label=label_exp, zorder=5)
@@ -110,13 +115,13 @@ def plot_damage(lang='pt'):
         xlabel = 'Tempo de Exposição (dias)'
         ylabel = r'Dano Acumulado ($D$)'
         title = 'Evolução do Dano - Modelo Híbrido (Todas as Proporções)'
-        filename = r'c:\Users\vidal\OneDrive\Documentos\13 - CLONEGIT\artigo-posdoc\1-ARTIGO_LC_K\3-IMAGENS\grafico_dano_hibrido.png'
+        filename = IMG_DIR_PT / 'grafico_dano_hibrido.png'
     else:
         label_crit = r'Failure Criterion ($P_{10}$)'
         xlabel = 'Exposure Time (days)'
         ylabel = r'Accumulated Damage ($D$)'
         title = 'Damage Evolution - Hybrid Model (All Treatment Levels)'
-        filename = r'c:\Users\vidal\OneDrive\Documentos\13 - CLONEGIT\artigo-posdoc\1-ARTIGO_LC_K\3-IMAGENS\grafico_dano_hibrido_en.png'
+        filename = IMG_DIR_EN / 'grafico_dano_hibrido_en.png'
 
     # Plotar cada tratamento
     for treatment_id in ['T0', 'T1', 'T2', 'T3']:
@@ -132,16 +137,16 @@ def plot_damage(lang='pt'):
         
         ax.plot(t, D, '-', color=params['color'], linewidth=2.5, label=label)
         
-        # Marcar o ponto VUF (10% de dano)
+        # Marcar o ponto correspondente a 10% de dano ($P_{10}$)
         vuf = params['vuf']
         D_at_vuf = 1 - np.exp(-(vuf/eta)**beta)
         ax.plot(vuf, D_at_vuf, 'o', color=params['color'], markersize=8, zorder=5)
         
-        # Anotação do VUF
+        # Anotação
         if lang == 'pt':
             text_vuf = f"VUF ≈ {vuf} d"
         else:
-            text_vuf = f"FSL ≈ {vuf} d"
+            text_vuf = f"SL ≈ {vuf} d"
         
         # Posicionar anotações para evitar sobreposição
         if treatment_id == 'T0':
@@ -200,7 +205,7 @@ def plot_validation_and_microstructure(lang='pt'):
         xlabel_b = 'Tempo de Exposição (dias)'
         ylabel_b = 'Densidade de Fraturas (mm⁻²)'
         
-        filename = r'c:\Users\vidal\OneDrive\Documentos\13 - CLONEGIT\artigo-posdoc\1-ARTIGO_LC_K\3-IMAGENS\grafico_validacao_microestrutura.png'
+        filename = IMG_DIR_PT / 'grafico_validacao_microestrutura.png'
     else:
         # Painel A - Validação
         title_a = '(a) Cross-Validation: Field vs UV Chamber'
@@ -220,7 +225,7 @@ def plot_validation_and_microstructure(lang='pt'):
         xlabel_b = 'Exposure Time (days)'
         ylabel_b = 'Fracture Density (mm⁻²)'
         
-        filename = r'c:\Users\vidal\OneDrive\Documentos\13 - CLONEGIT\artigo-posdoc\1-ARTIGO_LC_K\3-IMAGENS\grafico_validacao_microestrutura_en.png'
+        filename = IMG_DIR_EN / 'grafico_validacao_microestrutura_en.png'
     
     # === PAINEL A: Validação Campo vs Câmara ===
     # Dados de campo (resistência residual normalizada %)
@@ -296,8 +301,13 @@ def plot_validation_and_microstructure(lang='pt'):
     print(f'Gráfico de validação e microestrutura ({lang}) gerado: {filename}')
 
 if __name__ == '__main__':
+    IMG_DIR_PT.mkdir(parents=True, exist_ok=True)
+    IMG_DIR_EN.mkdir(parents=True, exist_ok=True)
+
     plot_arrhenius('pt')
     plot_arrhenius('en')
+    plot_damage('pt')
+    plot_damage('en')
     plot_validation_and_microstructure('pt')
     plot_validation_and_microstructure('en')
 

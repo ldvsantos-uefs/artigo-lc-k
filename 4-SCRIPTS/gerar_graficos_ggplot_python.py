@@ -18,8 +18,9 @@ plt.rcParams.update({
     'figure.figsize': (10, 6)
 })
 
-OUTPUT_DIR = Path(r"c:\Users\vidal\OneDrive\Documentos\13 - CLONEGIT\artigo-posdoc\1-ARTIGO_LC_K\3-IMAGENS")
-DATA_DIR = Path(r"c:\Users\vidal\OneDrive\Documentos\13 - CLONEGIT\artigo-posdoc\1-ARTIGO_LC_K\2-DADOSLC\processed_data")
+ROOT_DIR = Path(__file__).resolve().parents[1]
+OUTPUT_DIR = ROOT_DIR / "3-IMAGENS" / "INGLES"
+DATA_DIR = ROOT_DIR / "2-DADOS" / "processed_data"
 
 def plot_validation_uv_en():
     print("Gerando grafico_validacao_uv_ggplot_en.png...")

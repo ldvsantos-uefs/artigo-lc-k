@@ -58,9 +58,19 @@ def gerar_docx(md_file, output_file, bib_file, csl_file, apendices_file=None):
         cmd.append(str(apendices_file))
         print(f"[INFO] Incluindo apendices: {apendices_file.name}")
     
-    # Adicionar resource-path para encontrar figuras
+    # Adicionar resource-path para encontrar figuras (compatível com Windows via os.pathsep)
+    md_dir = md_file.parent.resolve()
+    repo_root = Path(__file__).resolve().parent.parent.parent
+    resource_paths = [
+        str(md_dir),
+        str(repo_root),
+        str(repo_root / "1-MANUSCRITO" / "PORTUGUES"),
+        str(repo_root / "1-MANUSCRITO" / "INGLES"),
+        str(repo_root / "3-IMAGENS" / "PORTUGUES"),
+        str(repo_root / "3-IMAGENS" / "INGLES"),
+    ]
     cmd.extend([
-        "--resource-path", ".:../2-FIGURAS:../2-FIGURAS/2-EN:../2-FIGURAS/2-EN",
+        "--resource-path", os.pathsep.join(resource_paths),
     ])
     
     # Adicionar processamento de citações
@@ -86,7 +96,8 @@ def gerar_docx(md_file, output_file, bib_file, csl_file, apendices_file=None):
             capture_output=True,
             text=True,
             encoding='utf-8',
-            errors='replace'
+            errors='replace',
+            cwd=str(md_dir),
         )
         
         # Mostrar warnings/erros do Pandoc
@@ -179,26 +190,20 @@ def gerar_pdf(md_file, output_file, bib_file, csl_file, pdf_engine="xelatex"):
         return 1
 
 def main():
-    # Mudar para o diretório do manuscrito (assumindo estrutura ../2-MANUSCRITO)
-    script_dir = Path(__file__).parent
-    manuscript_dir = script_dir.parent / "2-MANUSCRITO"
-    
-    if manuscript_dir.exists():
-        os.chdir(manuscript_dir)
-        print(f"[INFO] Diretório de trabalho definido para: {manuscript_dir}")
-    else:
-        # Fallback para o diretório do script se a pasta não existir
-        os.chdir(script_dir)
-        print(f"[AVISO] Pasta 2-MANUSCRITO não encontrada. Usando diretório do script: {script_dir}")
+    # Estrutura atual do repositório: <root>/1-MANUSCRITO/{PORTUGUES,INGLES}
+    script_dir = Path(__file__).resolve().parent
+    repo_root = script_dir.parent.parent
+    os.chdir(repo_root)
+    print(f"[INFO] Diretório de trabalho definido para: {repo_root}")
     
     print("=" * 70)
     print("GERADOR DE REVISÃO DE ESCOPO - WORD")
     print("=" * 70)
     
     # Arquivos comuns
-    bib_file = Path("referencias_lc.bib")
-    csl_file = Path("apa.csl")
-    apendices_pt = Path("apendices.md")
+    bib_file = repo_root / "1-MANUSCRITO" / "PORTUGUES" / "referencias_lc.bib"
+    csl_file = repo_root / "1-MANUSCRITO" / "PORTUGUES" / "apa.csl"
+    apendices_pt = repo_root / "1-MANUSCRITO" / "PORTUGUES" / "apendices.md"
     
     # Verificar arquivos necessários
     arquivos_necessarios = [bib_file, csl_file]
@@ -218,8 +223,8 @@ def main():
     # GERAR REVISÃO DE ESCOPO
     # ========================================================================
     # Versão PT
-    md_pt = Path("modelar_LC_K.md")
-    docx_pt = Path("modelo_LC_K.docx")
+    md_pt = repo_root / "1-MANUSCRITO" / "PORTUGUES" / "modelar_LC_K.md"
+    docx_pt = repo_root / "1-MANUSCRITO" / "PORTUGUES" / "modelo_LC_K.docx"
     result_pt = 1
 
     if not md_pt.exists():
@@ -232,8 +237,8 @@ def main():
             sucessos += 1
     
     # Versão EN (inglês)
-    md_en = Path("modelar_LC_K_EN.md")
-    docx_en = Path("modelo_LC_K_EN.docx")
+    md_en = repo_root / "1-MANUSCRITO" / "INGLES" / "modelar_LC_K_EN.md"
+    docx_en = repo_root / "1-MANUSCRITO" / "INGLES" / "modelo_LC_K_EN.docx"
     
     if md_en.exists():
         print(f"\n[INFO] Encontrado {md_en.name} - gerando DOCX em inglês...")
@@ -247,8 +252,8 @@ def main():
     # ========================================================================
     # GERAR MATERIAL SUPLEMENTAR
     # ========================================================================
-    md_suplementar = Path("material_suplementar.md")
-    docx_suplementar = Path("material_suplementar.docx")
+    md_suplementar = repo_root / "1-MANUSCRITO" / "PORTUGUES" / "material_suplementar.md"
+    docx_suplementar = repo_root / "1-MANUSCRITO" / "PORTUGUES" / "material_suplementar.docx"
     
     if md_suplementar.exists():
         print(f"\n[INFO] Encontrado {md_suplementar.name} - gerando DOCX...")
@@ -260,8 +265,8 @@ def main():
         print(f"\n[AVISO] Arquivo {md_suplementar.name} não encontrado. Pulando geração do material suplementar.")
 
     # Material Suplementar EN (inglês)
-    md_suplementar_en = Path("material_suplementar_EN.md")
-    docx_suplementar_en = Path("material_suplementar_EN.docx")
+    md_suplementar_en = repo_root / "1-MANUSCRITO" / "INGLES" / "material_suplementar_EN.md"
+    docx_suplementar_en = repo_root / "1-MANUSCRITO" / "INGLES" / "material_suplementar_EN.docx"
     
     if md_suplementar_en.exists():
         print(f"\n[INFO] Encontrado {md_suplementar_en.name} - gerando DOCX em inglês...")
@@ -275,7 +280,7 @@ def main():
     # Gerar PDF opcionalmente
     # Use argumento de linha de comando: python gerar-docx.py --pdf
     if len(sys.argv) > 1 and sys.argv[1] in ("--pdf", "-p"):
-        pdf_output = Path("revisao_artigo.pdf")
+        pdf_output = repo_root / "1-MANUSCRITO" / "PORTUGUES" / "revisao_artigo.pdf"
         print("\n[INFO] Opcao de PDF detectada - gerando PDF com xelatex...")
         if md_pt.exists():
             total += 1

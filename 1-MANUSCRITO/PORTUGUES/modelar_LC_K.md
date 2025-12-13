@@ -10,25 +10,25 @@ lang: pt-br
 ---
 ## Resumo
 
-A conversão de biomassa vegetal abundante e subutilizada em materiais de engenharia de alto valor agregado representa uma via crítica para impulsionar a bioeconomia circular e reduzir a pegada de carbono na engenharia civil. A presente investigação validou um modelo hierárquico que conecta a composição química fundamental, especificamente a razão lignina/celulose, à Vida Útil Funcional (VUF) em 10% de probabilidade de falha, avaliando a resistência à degradação de geotêxteis manufaturados com fibras de *Typha domingensis* submetidas a modificações alcalinas. Ensaios de resistência à tração conduzidos ao longo de 180 dias permitiram parametrizar a cinética de degradação de fibras tratadas com NaOH (3%, 6% e 9%). A caracterização integrada (microscopia eletrônica de varredura, espectroscopia no infravermelho por transformada de Fourier e difração de raios X) evidenciou que o tratamento alcalino remove seletivamente hemiceluloses e eleva a cristalinidade (48,5% → 62,3%), reduzindo a hidrofilicidade e vias de degradação associadas à umidade. A modelagem cinética temporal (decaimento exponencial e distribuição de Weibull) demonstrou que o tratamento com NaOH a 6% alcança um equilíbrio técnico-econômico ótimo: VUF de 95 dias (+127% em relação ao controle sem tratamento), preservação de ductilidade (ε_máx = 2,8%) e eficiência de custos mensurável, sem a fragilização excessiva observada na concentração de 9%. Ensaios composicionais rápidos (FTIR e análise elementar) permitem predizer a confiabilidade de longo prazo, reduzindo a necessidade de testes de campo prolongados. Este trabalho consolida fibras de *Typha* tratadas alcalinamente como uma alternativa viável, com durabilidade previsível e derivada de biomassa, aos geossintéticos de base petroquímica para o controle de erosão em taludes tropicais, avançando princípios de economia circular e reduzindo a carga ambiental em infraestrutura geotécnica.
+A conversão de biomassa vegetal abundante e subutilizada em materiais de engenharia de alto valor agregado representa uma via crítica para impulsionar a bioeconomia circular e reduzir a pegada de carbono na engenharia civil. A presente investigação validou um modelo hierárquico que conecta a composição química fundamental, especificamente a razão lignina/celulose, à Vida Útil Funcional (VUF) em 10% de probabilidade de falha, avaliando a resistência à degradação de geotêxteis manufaturados com fibras de *Typha domingensis* submetidas a modificações alcalinas. Ensaios de resistência à tração conduzidos ao longo de 180 dias permitiram parametrizar a cinética de degradação de fibras tratadas com NaOH (3%, 6% e 9%). A caracterização integrada (microscopia eletrônica de varredura, espectroscopia no infravermelho por transformada de Fourier e difração de raios X) evidenciou que o tratamento alcalino remove seletivamente hemiceluloses e eleva a cristalinidade (48,5% → 62,3%), reduzindo a hidrofilicidade e vias de degradação associadas à umidade. A modelagem cinética temporal demonstrou que o tratamento com NaOH a 6% alcança um equilíbrio técnico-econômico ótimo VUF de 95 dias, +127% em relação ao controle sem tratamento, preservação de ductilidade (ε_máx = 2,8%) e eficiência de custos mensurável, sem a fragilização excessiva observada na concentração de 9%. Ensaios composicionais rápidos permitem predizer a confiabilidade de longo prazo, reduzindo a necessidade de testes de campo prolongados. Este trabalho consolida fibras de *Typha* tratadas alcalinamente como uma alternativa viável, com durabilidade previsível e derivada de biomassa, aos geossintéticos de base petroquímica para o controle de erosão em taludes tropicais, avançando princípios de economia circular e reduzindo a carga ambiental em infraestrutura geotécnica.
 
 **Palavras-chave**: valorização de biomassa; resíduo agroindustrial; tratamento alcalino; economia circular; modelagem de durabilidade; engenharia sustentável.
 
 ## Highlights
 
-• Biomassa da espécie invasora Typha domingensis valorizada em geotêxteis de engenharia através de tratamento alcalino otimizado, convertendo resíduos agrícolas em produto de engenharia civil de alto valor.
+• Valorização de Typha em geotêxteis via tratamento alcalino.
 
-• Fibras tratadas alcalinamente estendem a vida útil em 127% mantendo a ductilidade essencial, estabelecendo viabilidade técnica para estabilização de taludes tropicais.
+• VUF +127% com ductilidade 2,8% em taludes tropicais.
 
-• Análises composicionais rápidas (FTIR, XRD) permitem a previsão confiável da durabilidade a longo prazo por meio da relação lignina/celulose e cristalinidade, eliminando a necessidade de testes de campo de vários anos.
+• FTIR/DRX permitem prever durabilidade de longo prazo.
 
-• Uma estrutura probabilística baseada na distribuição de Weibull quantifica as margens de durabilidade e confiabilidade, permitindo a especificação de geotêxteis de Typha com confiança comparável às alternativas sintéticas convencionais.
+• Confiabilidade por Weibull; especificação com percentil P10.
 
-• Redução da pegada de carbono de 60 a 70% em comparação com o polipropileno, com custo-benefício concomitante (economia anual de R$ 50 a 70 mil em infraestrutura de grande escala), demonstrando a viabilidade econômica e ambiental de geotêxteis derivados de biomassa para a bioeconomia circular em aplicações geotécnicas.
+• Pegada de carbono 60–70% menor e custo vantajoso em escala.
 
 ## Graphical Abstract
 
-![](../3-IMAGENS/abstract_grafico.png){width="80%"}
+![](../../3-IMAGENS/PORTUGUES/abstract_grafico.png){width="80%"}
 
 ## 1. Introdução
 
@@ -60,13 +60,13 @@ Esta macrófita aquática, que tipicamente atinge entre 2 e 3 metros de altura, 
 
 **Figura 1.**  Coleta de material utilizado e secagem das fibras.
 
-![ ](../3-IMAGENS/coleta.png){width="90%"}
+![ ](../../3-IMAGENS/PORTUGUES/coleta.png){width="90%"}
 
 A coleta de folhas e brotos foi realizada no Povoado Tigre pertencente ao município de Pacatuba, Estado de Sergipe, nordeste do Brasil (Figura 2).
 
 **Figura 2.** Localização geográfica da área de coleta de *Typha domingensis*.
 
-![ ](../3-IMAGENS/mapa_tigre_en.png){width="90%"}
+![ ](../../3-IMAGENS/INGLES/mapa_tigre_en.png){width="90%"}
 
 A identificação botânica formal foi realizada pelo Laboratório de Botânica do Instituto de Biologia da Universidade Federal da Bahia, com exsicatas depositadas no Herbário da Universidade Federal de Sergipe. Em conformidade com a legislação brasileira para acesso ao patrimônio genético, as atividades de coleta foram registradas no Sistema Nacional de Gestão do Patrimônio Genético e do Conhecimento Tradicional Associado (SisGen) sob o código A2B3842.
 
@@ -84,13 +84,13 @@ O experimento foi conduzido em delineamento em quadrado latino com parcelas de 0
 
 **Figura 3.** (a) Confexão dos Geotêxteis com fibras de *Typha domingensis*; (b) Geotêxteis instalados no solo e (c) Geotêxteis expostos em taludes.
 
-![ ](../3-IMAGENS/talude.png){width="90%"}
+![ ](../../3-IMAGENS/PORTUGUES/talude.png){width="90%"}
 
 As amostras foram expostas ao clima subtropical úmido característico da região, cujos padrões de precipitação e irradiância solar ao longo do período experimental encontram-se documentados na Figura 4. O regime pluviométrico exibiu sazonalidade típica do litoral nordestino, com concentração de chuvas entre os meses de abril e agosto, acumulando aproximadamente 1400 mm durante os 180 dias de monitoramento. A irradiância solar global manteve-se predominantemente entre 18 e 22 MJ m⁻² dia⁻¹, com atenuação temporária durante eventos de nebulosidade associados aos períodos chuvosos.
 
 **Figura 4.** Condições climáticas durante o período experimental de 180 dias: (a) Precipitação diária e acumulado móvel de 30 dias; (b) Irradiância solar global com média móvel de 15 dias. A região sombreada em vermelho destaca o período experimental centralizado em janela de observação de 2 anos.
 
-![ ](../3-IMAGENS/grafico_clima_experimental.png){width="95%"}
+![ ](../../3-IMAGENS/PORTUGUES/grafico_clima_experimental.png){width="95%"}
 
 Para avaliação da cinética de biodegradação, seções de 20 cm × 20 cm foram removidas da porção central das parcelas em intervalos programados, visando evitar efeitos de borda. Em laboratório, estas amostras foram secas em estufa a 60 °C por 24 horas antes da preparação dos corpos de prova. O período de exposição estendeu-se por 180 dias, com coletas realizadas em sete intervalos discretos: T0 (0 dias), T1 (30 dias), T2 (60 dias), T3 (90 dias), T4 (120 dias), T5 (150 dias) e T6 (180 dias), com cinco réplicas por ponto experimental para garantir robustez estatística.
 
@@ -144,7 +144,7 @@ O protocolo experimental consistiu em 120 ciclos de 6 horas, totalizando 720 hor
 
 **Figura 5.** (a) Câmara de degradação forçada UV utilizada para calibração dos modelos cinéticos e (b) sistema de irradiação com lâmpadas fluorescentes UV-A, UV-B e visível.
 
-![ ](../3-IMAGENS/camara.png){width="70%"}
+![ ](../../3-IMAGENS/PORTUGUES/camara.png){width="70%"}
 
 A simulação híbrida integrou os dados cinéticos obtidos na simulação ($k_{\text{câmara}}$) com os dados de degradação natural em campo ($k_{\text{campo}}$), permitindo a determinação da Energia de Ativação ($E_a$) experimental via equação de Arrhenius. Adicionalmente, a evolução do dano foi modelada pela lei de Paris-Erdoğan modificada, onde o parâmetro de crescimento de fissuras ($m$) foi calibrado utilizando o módulo de Weibull ($\beta$), buscando estabelecer uma ponte entre a probabilidade de falha estática e a cinética de degradação dinâmica.
 
@@ -177,7 +177,7 @@ A análise morfológica (MEV) reflete essas alterações químicas em métricas 
 
 **Figura 6.** Análise comparativa de microscopia eletrônica de varredura (MEV) das fibras naturais (*Typha domingensis*) versus fibras tratadas alcalinamente (3%, 6% e 9% NaOH).
 
-![ ](../3-IMAGENS/figura_painel_comparativo_500x.png){width="90%"}
+![ ](../../3-IMAGENS/PORTUGUES/figura_painel_comparativo_500x.png){width="90%"}
 
 *Nota: Imagens em escala de 500 µm × 500 µm. A análise comparativa (N=36) indicou redução da porosidade média de 75,8% (Natural) para 26,3% (9% NaOH), contrastando com o aumento da rugosidade superficial (fibrilação) e reorganização cristalina observada nas fibras tratadas.*
 
@@ -189,7 +189,7 @@ A análise longitudinal evidencia o desempenho superior do tratamento T3 (9% NaO
 
 **Figura 7.** Caracterização microestrutural e mecânica da degradação: (a) Evolução temporal da resistência à tração e padrões de fratura, (b) Curvas de tensão-deformação representativas em 30 dias e (c) em 90 dias para todos os tratamentos.
 
-![ ](../3-IMAGENS/figura5_paineis_ab.png){width="95%"}
+![ ](../../3-IMAGENS/PORTUGUES/figura5_paineis_ab.png){width="95%"}
 
 A ductilidade pode ser considerada um indicador sensível do estado limite funcional, antecipando a transição frágil que compromete a capacidade do geotêxtil de acomodar deformações do solo. A fibra não tratada colapsa para ductilidade inferior a 5% em 180 dias, enquanto os tratamentos alcalinos preservam deformabilidade superior a 6%, retardando a fragilização. Essa preservação apresenta associação com a remoção de hemiceluloses, que, segundo @Hatakka2011, @Santos2023_GeocompostosTypha, funcionam em estado natural como sítios preferenciais para absorção de umidade e ataque fúngico. A estabilização da capacidade de deformação pode refletir, portanto, uma consequência mecânica da redução da suscetibilidade biológica e química da matriz [@Kabir2012].
 
@@ -216,7 +216,7 @@ A correlação entre desempenho macroscópico e dano acumulado é substanciada p
 
 **Figura 8.** Validação do modelo híbrido e evolução microestrutural sendo, (a) Comparação entre previsões do modelo acelerado (câmara UV) e dados de campo para resistência residual e (b) Evolução temporal da densidade de fraturas para todos os tratamentos.
 
-![ ](../3-IMAGENS/grafico_validacao_microestrutura.png){width="95%"}
+![ ](../../3-IMAGENS/PORTUGUES/grafico_validacao_microestrutura.png){width="95%"}
 
 Essa evidência microestrutural conecta as escalas de análise, sugerindo que a durabilidade aprimorada resulta diretamente de uma arquitetura fibrosa menos propensa à nucleação de defeitos sob estresse ambiental [@Luchese2024; @Kwon2021].
 
@@ -226,7 +226,7 @@ A transição de regime induzida pela mercerização parece deslocar o comportam
 
 **Figura 9.** Curvas de confiabilidade e estimativas de vida útil funcional (Weibull) para os diferentes tratamentos.
 
-![ ](../3-IMAGENS/grafico_weibull_confiabilidade_ggplot.png){width="95%"}
+![ ](../../3-IMAGENS/PORTUGUES/grafico_weibull_confiabilidade_ggplot.png){width="95%"}
 
 A integração da dinâmica térmico-cinética via calibração híbrida dá suporte à previsibilidade do sistema sob variabilidade ambiental. Em que, a energia de ativação ($E_a = 29,03$ kJ/mol), determinada via equação de Arrhenius pelo confronto entre taxas de degradação em campo ($k \approx 0,0118$ dia⁻¹) e em câmara UV ($k \approx 0,0199$ dia⁻¹), sugere que o mecanismo de falha se situa na faixa de hidrólise e foto-oxidação acopladas de matrizes lignocelulósicas [@OrnaghiJr2024; @Wei2014]. Já a consistência entre projeções aceleradas e registros empíricos (Figura 8a) indica a viabilidade dos ensaios de curta duração em capturar a física da degradação, permitindo extrapolações temporais robustas [@Wei2014].
 
@@ -242,7 +242,7 @@ A seleção do tratamento (Figura 10) baseia-se na integração de ensaios de ca
 
 **Figura 10.** Fluxograma decisório para seleção de tratamento de fibras de *Typha domingensis* (critério $P_{10}$ e protocolo de qualificação acelerada).
 
-![ ](../3-IMAGENS/fluxograma_decisorio.png){width="90%"}
+![ ](../../3-IMAGENS/PORTUGUES/fluxograma_decisorio.png){width="90%"}
 
 A viabilidade da adoção em larga escala apoia-se na vantagem ambiental e econômica frente aos geossintéticos convencionais. A pegada de carbono reduzida em 60–70% em relação ao polipropileno [@Shamsuddoha2025; @Soares2023] combina-se à eficiência operacional em obras de grande porte (10.000 m²), onde o custo incremental do tratamento (R$ 180–220/ton) é absorvido pela extensão da vida útil e consequente redução na frequência de manutenções, gerando economia estimada entre R$ 50.000 e R$ 70.000 anuais.
 

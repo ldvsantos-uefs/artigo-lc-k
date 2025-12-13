@@ -24,8 +24,8 @@ flowchart LR
 
     subgraph L1["Project inputs / qualification"]
         direction TB
-        q0["Rapid assays\n(L/C, CI, FTIR; XRD/TGA)\n→ estimate FUL (P10)"]:::input
-        i1["Target service life\n(FUL / P10)"]:::input
+        q0["Rapid assays\n(L/C, CI, FTIR; XRD/TGA)\n→ estimate SL (P10)"]:::input
+        i1["Target service life\n(SL / P10)"]:::input
         i2["Environmental aggressiveness\n(normalized UV: 0 / 0.5 / 1.0)"]:::input
         i3["Minimum ductility\n(ε_max)"]:::input
     end
@@ -33,7 +33,7 @@ flowchart LR
 
     subgraph L2["Decision rules"]
         direction TB
-        d1{"Temporary use\n(VUF ≤ 60 days)\nAND UV ≤ 0.5?"}:::decision
+        d1{"Temporary use\n(SL ≤ 60 days)\nAND UV ≤ 0.5?"}:::decision
         d2{"UV ≥ 1.0 (high exposure)\nOR ductility required\n(ε_max ≥ 2.0%)?"}:::decision
     end
     class L2 lane;
@@ -41,7 +41,7 @@ flowchart LR
     subgraph L3["Recommended treatment"]
         direction TB
         t0["T0 — Untreated\nTemporary applications\n(30–60 days)"]:::out
-        t2["T2 — 6% NaOH\nBalanced option\n(VUF ~95 days; ε_max ~2.8%)"]:::outStrong
+        t2["T2 — 6% NaOH\nBalanced option\n(SL ~95 days; ε_max ~2.8%)"]:::outStrong
         t3["T3 — 9% NaOH\nHighest durability\n(stiffer; ε_max < 2.0%)"]:::out
     end
     class L3 lane;
@@ -71,5 +71,5 @@ flowchart LR
     n1["Note: UV = 1.0\n→ error may reach ~28%\n→ consider non-linear correction\n/ local validation"]:::out
     i2 -.-> n1
 
-    s1["Suggested specification targets:\nR0 ≥ 20 kN/m; FUL ≥ 90 days (P10);\nCI ≥ 60%; end-of-life: ε_max ≤ 2.0%"]:::out
+    s1["Suggested specification targets:\nR0 ≥ 20 kN/m; SL ≥ 90 days (P10);\nCI ≥ 60%; end-of-life: ε_max ≤ 2.0%"]:::out
     t2 -.-> s1

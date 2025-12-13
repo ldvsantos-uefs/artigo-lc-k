@@ -10,6 +10,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 import os
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
 
 # Configuração de estilo
 plt.rcParams['font.family'] = 'DejaVu Sans'
@@ -292,10 +295,10 @@ def main():
     print(f"   ✓ Dados gerados: {len(df_clima)} dias")
     
     # Salvar dados
-    output_dir = os.path.join('..', '..', '2-DADOSLC', 'processed_data')
-    os.makedirs(output_dir, exist_ok=True)
+    output_dir = ROOT_DIR / '2-DADOS' / 'processed_data'
+    output_dir.mkdir(parents=True, exist_ok=True)
     
-    csv_path = os.path.join(output_dir, 'dados_clima_experimento.csv')
+    csv_path = output_dir / 'dados_clima_experimento.csv'
     df_clima.to_csv(csv_path, index=False, encoding='utf-8')
     print(f"   ✓ Dados salvos: {csv_path}")
     
@@ -311,10 +314,12 @@ def main():
     print("\n[3/5] Gerando gráfico em português...")
     fig_pt = plot_clima_bilingue(df_clima, inicio_experimento=dias_antes, periodo_experimental=180)
     
-    img_dir = os.path.join('..', '..', '3-IMAGENS')
-    os.makedirs(img_dir, exist_ok=True)
+    img_dir_pt = ROOT_DIR / '3-IMAGENS' / 'PORTUGUES'
+    img_dir_en = ROOT_DIR / '3-IMAGENS' / 'INGLES'
+    img_dir_pt.mkdir(parents=True, exist_ok=True)
+    img_dir_en.mkdir(parents=True, exist_ok=True)
     
-    img_path_pt = os.path.join(img_dir, 'grafico_clima_experimental.png')
+    img_path_pt = img_dir_pt / 'grafico_clima_experimental.png'
     fig_pt.savefig(img_path_pt, dpi=300, bbox_inches='tight')
     plt.close(fig_pt)
     print(f"   ✓ Gráfico salvo: {img_path_pt}")
@@ -323,7 +328,7 @@ def main():
     print("\n[4/5] Gerando gráfico em inglês...")
     fig_en = plot_clima_bilingue_en(df_clima, inicio_experimento=dias_antes, periodo_experimental=180)
     
-    img_path_en = os.path.join(img_dir, 'grafico_clima_experimental_en.png')
+    img_path_en = img_dir_en / 'grafico_clima_experimental_en.png'
     fig_en.savefig(img_path_en, dpi=300, bbox_inches='tight')
     plt.close(fig_en)
     print(f"   ✓ Gráfico salvo: {img_path_en}")

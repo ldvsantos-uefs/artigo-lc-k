@@ -65,7 +65,7 @@ fontsize: 11pt
 
 **Figure S1.** Temporal variation of environmental conditions during the experimental period (180 days).
 
-![Environmental Conditions](../3-IMAGENS/grafico_tratamentos_ggplot.png){width="85%"}
+![Environmental Conditions](../../3-IMAGENS/PORTUGUES/grafico_tratamentos_ggplot.png){width="85%"}
 
 ### S1.4 Activation Energy Calibration
 
@@ -99,7 +99,7 @@ This value positions *Typha* at an intermediate level compared to other lignocel
 
 **Figure S2.** Activation Energy calibration via Arrhenius plot for *Typha domingensis*. The plot relates $\ln(k)$ versus $1/T$, where the slope provides $-E_a/R$. Experimental points (■) represent UV chamber tests (313.15 K) and field tests (299.15 K), with error bars indicating 95% confidence interval.
 
-![ ](../3-IMAGENS/grafico_arrhenius.png){width="70%"}
+![ ](../../3-IMAGENS/PORTUGUES/grafico_arrhenius.png){width="70%"}
 
 ## S2. Extended Statistical Analysis
 
@@ -107,7 +107,7 @@ This value positions *Typha* at an intermediate level compared to other lignocel
 
 **Figure S3.** Post-hoc statistical power analysis for different effect sizes (Cohen's *d*).
 
-![Statistical Power](../3-IMAGENS/grafico_analise_poder_ggplot.png){width="75%"}
+![Statistical Power](../../3-IMAGENS/PORTUGUES/grafico_analise_poder_ggplot.png){width="75%"}
 
 **Table S5.** Statistical power analysis for treatment comparisons.
 
@@ -138,11 +138,11 @@ This value positions *Typha* at an intermediate level compared to other lignocel
 
 **Figure S4.** Bootstrap distributions (1000 resamples) of Weibull parameters.
 
-![Bootstrap Weibull](../3-IMAGENS/grafico_bootstrap_distribuicoes_ggplot.png){width="85%"}
+![Bootstrap Weibull](../../3-IMAGENS/PORTUGUES/grafico_bootstrap_distribuicoes_ggplot.png){width="85%"}
 
 **Table S7.** Bootstrap confidence intervals (95%) for Weibull parameters.
 
-| Treatment | β (Shape) | 95% CI Bootstrap | η (Scale, days) | 95% CI Bootstrap | Median FUL (days) |
+| Treatment | β (Shape) | 95% CI Bootstrap | η (Scale, days) | 95% CI Bootstrap | Median SL (days) |
 |:----------:|:---------:|:----------------:|:----------------:|:----------------:|:------------------:|
 | T0 | 2.3 | [2.08 - 2.54] | 68 | [61.2 - 75.8] | 60.3 |
 | T1 | 2.5 | [2.27 - 2.76] | 64 | [57.8 - 70.9] | 56.8 |
@@ -254,23 +254,23 @@ This value positions *Typha* at an intermediate level compared to other lignocel
 
 **Figure S5.** Mechanical testing equipment - EMIC DL-3000 Universal Testing Machine.
 
-![Universal Testing Machine](../3-IMAGENS/maquina_universal.png){width="70%"}
+![Universal Testing Machine](../../3-IMAGENS/PORTUGUES/maquina_universal.png){width="70%"}
 
 **Figure S6.** Visual degradation patterns after 90 days of exposure - treatment comparison.
 
-![90-day Degradation](../3-IMAGENS/degradacao_tracao_naoh.png){width="85%"}
+![90-day Degradation](../../3-IMAGENS/PORTUGUES/degradacao_tracao_naoh.png){width="85%"}
 
 **Figure S7.** Detailed stress-strain curves at 30 days for all treatments.
 
-![30-day Tension](../3-IMAGENS/tracao_30dias_todos_tratamentos.png){width="80%"}
+![30-day Tension](../../3-IMAGENS/PORTUGUES/tracao_30dias_todos_tratamentos.png){width="80%"}
 
 **Figure S8.** Detailed stress-strain curves at 90 days for all treatments.
 
-![90-day Tension](../3-IMAGENS/tracao_90dias_todos_tratamentos.png){width="80%"}
+![90-day Tension](../../3-IMAGENS/PORTUGUES/tracao_90dias_todos_tratamentos.png){width="80%"}
 
 **Figure S9.** Complete panel of statistical analyses and multiple comparisons.
 
-![Analysis Panel](../3-IMAGENS/painel_completo_analises_ggplot.png){width="95%"}
+![Analysis Panel](../../3-IMAGENS/PORTUGUES/painel_completo_analises_ggplot.png){width="95%"}
 
 ## S6. Analytical Protocols - Standard Operating Procedures
 

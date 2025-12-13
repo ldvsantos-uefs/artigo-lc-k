@@ -1,5 +1,5 @@
 ---
-title: "Valorization of Underutilized Biomass into Durable Geotextiles: Alkaline-Treated Typha domingensis for Sustainable Slope Stabilization"
+title: "Valorization of Underutilized Biomass into Durable Geotextiles: Alkaline-Treated *Typha domingensis* for Sustainable Slope Stabilization"
 author: "Diego Vidal"
 bibliography: referencias_lc.bib
 csl: apa.csl
@@ -11,13 +11,25 @@ lang: en
 
 ## Abstract
 
-The conversion of abundant and underutilized plant biomass into high-value engineered materials represents a critical pathway toward circular bioeconomy and reduced carbon footprints in civil engineering. This study proposes a valorization route for *Typha domingensis*, an invasive wetland plant, by transforming its fibrous biomass into durable geotextiles through optimized alkaline chemical treatment. We validated a quantitative framework linking fundamental chemical composition (lignin/cellulose ratio) to functional service life (FSL) at 10% failure probability, assessed via 180-day tensile resistance assays on NaOH-treated fibers (3%, 6%, 9%). Integrated characterization (scanning electron microscopy, Fourier-transform infrared spectroscopy, and X-ray diffraction) revealed that alkaline treatment selectively removes hemicellulose and increases crystallinity (48.5% → 62.3%), thereby reducing hydrophilicity and moisture-driven degradation pathways. Temporal kinetic modeling (exponential decay, Weibull distribution) demonstrated that 6% NaOH treatment achieves an optimal technical-economic equilibrium: 95-day FSL (+127% over untreated control), preserved ductility ($\varepsilon_{\max} = 2.8\%$), and measurable cost-efficiency without excessive embrittlement observed at 9% concentration. Rapid compositional assays (FTIR, elemental analysis) enable prediction of long-term reliability, reducing the need for prolonged field testing. This work consolidates alkali-treated *Typha* fibers as a viable, predictably durable biomass-derived alternative to petroleum-based geosynthetics for tropical slope erosion control, advancing both circular economy principles and reduced environmental burden in geotechnical infrastructure.
+The conversion of abundant and underutilized plant biomass into high-value engineered materials represents a critical pathway toward circular bioeconomy and reduced carbon footprints in civil engineering. This study proposes a valorization route for *Typha domingensis*, an invasive wetland plant, by transforming its fibrous biomass into durable geotextiles through optimized alkaline chemical treatment. We validated a quantitative framework linking fundamental chemical composition (lignin/cellulose ratio) to Service Life (SL) at 10% failure probability, assessed via 180-day tensile resistance assays on NaOH-treated fibers (3%, 6%, 9%). Integrated characterization (scanning electron microscopy, Fourier-transform infrared spectroscopy, and X-ray diffraction) revealed that alkaline treatment selectively removes hemicellulose and increases crystallinity (48.5% → 62.3%), thereby reducing hydrophilicity and moisture-driven degradation pathways. Temporal kinetic modeling (exponential decay, Weibull distribution) demonstrated that 6% NaOH treatment achieves an optimal technical-economic equilibrium: 95-day SL (+127% over untreated control), preserved ductility ($\varepsilon_{\max} = 2.8\%$), and measurable cost-efficiency without excessive embrittlement observed at 9% concentration. Rapid compositional assays (FTIR, elemental analysis) enable prediction of long-term reliability, reducing the need for prolonged field testing. This work consolidates alkali-treated *Typha* fibers as a viable, predictably durable biomass-derived alternative to petroleum-based geosynthetics for tropical slope erosion control, advancing both circular economy principles and reduced environmental burden in geotechnical infrastructure.
 
-**Keywords**: biomass valorization; agro-waste; geotextiles; alkaline treatment; circular economy; durability modeling; sustainable civil engineering
+**Keywords**: biomass valorization; agro-waste; alkaline treatment; circular economy; durability modeling; sustainable engineering.
+
+## Highlights
+
+• Valorization of *Typha domingensis* into geotextiles via alkaline treatment.
+
+• SL +127 % with ductility 2.8 % on tropical slopes.
+
+• FTIR/XRD enable long-term durability prediction.
+
+• Reliability by Weibull; specification with P10 percentile.
+
+• 60–70 % lower carbon footprint and scalable cost benefits.
 
 ## Graphical Abstract
 
-![Graphical abstract summarizing the study](../3-IMAGENS/abstract_grafico.png){width="80%"}
+![Graphical abstract summarizing the study](../../3-IMAGENS/INGLES/abstract_grafico_en.png){width="80%"}
 
 ## 1. Introduction
 
@@ -33,11 +45,11 @@ Surface modifications mitigate these effects through controlled alteration of in
 
 *Typha domingensis* materializes this multifunctional convergence by presenting high biomass productivity [@Fontes2021], favorable lignocellulosic composition with a particularly high L/C ratio [@Fontes2021], wide distribution in tropical wetland environments [@Grace1989; @Manning2018], and presence of bioactive metabolites that confer integrated mechanical, hydraulic, and ecological performance [@Manning2018]. The literature, however, neglects critical aspects, as systematic studies on mechanical resilience under real weathering are scarce and quantitative relationships between fundamental chemical parameters and in-service performance remain unexplored.
 
-Traditional fibers such as sisal and flax have consolidated literature on aging and degradation mechanisms, while *Typha domingensis* lacks in-depth investigations on its response to photodegradation and prolonged environmental exposure. The absence of a unified predictive model capable of connecting basic chemical composition to the FUL of natural geotextiles constitutes a critical gap for standardization, certification, and technological adoption [@Silveira2021].
+Traditional fibers such as sisal and flax have consolidated literature on aging and degradation mechanisms, while *Typha domingensis* lacks in-depth investigations on its response to photodegradation and prolonged environmental exposure. The absence of a unified predictive model capable of connecting basic chemical composition to Service Life (SL) of natural geotextiles constitutes a critical gap for standardization, certification, and technological adoption [@Silveira2021].
 
-The central hypothesis postulates that the lignin/cellulose (L/C) ratio determines the chemical recalcitrance of the matrix, governing the degradation rate. Validating this predictive hierarchy in which chemical composition determines degradation kinetics that, in turn, defines temporal reliability would allow estimating Functional Useful Life (FUL) through rapid compositional assays, suppressing dependence on prolonged field tests.
+The central hypothesis postulates that the lignin/cellulose (L/C) ratio determines the chemical recalcitrance of the matrix, governing the degradation rate. Validating this predictive hierarchy in which chemical composition determines degradation kinetics that, in turn, defines temporal reliability would allow estimating SL through rapid compositional analyses, reducing dependence on prolonged field tests.
 
-The objective of this study consists of validating this hierarchical model by connecting fundamental chemical composition (lignin/cellulose ratio) to Functional Useful Life (FUL) at 10% failure probability, through analysis of degradation resistance of geotextiles produced from *Typha domingensis* fibers subjected to alkaline modifications. The success of validation resides in demonstrating that the fitted model can predict, with acceptable uncertainty, whether the material will maintain the necessary ductility during the long-term critical window, an essential period for vegetation cover establishment in bioengineering projects.
+The objective of this study consists of validating this hierarchical model by connecting fundamental chemical composition (lignin/cellulose ratio) to SL at 10 % failure probability, through analysis of degradation resistance of geotextiles produced from *Typha domingensis* fibers subjected to alkaline modifications. The success of validation resides in demonstrating that the fitted model can predict, with acceptable uncertainty, whether the material will maintain the necessary ductility during the long-term critical window, an essential period for vegetation cover establishment in bioengineering projects.
 
 
 ## 2. Materials and Methods
@@ -50,20 +62,20 @@ This aquatic macrophyte, which typically reaches between 2 and 3 meters in heigh
 
 **Figure 1.** Collection of material used and fiber drying.
 
-![ ](../3-IMAGENS/coleta.png){width="90%"}
+![ ](../../3-IMAGENS/PORTUGUES/coleta.png){width="90%"}
 
 The collection of leaves and shoots was carried out in Tigre Village, belonging to the municipality of Pacatuba, State of Sergipe, northeastern Brazil (Figure 2).
 
 **Figure 2.** Geographic location of the *Typha domingensis* collection area.
 
-![ ](../3-IMAGENS/mapa_tigre_en.png){width="90%"}
+![ ](../../3-IMAGENS/INGLES/mapa_tigre_en.png){width="90%"}
 
 
 Formal botanical identification was performed by the Botany Laboratory of the Institute of Biology of the Federal University of Bahia, with exsiccates deposited in the Herbarium of the Federal University of Sergipe. In compliance with Brazilian legislation for access to genetic heritage, collection activities were registered in the National System for the Management of Genetic Heritage and Associated Traditional Knowledge (SisGen) under code A2B3842.
 
 The geotextile prototypes were manufactured by the Erosion and Sedimentation Laboratory of the Federal University of Sergipe, following a four-stage process: (i) fiber cutting and drying; (ii) grouping; (iii) weaving; and (iv) alkaline chemical treatment. Fiber extraction used smooth-blade tools to preserve fiber integrity, with incisions made above the root system to allow regrowth.
 
-Chemical treatment aimed to modify the fiber surface to reduce hydrophilicity and delay degradation. Geotextile mats were immersed in sodium hydroxide (NaOH) solutions at concentrations of 3% (0.75 mol/L), 6% (1.5 mol/L), and 9% (2.25 mol/L) for a period of 24 hours, maintaining a constant bath ratio.
+Chemical treatment aimed to modify the fiber surface to reduce hydrophilicity and delay degradation. Geotextile mats were immersed in sodium hydroxide (NaOH) solutions at concentrations of 3 % (0.75 mol/L), 6 % (1.5 mol/L), and 9 % (2.25 mol/L) for a period of 24 hours, maintaining a constant bath ratio.
 
 After the reaction, the material was washed in running water until neutralization and air-dried. Drying occurred in the shade for approximately 8 days.
 
@@ -75,13 +87,13 @@ The experiment was conducted in a Latin square design with 0.60 m x 2.40 m plots
 
 **Figure 3.** (a) Fabrication of geotextiles with *Typha domingensis* fibers; (b) Geotextiles installed in soil and (c) Geotextiles exposed on slopes.
 
-![ ](../3-IMAGENS/talude.png){width="90%"}
+![ ](../../3-IMAGENS/PORTUGUES/talude.png){width="90%"}
 
 Samples were exposed to the humid subtropical climate characteristic of the region, whose precipitation and solar irradiance patterns throughout the experimental period are documented in Figure 4. The pluviometric regime exhibited seasonality typical of the northeastern coast, with rainfall concentration between April and August, accumulating approximately 1400 mm during the 180 days of monitoring. Global solar irradiance remained predominantly between 18 and 22 MJ m⁻² day⁻¹, with temporary attenuation during cloudiness events associated with rainy periods.
 
 **Figure 4.** Climatic conditions during the 180-day experimental period: (a) Daily precipitation and 30-day moving accumulation; (b) Global solar irradiance with 15-day moving average. The red shaded region highlights the experimental period centered on a 2-year observation window.
 
-![ ](../3-IMAGENS/grafico_clima_experimental_en.png){width="95%"}
+![ ](../../3-IMAGENS/INGLES/grafico_clima_experimental_en.png){width="95%"}
 
 For biodegradation kinetics evaluation, 20 cm × 20 cm sections were removed from the central portion of plots at scheduled intervals, aiming to avoid edge effects. In the laboratory, these samples were oven-dried at 60 °C for 24 hours before specimen preparation. The exposure period extended for 180 days, with collections performed at seven discrete intervals: T0 (0 days), T1 (30 days), T2 (60 days), T3 (90 days), T4 (120 days), T5 (150 days), and T6 (180 days), with five replicates per experimental point to ensure statistical robustness.
 
@@ -102,7 +114,7 @@ Where $I_{002}$ is the maximum intensity of the diffraction peak of the crystall
 
 Surface morphology and fracture mode were examined on a scanning electron microscope (Hitachi, TM3000). Samples were fixed on aluminum supports with conductive carbon tape and metallized with a thin gold (Au) layer in a sputter coater (Denton Vacuum, Desk V) to avoid electrostatic charging. Images were acquired with an acceleration voltage of 15 kV under high vacuum.
 
-Thermal stability was evaluated on a thermogravimetric analyzer (Shimadzu, TGA-50). Samples of approximately 10 mg were heated from 25°C to 600°C at a rate of 10°C/min, under dynamic nitrogen (N₂) flow of 50 mL/min.
+Thermal stability was evaluated on a thermogravimetric analyzer (Shimadzu, TGA-50). Samples of approximately 10 mg were heated from 25 °C to 600 °C at a rate of 10 °C/min, under dynamic nitrogen (N₂) flow of 50 mL/min.
 
 Mass loss (TG) curves and their derivatives (DTG) were used to identify decomposition stages of hemicellulose, cellulose, and lignin, according to the methodology described by @Popescu2011.
 
@@ -118,13 +130,13 @@ Mechanical degradation was modeled assuming first-order kinetics ($P(t) = P_0 \c
 
 For treated fibers (T2 and T3), the exponential model presented the best fit (lowest AIC), while for natural fibers (T0) and lightly treated (T1), results were statistically equivalent to the logarithmic model ($\Delta AIC < 2$). The exponential model was chosen due to its physicochemical foundation in first-order degradation kinetics, consistent with hydrolysis and oxidation of natural polymers.
 
-The temporal failure probability followed the two-parameter Weibull distribution (Equation 3), where the FUL corresponds to the time for 10% failure ($P_{10}$).
+The temporal failure probability followed the two-parameter Weibull distribution (Equation 3), where SL corresponds to the time for 10 % failure ($P_{10}$).
 
 $$
 R(t) = \exp\left[ -\left( \frac{t}{\eta} \right)^\beta \right]
 $$
 
-Uncertainty of parameters ($k$, $\eta$, $\beta$) was quantified via non-parametric *bootstrap* (1000 resamplings, 95% CI).
+Uncertainty of parameters ($k$, $\eta$, $\beta$) was quantified via non-parametric *bootstrap* (1000 resamplings, 95 % CI).
 
 #### 2.4.2. Statistical Analyses
 
@@ -132,13 +144,13 @@ The longitudinal structure of the experiment (4 treatments × 6 times × 3 repli
 
 ### 2.5. Hybrid Simulation
 
-To calibrate predictive service life models, an accelerated degradation test was performed in a custom UV chamber, following adaptations of the EN 12224:2001 standard. The irradiation system combined UV-A (315–400 nm), UV-B (280–315 nm), and visible (450–700 nm) fluorescent lamps, simulating the global solar spectrum with average irradiance of 6,214 W/m² (UV-A) and 2,281 W/m² (UV-B) (Figure 3).
+To calibrate predictive SL models, an accelerated degradation test was performed in a custom UV chamber, following adaptations of the EN 12224:2001 standard. The irradiation system combined UV-A (315–400 nm), UV-B (280–315 nm), and visible (450–700 nm) fluorescent lamps, simulating the global solar spectrum with average irradiance of 6,214 W/m² (UV-A) and 2,281 W/m² (UV-B) (Figure 3).
 
-The experimental protocol consisted of 120 cycles of 6 hours, totaling 720 hours of exposure. Each cycle comprised three stages: (i) immersion in water for 15 min; (ii) oven drying at 105°C for 1 h; and (iii) UV radiation exposure for 4 h 45 min. Internal temperature was controlled by black panel thermometer at 40 ± 3°C, with relative humidity maintained at approximately 60%.
+The experimental protocol consisted of 120 cycles of 6 hours, totaling 720 hours of exposure. Each cycle comprised three stages: (i) immersion in water for 15 min; (ii) oven drying at 105 °C for 1 h; and (iii) UV radiation exposure for 4 h 45 min. Internal temperature was controlled by black panel thermometer at 40 ± 3 °C, with relative humidity maintained at approximately 60 %.
 
 **Figure 5.** (a) UV forced degradation chamber used for kinetic model calibration and (b) irradiation system with UV-A, UV-B, and visible fluorescent lamps.
 
-![ ](../3-IMAGENS/camara.png){width="70%"}
+![ ](../../3-IMAGENS/PORTUGUES/camara.png){width="70%"}
 
 Hybrid simulation integrated kinetic data obtained from chamber simulation ($k_{\text{chamber}}$) with natural field degradation data ($k_{\text{field}}$), allowing determination of experimental Activation Energy ($E_a$) via Arrhenius equation. Additionally, damage evolution was modeled by the modified Paris-Erdoğan law, where the crack growth parameter ($m$) was calibrated using the Weibull modulus ($\beta$), seeking to establish a bridge between static failure probability and dynamic degradation kinetics.
 
