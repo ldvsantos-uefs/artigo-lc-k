@@ -104,13 +104,13 @@ Functional group analysis was performed on an FTIR spectrometer (PerkinElmer, Sp
 
 Interpretation of vibrational bands was based on the seminal works of @Pandey1999 and @Faix1991, focusing on the 1735 cm⁻¹ band (C=O stretching of hemicelluloses) and 1505 cm⁻¹ (aromatic ring vibration of lignin) to evaluate selective removal of amorphous components.
 
-The crystalline structure was analyzed on an X-ray diffractometer (Shimadzu, XRD-6000), using CuKα radiation (λ = 1.5406 Å), operating at 40 kV and 30 mA. Scans were performed in the 2θ interval from 5° to 40°, with a speed of 2°/min. The Crystallinity Index (CI) was calculated by the empirical peak height method proposed by @Segal1959 (Equation 1):
+The crystalline structure was analyzed on an X-ray diffractometer (Shimadzu, XRD-6000), using CuKα radiation (λ = 1.5406 Å), operating at 40 kV and 30 mA. Scans were performed in the 2θ interval from 5 ° to 40 °, with a speed of 2 °/min. The Crystallinity Index (CI) was calculated by the empirical peak height method proposed by @Segal1959 (Equation 1):
 
 $$
 CI (\%) = \frac{I_{002} - I_{am}}{I_{002}} \times 100
 $$
 
-Where $I_{002}$ is the maximum intensity of the diffraction peak of the crystalline plane (002) at 2θ ≈ 22.5° and $I_{am}$ is the intensity of amorphous material diffraction at 2θ ≈ 18°.
+Where $I_{002}$ is the maximum intensity of the diffraction peak of the crystalline plane (002) at 2θ ≈ 22.5 ° and $I_{am}$ is the intensity of amorphous material diffraction at 2θ ≈ 18 °.
 
 Surface morphology and fracture mode were examined on a scanning electron microscope (Hitachi, TM3000). Samples were fixed on aluminum supports with conductive carbon tape and metallized with a thin gold (Au) layer in a sputter coater (Denton Vacuum, Desk V) to avoid electrostatic charging. Images were acquired with an acceleration voltage of 15 kV under high vacuum.
 
