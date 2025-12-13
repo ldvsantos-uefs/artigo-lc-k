@@ -1,30 +1,75 @@
-%% Fluxograma decisório para seleção de tratamento das fibras de Typha
-%% Abra este arquivo diretamente no Visual Studio Code ou em qualquer editor compatível com Mermaid
-%% para visualizar/ajustar o diagrama sem depender do script Python de download.
+%% Fluxograma decisório para seleção do tratamento (síntese do protocolo)
+%% Fonte do gráfico em Mermaid (exportar para PNG/SVG).
 
-flowchart TD
-    A["Início: Definir Requisitos do Projeto"] --> B{"Vida Útil Requerida?"}
-    B -->|"Curta < 90 dias"| C{"Agressividade UV?"}
-    B -->|"Média 90-180 dias"| D["Considerar Tratamento Alcalino"]
-    B -->|"Longa > 180 dias"| E["Tratamento Combinado (NaOH + Silano)"] --> F["Aplicação: Estruturas Permanentes"]
+%%{init: {
+    "theme": "base",
+    "flowchart": {"curve": "stepBefore", "nodeSpacing": 40, "rankSpacing": 55},
+    "themeVariables": {
+        "fontFamily": "Arial",
+        "fontSize": "14px",
+        "primaryColor": "#ffffff",
+        "primaryTextColor": "#111827",
+        "primaryBorderColor": "#111827",
+        "lineColor": "#374151",
+        "tertiaryColor": "#ffffff"
+    }
+}}%%
 
-    C -->|"Baixa/Sombreado"| G["Uso de Fibras Naturais (T0)"] --> H["Aplicação: Revegetação Temporária"]
-    C -->|"Alta/Exposto"| D
-    C -->|"Moderada"| I["Tratamento Superficial (Ác. Acético 5%)"] --> J["Aplicação: Elementos Não Estruturais"]
+flowchart LR
+    classDef lane fill:#ffffff,stroke:#111827,stroke-width:1px;
+    classDef input fill:#ffffff,stroke:#111827,stroke-width:1px;
+    classDef decision fill:#ffffff,stroke:#111827,stroke-width:2px;
+    classDef out fill:#ffffff,stroke:#111827,stroke-width:1px;
+    classDef outStrong fill:#ffffff,stroke:#111827,stroke-width:3px;
 
-    D --> K{"Requisito de Ductilidade?"}
-    K -->|"Alta (> 2,5%)"| L["Tratamento Otimizado NaOH 6% (T2)"]
-    K -->|"Moderada (2,0-2,5%)"| M["Tratamento Híbrido (NaOH 6% + Ác. Acético)"]
-    K -->|"Baixa (< 2,0%)"| N["Tratamento Máxima Resistência NaOH 9% (T3)"]
+    subgraph L1["Entradas do projeto / qualificação"]
+        direction TB
+        q0["Ensaios rápidos\n(L/C, IC, FTIR; DRX/TGA)\n→ estimar VUF (P10)"]:::input
+        i1["Vida útil alvo\n(VUF / P10)"]:::input
+        i2["Agressividade ambiental\n(UV normalizado: 0 / 0,5 / 1,0)"]:::input
+        i3["Ductilidade mínima\n(ε_max)"]:::input
+    end
+    class L1 lane;
 
-    L --> O{"Validação Experimental?"}
-    O -->|"Atende"| P["Aplicação: Bioengenharia de Taludes"]
-    O -->|"Não Atende"| D
-    
-    M --> Q{"Validação Experimental?"}
-    Q -->|"Atende"| R["Aplicação: Elementos Semi-Estruturais"]
-    Q -->|"Não Atende"| D
-    
-    N --> S{"Validação Experimental?"}
-    S -->|"Atende"| T["Aplicação: Reforço de Solo Rígido"]
-    S -->|"Não Atende"| D
+    subgraph L2["Regras de decisão"]
+        direction TB
+        d1{"Uso temporário\n(VUF ≤ 60 dias)\nE UV ≤ 0,5?"}:::decision
+        d2{"UV ≥ 1,0 (exposição alta)\nOU exige ductilidade\n(ε_max ≥ 2,0%)?"}:::decision
+    end
+    class L2 lane;
+
+    subgraph L3["Tratamento recomendado"]
+        direction TB
+        t0["T0 — Natural\nAplicações temporárias\n(30–60 dias)"]:::out
+        t2["T2 — NaOH 6%\nPonto de equilíbrio\n(VUF ~95 dias; ε_max ~2,8%)"]:::outStrong
+        t3["T3 — NaOH 9%\nMaior durabilidade\n(rigidez; ε_max < 2,0%)"]:::out
+    end
+    class L3 lane;
+
+    subgraph L4["Recomendação por objetivo"]
+        direction TB
+        r0["Controle de erosão temporário\n/ revegetação (30–60 dias)"]:::out
+        r2["Bioengenharia de taludes tropicais\n(necessita deformabilidade)"]:::out
+        r3["Reforço/contensão rígida\n(deformação não crítica)"]:::out
+    end
+    class L4 lane;
+
+    q0 --> i1
+    i1 --> d1
+    i2 --> d1
+    d1 -- "Sim" --> t0
+    d1 -- "Não" --> d2
+    i2 --> d2
+    i3 --> d2
+    d2 -- "Sim" --> t2
+    d2 -- "Não" --> t3
+
+    t0 --> r0
+    t2 --> r2
+    t3 --> r3
+
+    n1["Atenção: UV = 1,0\n→ erro pode atingir ~28%\n→ considerar correção não-linear\n/ validação local"]:::out
+    i2 -.-> n1
+
+    s1["Critérios sugeridos (especificação):\nR0 ≥ 20 kN/m; VUF ≥ 90 dias (P10);\nIC ≥ 60%; fim de vida: ε_max ≤ 2,0%"]:::out
+    t2 -.-> s1

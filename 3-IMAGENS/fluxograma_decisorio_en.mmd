@@ -1,30 +1,75 @@
-%% Decision flowchart for Typha fiber treatment selection
-%% Open this file directly in Visual Studio Code or any Mermaid compatible editor
-%% to visualize/adjust the diagram without depending on the Python download script.
+%% Decision flowchart for treatment selection (protocol synthesis)
+%% Mermaid source for export to PNG/SVG.
 
-flowchart TD
-    A["Start: Define Project Requirements"] --> B{"Required Service Life?"}
-    B -->|"Short < 90 days"| C{"UV Aggressiveness?"}
-    B -->|"Medium 90-180 days"| D["Consider Alkaline Treatment"]
-    B -->|"Long > 180 days"| E["Combined Treatment (NaOH + Silane)"] --> F["Application: Permanent Structures"]
+%%{init: {
+    "theme": "base",
+    "flowchart": {"curve": "stepBefore", "nodeSpacing": 40, "rankSpacing": 55},
+    "themeVariables": {
+        "fontFamily": "Arial",
+        "fontSize": "14px",
+        "primaryColor": "#ffffff",
+        "primaryTextColor": "#111827",
+        "primaryBorderColor": "#111827",
+        "lineColor": "#374151",
+        "tertiaryColor": "#ffffff"
+    }
+}}%%
 
-    C -->|"Low/Shaded"| G["Use Natural Fibers (T0)"] --> H["Application: Temporary Revegetation"]
-    C -->|"High/Exposed"| D
-    C -->|"Moderate"| I["Surface Treatment (5% Acetic Acid)"] --> J["Application: Non-Structural Elements"]
+flowchart LR
+    classDef lane fill:#ffffff,stroke:#111827,stroke-width:1px;
+    classDef input fill:#ffffff,stroke:#111827,stroke-width:1px;
+    classDef decision fill:#ffffff,stroke:#111827,stroke-width:2px;
+    classDef out fill:#ffffff,stroke:#111827,stroke-width:1px;
+    classDef outStrong fill:#ffffff,stroke:#111827,stroke-width:3px;
 
-    D --> K{"Ductility Requirement?"}
-    K -->|"High (> 2.5%)"| L["Optimized Treatment 6% NaOH (T2)"]
-    K -->|"Moderate (2.0-2.5%)"| M["Hybrid Treatment (6% NaOH + Acetic Acid)"]
-    K -->|"Low (< 2.0%)"| N["Max Strength Treatment 9% NaOH (T3)"]
+    subgraph L1["Project inputs / qualification"]
+        direction TB
+        q0["Rapid assays\n(L/C, CI, FTIR; XRD/TGA)\n→ estimate FUL (P10)"]:::input
+        i1["Target service life\n(FUL / P10)"]:::input
+        i2["Environmental aggressiveness\n(normalized UV: 0 / 0.5 / 1.0)"]:::input
+        i3["Minimum ductility\n(ε_max)"]:::input
+    end
+    class L1 lane;
 
-    L --> O{"Experimental Validation?"}
-    O -->|"Pass"| P["Application: Slope Bioengineering"]
-    O -->|"Fail"| D
-    
-    M --> Q{"Experimental Validation?"}
-    Q -->|"Pass"| R["Application: Semi-Structural Elements"]
-    Q -->|"Fail"| D
-    
-    N --> S{"Experimental Validation?"}
-    S -->|"Pass"| T["Application: Rigid Soil Reinforcement"]
-    S -->|"Fail"| D
+    subgraph L2["Decision rules"]
+        direction TB
+        d1{"Temporary use\n(VUF ≤ 60 days)\nAND UV ≤ 0.5?"}:::decision
+        d2{"UV ≥ 1.0 (high exposure)\nOR ductility required\n(ε_max ≥ 2.0%)?"}:::decision
+    end
+    class L2 lane;
+
+    subgraph L3["Recommended treatment"]
+        direction TB
+        t0["T0 — Untreated\nTemporary applications\n(30–60 days)"]:::out
+        t2["T2 — 6% NaOH\nBalanced option\n(VUF ~95 days; ε_max ~2.8%)"]:::outStrong
+        t3["T3 — 9% NaOH\nHighest durability\n(stiffer; ε_max < 2.0%)"]:::out
+    end
+    class L3 lane;
+
+    subgraph L4["Recommendation by project objective"]
+        direction TB
+        r0["Temporary erosion control\n/ revegetation (30–60 days)"]:::out
+        r2["Tropical slope bioengineering\n(requires deformability)"]:::out
+        r3["Rigid reinforcement/containment\n(deformation not critical)"]:::out
+    end
+    class L4 lane;
+
+    q0 --> i1
+    i1 --> d1
+    i2 --> d1
+    d1 -- "Yes" --> t0
+    d1 -- "No" --> d2
+    i2 --> d2
+    i3 --> d2
+    d2 -- "Yes" --> t2
+    d2 -- "No" --> t3
+
+    t0 --> r0
+    t2 --> r2
+    t3 --> r3
+
+    n1["Note: UV = 1.0\n→ error may reach ~28%\n→ consider non-linear correction\n/ local validation"]:::out
+    i2 -.-> n1
+
+    s1["Suggested specification targets:\nR0 ≥ 20 kN/m; FUL ≥ 90 days (P10);\nCI ≥ 60%; end-of-life: ε_max ≤ 2.0%"]:::out
+    t2 -.-> s1

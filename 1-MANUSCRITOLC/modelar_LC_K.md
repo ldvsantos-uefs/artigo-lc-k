@@ -217,7 +217,7 @@ Entretanto, a maior rigidez associada a essa estrutura cristalina explica a qued
 
 Por fim, o balanço entre durabilidade, confiabilidade e ductilidade indica claramente que T2 representa a solução tecnicamente mais viável para aplicações geotécnicas. O tratamento oferece resistência suficiente, vida útil ampliada e capacidade deformacional compatível com os deslocamentos típicos de taludes vegetados, enquanto T3 atende cenários onde a deformação não é crítica, mas a durabilidade máxima é desejável.
 
-### 3.3. Hierarquia Causal da Degradação: Composição Química Governando Cinética de Falha
+### 3.3. Hierarquia Causal da Degradação
 
 Fator preditivo mais robusto da cinética de degradação, a razão lignina/celulose (L/C) explicou 94% da variância observada nas constantes de taxa ($k$) entre os tratamentos (R² = 0,94, p < 0,001). A composição química das fibras *in natura* (Tabela 2) estabelece o ponto de referência para entender a hierarquia causal, onde a remoção seletiva de hemicelulose pelo tratamento alcalino altera sistematicamente a razão L/C e, consequentemente, a recalcitrância da matriz.
 
@@ -241,7 +241,7 @@ Esse padrão corrobora a literatura, que identifica a oxidação da lignina como
 
 **Figura 8.** Análise comparativa de microscopia eletrônica de varredura (MEV) das fibras naturais (*Typha domingensis*) versus fibras tratadas alcalinamente (3%, 6% e 9% NaOH).
 
-![ ](../3-IMAGENS/analise_mev_Typha_Domingensis_Natural.png){width="90%"}
+![ ](../3-IMAGENS/figura_painel_comparativo_500x.png){width="90%"}
 
 *Nota: Imagens em escala de 500 µm × 500 µm. A análise comparativa (N=36) indicou redução da porosidade média de 75,8% (Natural) para 26,3% (9% NaOH), contrastando com o aumento da rugosidade superficial (fibrilação) e reorganização cristalina observada nas fibras tratadas.*
 
@@ -255,22 +255,15 @@ Os resultados obtidos convergem para um quadro coerente em que a mercerização 
 
 Esses achados estão em concordância com o comportamento descrito para outras fibras naturais modificadas alcalinamente [@Kim2010; @Goda2006; @Kumar2022] e fornecem um arcabouço consistente para a compreensão e especificação de geotêxteis naturais baseados em *Typha domingensis*.
 
-**Figura 9.** Fluxograma decisório para seleção de tratamento de fibras de *Typha domingensis*.
-
-![ ](../3-IMAGENS/fluxograma_decisorio.png){width="90%"}
-
 A validação estatística das previsões de VUF integrou reamostragem e simulações estocásticas para assegurar a robustez dos resultados. Ao empregar o *bootstrap* não-paramétrico com 1000 iterações, confirmou-se a estabilidade numérica dos ajustes exponenciais, visto que as distribuições empíricas para a taxa de degradação $k$ apresentaram normalidade aproximada (teste de Kolmogorov-Smirnov: $D = 0,087$; $p = 0,41$).
 
 Tal comportamento reduz possibilidades de viés de estimação ou influência de *outliers* [@Sodagar2025], enquanto a validação cruzada (*leave-one-out cross-validation*, LOOCV) atestou a capacidade de generalização do modelo frente a dados não observados.
 
 O erro quadrático médio (RMSE) obtido na validação cruzada foi de 0,000127 dia⁻¹, valor comparável ao RMSE de ajuste de 0,000115 dia⁻¹. Essa proximidade indica a ausência de *overfitting* estatisticamente significativo e confirma a capacidade preditiva do modelo com uma degradação de desempenho negligenciável, expressa pela relação $RMSE_{cv}/RMSE_{treino} = 1,10$.
 
-A análise de robustez via simulação de Monte Carlo (Figura 11) avaliou o comportamento do modelo sob a variação de parâmetros ambientais simulados. A geração de cinquenta trajetórias de degradação, com perturbações aleatórias de ±10% na constante de taxa $k$, revelou que o modelo mantém um erro relativo médio inferior a 10% sob condições de controle (irradiância UV normalizada = 0) e sombreamento parcial (UV = 0,5).
+As análises de robustez indicaram que o modelo mantém um erro relativo médio inferior a 10% sob condições de controle (irradiância UV normalizada = 0) e sombreamento parcial (UV = 0,5). No entanto, para condições de exposição elevada (UV = 1,0), a variabilidade aumenta, o que sugere a necessidade de correções não-lineares para ambientes áridos ou de altitude elevada, onde a irradiância UV é elevada durante a maior parte do dia. Especificamente, no regime de UV = 1,0, o erro atinge 28%, patamar crítico para projetos conservadores. Esse comportamento também foi observado por @Aldosary2025, que, ao investigar a irradiância UV em climas áridos, relataram um aumento não-linear na variabilidade dos parâmetros de degradação sob UV > 1,0, com desvios superiores a 25%.
 
-No entanto, para condições de exposição elevada (UV = 1,0), a variabilidade aumenta, o que sugere a necessidade de correções não-lineares para ambientes áridos ou de altitude elevada, onde a irradiância UV é elevada durante a maior parte do dia. Especificamente, no regime de UV = 1,0, o 95º percentil de erro atinge 28%, patamar crítico para projetos conservadores. Esse comportamento também foi observado por @Aldosary2025, que, ao investigar a irradiância UV em climas áridos, relataram um aumento não-linear na variabilidade dos parâmetros de degradação sob UV > 1,0, com desvios superiores a 25%.
-
-De modo semelhante, @Andrady2019 verificaram que, em materiais expostos a ambientes de alta altitude, a resposta à radiação UV apresenta características fortemente não-lineares, demandando correções específicas para regimes de alta irradiância.
-@wieser2023 também demonstrou que a não linearidade na resposta de degradação sob UV intenso eleva o erro de previsão para aproximadamente 28%, valor que define um limite crítico para abordagens conservadoras em projetos de durabilidade.
+De modo semelhante, @Andrady2019 verificaram que, em materiais expostos a ambientes de alta altitude, a resposta à radiação UV apresenta características fortemente não-lineares, demandando correções específicas para regimes de alta irradiância. @wieser2023 também demonstrou que a não linearidade na resposta de degradação sob UV intenso eleva o erro de previsão para aproximadamente 28%, valor que define um limite crítico para abordagens conservadoras em projetos de durabilidade.
 
 ### 3.5. Protocolo de Qualificação e Transferência Tecnológica
 
@@ -278,21 +271,23 @@ Os resultados permitem propor um protocolo de qualificação acelerada ancorado 
 
 O aumento da cristalinidade atua como um *proxy* para a redução de defeitos na escala molecular, elevando a barreira energética para a nucleação de trincas, conforme a teoria de Griffith. A universalidade desse mecanismo, observada também em outras espécies lignocelulósicas [@Acharya2024; @Hindi2025], sugere a viabilidade de uma curva de ajuste universal para predição da VUF baseada na cristalinidade.
 
-Para as figras de taboa *Typha domingensis*, a concentração de 6% de NaOH consolidou-se como o ponto de equilíbrio industrial. Diferente da concentração de 9%, que reduz a ductilidade para níveis inferiores ($\varepsilon_{\text{máx}} < 2,0\%$) apesar da maior resistência inicial, o tratamento a 6% estende a VUF para 95 dias (+127% sobre o natural) mantendo a ductilidade em 2,8%, adequada para acomodar deslocamentos do solo.
+Para as fibras de taboa *Typha domingensis*, a concentração de 6% de NaOH consolidou-se como o ponto de equilíbrio industrial. Diferente da concentração de 9%, que reduz a ductilidade para níveis inferiores ($\varepsilon_{\text{máx}} < 2,0\%$) apesar da maior resistência inicial, o tratamento a 6% estende a VUF para 95 dias (+127% sobre o natural) mantendo a ductilidade em 2,8%, adequada para acomodar deslocamentos do solo.
 
 A adoção do percentil $P_{10}$ de Weibull como critério de projeto alinha a especificação de geotêxteis naturais a normas internacionais de confiabilidade, como a ISO 2394 [@ISO2394] e diretrizes de geotecnia probabilística discutidas por @Phoon2021, substituindo médias determinísticas por uma margem probabilística segura contra falhas prematuras. Para a implementação prática, recomenda-se que especificações futuras integrem requisitos de resistência inicial mínima de 20 kN/m, VUF de 90 dias ($P_{10}$) e índice de cristalinidade $\ge 60\%$, estabelecendo a redução da extensão máxima a 2,0% como critério definidor do fim da vida útil.
 
 Do ponto de vista econômico e ambiental, o tratamento alcalino apresenta impacto reduzido e pegada de carbono 60–70% inferior à dos geossintéticos convencionais, conforme evidenciado por estudos de Avaliação do Ciclo de Vida (LCA) de @Shamsuddoha2025 e @Soares2023, que destacam a sustentabilidade superior das fibras naturais em relação a polímeros como polipropileno. Para um talude de 10.000 m², o custo adicional do tratamento (R$ 180–220/ton) é compensado pela durabilidade estendida, que reduz a frequência de substituições e gera uma economia operacional estimada em R$ 50.000–70.000 anuais.
 
-A análise integrada dos resultados permite estabelecer critérios de especificação fundamentados no equilíbrio entre durabilidade, ductilidade e condições ambientais (Figura 10). Fibras não tratadas apresentam aplicabilidade restrita a intervenções temporárias em ambientes de baixa agressividade climática [@Pritchard2000; @Methacanon2010], onde a degradação acelerada não compromete a funcionalidade dentro da janela operacional típica de geotêxteis biodegradáveis (30–60 dias). 
+ A análise integrada dos resultados permite estabelecer critérios de especificação fundamentados no equilíbrio entre durabilidade, ductilidade e condições ambientais (Figura 9). O fluxograma foi concebido como uma regra de decisão operacional para escolha do tratamento, usando como entradas: (i) a VUF alvo sob critério conservador ($P_{10}$), estimável via ensaios rápidos (L/C, IC, FTIR; DRX/TGA); (ii) a agressividade ambiental representada por cenários de irradiância UV normalizada (0 / 0,5 / 1,0); e (iii) o requisito mínimo de ductilidade (ε_max). Fibras não tratadas apresentam aplicabilidade restrita a intervenções temporárias em ambientes de baixa agressividade climática [@Pritchard2000; @Methacanon2010], onde a degradação acelerada não compromete a funcionalidade dentro da janela operacional típica de geotêxteis biodegradáveis (30–60 dias). 
 
-Em contrapartida, taludes tropicais submetidos a radiação UV intensa e ciclos higrotérmicos pronunciados demandam o tratamento com NaOH 6%, que combina VUF estendida com preservação da capacidade deformacional necessária para acomodar deslocamentos do solo [@Basu2019; @Holanda2024], emergindo como solução tecnicamente adequada para sistemas de bioengenharia onde a rigidez excessiva compromete a funcionalidade. 
 
-Já a concentração de 9%, embora maximize a durabilidade, induz rigidez incompatível com aplicações que exigem ductilidade, restringindo-se a contextos geotécnicos nos quais a rigidez estrutural prevalece como requisito de projeto [@Syed2021; @Kafodya2020], tais como reforços de base ou sistemas de contenção rígidos.
+**Figura 9.** Fluxograma decisório para seleção de tratamento de fibras de *Typha domingensis* (critério $P_{10}$ e protocolo de qualificação acelerada).
 
-**Figura 10.** Validação do modelo híbrido e evolução microestrutural: (a) Comparação entre previsões do modelo acelerado (câmara UV) e dados de campo para resistência residual; (b) Evolução temporal da densidade de fraturas para todos os tratamentos.
+![ ](../3-IMAGENS/fluxograma_decisorio.png){width="90%"}
 
-![ ](../3-IMAGENS/grafico_validacao_microestrutura.png){width="95%"}
+
+Em termos de regras, quando o uso é temporário (VUF ≤ 60 dias) e a agressividade é baixa (UV ≤ 0,5), recomenda-se o material sem tratamento (T0), compatível com a janela operacional típica (30–60 dias). Em contrapartida, sob exposição elevada (UV = 1,0) e/ou quando o projeto exige deformabilidade mínima (ε_max ≥ 2,0%), o tratamento com NaOH 6% (T2) é indicado por combinar VUF estendida com preservação da capacidade deformacional necessária para acomodar deslocamentos do solo [@Basu2019; @Holanda2024].
+
+Já a concentração de 9% (T3), embora maximize a durabilidade, tende a induzir rigidez e reduzir a ductilidade (ε_max < 2,0%), sendo mais apropriada quando a deformação não é crítica e a rigidez estrutural prevalece como requisito de projeto [@Syed2021; @Kafodya2020], tais como reforços de base ou sistemas de contenção rígidos.
 
 ### 3.6. Calibração Experimental e Mecânica do Dano
 
@@ -312,15 +307,20 @@ A comparação  entre trajetórias de degradação projetadas mediante ensaios a
 
 Sobrepondo-se a essa concordância numérica, a inspeção visual das curvas referentes aos tratamentos T1 (3% NaOH) e T2 (6% NaOH) desvela um gradiente protetor cuja magnitude se intensifica proporcionalmente à concentração alcalina aplicada, demonstrando que a mercerização não apenas retarda a cinética de degradação mas o faz mediante mecanismo dose-dependente que se articula coerentemente com a remoção seletiva de hemicelulose e a consolidação da fase cristalina [@Luchese2024]. A aderência entre modelo acelerado e realidade de campo legitima, por conseguinte, tanto a energia de ativação calibrada ($E_a = 29,03$ kJ/mol) quanto o fator de aceleração empregado ($AF \approx 1,69$), confirmando que a relação temperatura-cinética descrita pela equação de Arrhenius captura adequadamente a física termoquímica subjacente ao processo degradativo [@Wei2014; @OrnaghiJr2024].
 
-Paralelamente à validação macroscópica, a quantificação morfométrica da densidade de fraturas superficiais via microscopia eletrônica de varredura (Figura 10b) revelou dinâmica de dano microestrutural que se ajusta a padrão exponencial crescente, traduzindo-se na acumulação progressiva de defeitos cuja taxa de nucleação difere substancialmente entre os regimes de tratamento. O material natural (T0) experimentou incremento abrupto de 45 para 185 mm⁻² ao longo de 180 dias de exposição, trajetória que contrasta visivelmente com o comportamento do tratamento mais agressivo (T3, 9% NaOH), cuja densidade final estabilizou-se em 128 mm⁻² após o mesmo intervalo temporal.
+Paralelamente à validação macroscópica, a quantificação morfométrica da densidade de fraturas superficiais via microscopia eletrônica de varredura (Figura 10b) revelou dinâmica de dano microestrutural que se ajusta a padrão exponencial crescente, traduzindo-se na acumulação progressiva de defeitos cuja taxa de nucleação difere substancialmente entre os regimes de tratamento. 
+
+O material natural (T0) experimentou incremento abrupto de 45 para 185 mm⁻² ao longo de 180 dias de exposição, trajetória que contrasta visivelmente com o comportamento do tratamento mais agressivo (T3, 9% NaOH), cuja densidade final estabilizou-se em 128 mm⁻² após o mesmo intervalo temporal.
+
+**Figura 10.** Validação do modelo híbrido e evolução microestrutural sendo, (a) Comparação entre previsões do modelo acelerado (câmara UV) e dados de campo para resistência residual e (b) Evolução temporal da densidade de fraturas para todos os tratamentos.
+
+![ ](../3-IMAGENS/grafico_validacao_microestrutura.png){width="95%"}
+
 
 Essa divergência correlaciona-se fortemente ($r = 0,89$; $p < 0,001$) com a depleção de hemicelulose e o concomitante aumento de cristalinidade induzidos pela mercerização [@Luchese2024; @Kwon2021], confirmando que a reorganização microestrutural não constitui mera alteração morfológica superficial mas atenua mecanisticamente tanto a nucleação de microfissuras quanto sua subsequente propagação através da matriz fibrilar.
 
-**Figura 11.** Validação do modelo de degradação via simulação de Monte Carlo.
+Quando integrados, os resultados da validação macroscópica e da caracterização microestrutural demonstram que o modelo híbrido captura a física da degradação em múltiplas escalas simultaneamente,   molecular, microestrutural e macroscópica,   habilitando extrapolações para cenários climáticos distintos com incerteza controlada. 
 
-![ ](../3-IMAGENS/grafico_validacao_uv_ggplot.png){width="80%"}
-
-Quando integrados, os resultados da validação macroscópica e da caracterização microestrutural demonstram que o modelo híbrido captura a física da degradação em múltiplas escalas simultaneamente,   molecular, microestrutural e macroscópica,   habilitando extrapolações para cenários climáticos distintos com incerteza controlada. A energia de ativação determinada experimentalmente para *Typha domingensis* ($E_a = 29,03$ kJ/mol) posiciona-se em patamar intermediário quando confrontada com o espectro de fibras naturais e sintéticas reportadas na literatura. Materiais com teor elevado de lignina, notadamente o coco (*Coir*), exibem tipicamente maior recalcitrância química que se traduz em energias de ativação superiores.
+A energia de ativação determinada experimentalmente para *Typha domingensis* ($E_a = 29,03$ kJ/mol) posiciona-se em patamar intermediário quando confrontada com o espectro de fibras naturais e sintéticas reportadas na literatura. Materiais com teor elevado de lignina, notadamente o coco (*Coir*), exibem tipicamente maior recalcitrância química que se traduz em energias de ativação superiores.
 
 Ao passo que fibras com fração lignificada reduzida, como a juta, apresentam cinéticas de degradação comparáveis ou até mais rápidas que a *Typha*. Esse posicionamento intermediário não representa fragilidade intrínseca mas reflete a particular arquitetura composicional da espécie,   suficientemente lignificada para resistir à degradação acelerada porém não ao ponto de comprometer a processabilidade química via tratamento alcalino.
 
@@ -353,10 +353,13 @@ Embora suficiente para os objetivos exploratórios deste estudo, decisões regul
 
 Ensaios experimentais validaram que a razão lignina/celulose (L/C) atua como o determinante primário da cinética de degradação das fibras de *Typha domingensis*, exercendo uma governança sobre a perda de propriedades mecânicas que supera a influência isolada da variável temporal. A densidade de fraturas superficiais, longe de ser um fenômeno aleatório, manifestou-se como uma consequência direta e secundária desse processo de degradação química intrínseco.
 
-Resultados da otimização do tratamento alcalino revelaram que a concentração de 6% de NaOH estabelece um ponto de equilíbrio operacional crítico, estendendo a Vida Útil Funcional (VUF) em 127% sem sacrificar a ductilidade necessária para a acomodação de deformações do solo. Em contrapartida, a elevação da concentração para 9%, embora promova incrementos na resistência inicial, induz uma fragilização excessiva que compromete a integridade funcional do geossintético sob tensões de serviço. Sob a ótica microestrutural, a mercerização promoveu a conversão polimórfica para Celulose II e a consequente elevação da cristalinidade, uma reorganização matricial que reduz a porosidade aparente (densificação) enquanto homogeneíza as propriedades físicas e amplia a confiabilidade estrutural. A análise morfométrica quantitativa via MEV evidenciou que a modificação alcalina induz redução de porosidade (75,8% - 26,3%) e aumento de rugosidade (452 - 1549), alterações microestruturais diretamente correlacionadas com o prolongamento da vida útil funcional.
+Resultados da otimização do tratamento alcalino revelaram que a concentração de 6% de NaOH estabelece um ponto de equilíbrio operacional crítico, estendendo a Vida Útil Funcional (VUF) em 127% sem sacrificar a ductilidade necessária para a acomodação de deformações do solo. Em contrapartida, a elevação da concentração para 9%, embora promova incrementos na resistência inicial, induz uma fragilização excessiva que compromete a integridade funcional do geossintético sob tensões de serviço.
+
+Sob a ótica microestrutural, a mercerização promoveu a conversão polimórfica para Celulose II e a consequente elevação da cristalinidade, uma reorganização matricial que reduz a porosidade aparente (densificação) enquanto homogeneíza as propriedades físicas e amplia a confiabilidade estrutural. A análise morfométrica quantitativa via MEV evidenciou que a modificação alcalina induz redução de porosidade e aumento de rugosidade, alterações microestruturais diretamente correlacionadas com o prolongamento da vida útil funcional.
 
 Estimativas da VUF a partir de parâmetros composicionais tornam-se viáveis graças à robustez do modelo hierárquico validado, especialmente em cenários de média irradiância, ainda que a aplicação em ambientes de índice UV extremo demande a incorporação de fatores de correção específicos. Corroborando essa previsibilidade, a análise de Weibull evidenciou que a modificação química atenua a variabilidade natural das fibras, viabilizando prognósticos de desempenho fundamentados em parâmetros determinísticos de desgaste. A tecnologia desenvolvida, portanto, fornece as bases quantitativas necessárias para a especificação de estruturas de controle de erosão com previsibilidade de vida útil compatível com os requisitos de engenharia.
 
 ## Referências
 
 ::: {#refs}
+:::
