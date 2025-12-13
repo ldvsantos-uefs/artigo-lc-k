@@ -3,7 +3,7 @@ title: "Valorization of Underutilized Biomass into Durable Geotextiles: Alkaline
 author: "Diego Vidal"
 bibliography: referencias_lc.bib
 csl: apa.csl
-reference-doc: modelo_formatacao.docx
+reference-doc: ../PORTUGUES/modelo_formatacao.docx
 fig-align: center
 table-align: center
 lang: en
@@ -156,7 +156,114 @@ Hybrid simulation integrated kinetic data obtained from chamber simulation ($k_{
 
 ## 3. Results and Discussion
 
+### 3.1. Chemical and Microstructural Modulation
+
+Baseline characterization of *in natura* fibers (Table 2) provides the initial analytical reference, in which the lignin/cellulose ratio (L/C = 0.44) and the crystallinity index of 48.5 % delineate a predominantly amorphous and hygroscopic matrix. This compositional configuration is consistent with a high density of reactive sites and free volume, favoring water diffusion and susceptibility to hydrolysis and photooxidation mechanisms that precede mechanical degradation [@Bouramdane2022; @Silva2009].
+
+FTIR spectroscopy confirms the effectiveness of alkaline treatment by attenuation of the band at 1735 cm⁻¹, associated with stretching of carbonyl groups (C=O) in hemicelluloses and pectins. As observed by @Pandey1999, selective removal of these amorphous constituents increases the relative proportion of the crystalline cellulosic fraction and the aromatic lignin backbone. This phenomenon, also described by @Faix1991, can reduce cell-wall hydrophilicity. As discussed by @Poletto2014 and @Mwaikambo2002, suppression of these vibrational modes suggests a transition toward a lower-reactivity chemical state, potentially limiting initiation of oxidative processes.
+
+**Table 2.** Average chemical composition of *Typha domingensis* *in natura* fibers (dry mass, %).
+
+| Component                | Content (%) | Standard Deviation | Analytical Method         |
+| :----------------------- | :---------: | :----------------: | :------------------------ |
+| Cellulose                |    42.5     |       ± 2.1        | Modified Van Soest        |
+| Hemicellulose            |    28.3     |       ± 1.8        | Modified Van Soest        |
+| Lignin                   |    18.7     |       ± 1.4        | Modified Klason           |
+| Extractives              |     7.2     |       ± 0.9        | Soxhlet (ethanol/toluene) |
+| Ash                      |     3.3     |       ± 0.4        | Calcination 550 °C        |
+| L/C ratio                |     0.44    |       ± 0.03       | Calculated                |
+| Crystallinity Index      |    48.5     |       ± 3.2        | XRD (Segal method)        |
+
+*Note: Mean values from three independent batches collected in January 2023.*
+
+Crystallographic data (XRD) are consistent with this structural reorganization by registering an increase in crystallinity index from 48.5 % (control) to 62.3 % (9 % NaOH). This trend reflects removal of disordered regions and reorientation of cellulose microfibrils, as detailed by @Chieng2017 and @Yang2024, which may result in a more compact supramolecular architecture. Reduction in amorphous volume tends to restrict the diffusive pathway for water and oxidizing agents, potentially acting as a physical barrier that slows degradation reaction kinetics [@Hiyama2006; @Yamane2006].
+
+Morphological analysis (SEM) reflects these chemical alterations in geometric metrics of interaction with the environment. Treated fibers exhibit a surface free of impurities and increased roughness (Figure 6), while morphometry (N = 36) quantifies a reduction in average porosity from 75.8 % (natural) to 26.3 % (9 % NaOH). According to @Carvalho2014, this densification may reduce the specific surface area available for microbial colonization and moisture uptake, whereas the increase in roughness (452 to 1549) indicates potential improvement in mechanical anchorage in the soil matrix [@Geremew2024; @Sinha2017].
+
+**Figure 6.** Comparative SEM analysis of natural *Typha domingensis* fibers versus alkali-treated fibers (3 %, 6 %, and 9 % NaOH).
+
+![ ](../../3-IMAGENS/INGLES/figura_painel_comparativo_500x_en.png){width="90%"}
+
+*Note: Images at 500 µm × 500 µm scale. Comparative analysis (N = 36) indicated a reduction in average porosity from 75.8 % (natural) to 26.3 % (9 % NaOH), contrasting with the increase in surface roughness (fibrillation) and crystalline reorganization observed in treated fibers.*
+
+### 3.2. Mechanical Degradation Kinetics
+
+Kinetic quantification of mechanical degradation strengthens the hypothesis that chemical modification can delay functional obsolescence. Figure 7 illustrates the temporal evolution of ultimate tensile strength (UTS) and maximum strain.
+
+Longitudinal analysis evidences the superior performance of treatment T3 (9 % NaOH), which sustains a mean tensile strength of 18.2 ± 8.2 MPa, statistically distinct from the control (5.5 ± 3.3 MPa; p < 0.001) according to Bonferroni-corrected Mann-Whitney U tests and Kruskal-Wallis test (H = 25.08). GEE modeling corroborates this distinction by indicating significant temporal decline for all groups (-0.091 MPa/day, p < 0.001), with an interaction term favoring stability of treated fibers (Figure 7).
+
+**Figure 7.** Microstructural and mechanical characterization of degradation: (a) temporal evolution of tensile strength and fracture patterns, (b) representative stress–strain curves at 30 days, and (c) at 90 days for all treatments.
+
+![ ](../../3-IMAGENS/INGLES/figura5_paineis_ab_en.png){width="95%"}
+
+Ductility can be considered a sensitive indicator of the functional limit state, anticipating the brittle transition that compromises the geotextile's capacity to accommodate soil deformations. Untreated fibers collapse to ductility below 5 % at 180 days, whereas alkaline treatments preserve deformability above 6 %, delaying embrittlement. This preservation is associated with hemicellulose removal, which, according to @Hatakka2011 and @Santos2023_GeocompostosTypha, functions in the natural state as preferential sites for moisture uptake and fungal attack. Stabilization of strain capacity may therefore reflect a mechanical consequence of reduced biological and chemical susceptibility of the matrix [@Kabir2012].
+
+Kinetic parameterization (Table 3) quantifies the durability gain by demonstrating that mercerization reduces the decay constant ($k$) and increases half-life ($t_{1/2}$). Treatment T3 maximizes property retention, reaching a tensile half-life of 91.2 days versus 48.8 days for the control.
+
+In design terms, this extension is critical to ensure mechanical integrity during the vegetation establishment window [@Veylon2015]. The reduction in ductility degradation rate ($k$ from 0.0355 to 0.0198 day⁻¹) supports the feasibility of treated fibers for applications requiring long-term deformation compatibility [@Mwaikambo2002; @Rong2001].
+
+**Table 3.** Degradation constants ($k$) and half-life times ($t_{1/2}$) for tensile strength and ductility.
+
+| Property         | Treatment | k (day⁻¹) |     95 % CI      | $t_{1/2}$ (days) | $R^2$ |
+| :--------------- | :-------: | :-------: | :--------------: | :--------------: | :---: |
+| Tensile strength |    T0     |  0.0142   | [0.0128–0.0156]  |       48.8       | 0.96  |
+|                  |    T1     |  0.0118   | [0.0105–0.0131]  |       58.7       | 0.95  |
+|                  |    T2     |  0.0082   | [0.0074–0.0090]  |       84.5       | 0.97  |
+|                  |    T3     |  0.0076   | [0.0068–0.0084]  |       91.2       | 0.98  |
+| Ductility        |    T0     |  0.0355   | [0.0312–0.0398]  |       19.5       | 0.93  |
+|                  |    T1     |  0.0287   | [0.0251–0.0323]  |       24.1       | 0.94  |
+|                  |    T2     |  0.0218   | [0.0192–0.0244]  |       31.8       | 0.96  |
+|                  |    T3     |  0.0198   | [0.0174–0.0222]  |       35.0       | 0.95  |
+
+*Note: Constants obtained via first-order exponential decay fitting. CI: confidence interval.*
+
+Correlation between macroscopic performance and accumulated damage is supported by fracture density analysis (Figure 8b), which maps the physical evolution of discontinuities. Fracture growth in the control (45 to 185 mm⁻²) contrasts with the stabilization observed for the most aggressive treatment (128 mm⁻²), consistent with the premise that higher crystallinity and lower porosity hinder crack propagation [@Dalirnasab2024; @Kabir2012].
+
+**Figure 8.** Hybrid-model validation and microstructural evolution: (a) comparison between accelerated-model predictions (UV chamber) and field data for residual strength; (b) temporal evolution of fracture density for all treatments.
+
+![ ](../../3-IMAGENS/INGLES/grafico_validacao_microestrutura_en.png){width="95%"}
+
+This microstructural evidence links analysis scales, suggesting that improved durability results directly from a fibrous architecture less prone to defect nucleation under environmental stress [@Luchese2024; @Kwon2021].
+
+### 3.3. Stochastic and Predictive Modeling
+
+The regime transition induced by mercerization appears to shift failure behavior toward greater determinism, as evidenced by Weibull distributions (Figure 9). The increase in shape modulus ($\beta$) from 2.3 (control) to 3.0 (9 % NaOH) is consistent with reduced dispersion of failure times. @Rong2001 and @Luqman2023 associate this behavior with microstructural homogenization and elimination of critical defects. From a geotechnical design perspective, the conservative metric $P_{10}$ quantifies the reliability gain: treatment T2 (6 % NaOH) extends SL to 95 days, exceeding the 42 days of the control and mitigating the risk of premature collapse during the stabilization phase [@Sekulic2017].
+
+**Figure 9.** Reliability curves and SL estimates (Weibull) for different treatments.
+
+![ ](../../3-IMAGENS/INGLES/grafico_weibull_confiabilidade_ggplot_en.png){width="95%"}
+
+Integration of thermo-kinetic dynamics through hybrid calibration supports predictability under environmental variability. The activation energy ($E_a = 29.03$ kJ/mol), determined via Arrhenius equation by comparing field degradation rates ($k \approx 0.0118$ day⁻¹) and UV-chamber rates ($k \approx 0.0199$ day⁻¹), suggests that failure mechanisms lie within coupled hydrolysis and photooxidation of lignocellulosic matrices [@OrnaghiJr2024; @Wei2014]. Consistency between accelerated projections and empirical records (Figure 8a) indicates the feasibility of short-duration tests to capture degradation physics and enable robust temporal extrapolation [@Wei2014].
+
+Numerical robustness of fits, verified via non-parametric *bootstrap* (1000 iterations), indicates normality in the distribution of kinetic parameters (Kolmogorov-Smirnov: $p = 0.41$). Absence of overfitting is supported by proximity between cross-validation error ($RMSE_{cv} = 0.000127$ day⁻¹) and fitting error, yielding $RMSE_{cv}/RMSE_{train} = 1.10$, a criterion that, according to @Sodagar2025, favors generalization to unseen data.
+
+Physical limits of validity emerge under high-irradiance regimes, where linearity of photochemical response is compromised. Predictions maintain relative error below 10 % under partial shading (UV ≤ 0.5), but extreme exposure (UV = 1.0) increases divergence to 28 %, indicating the need for non-linear corrections for high-altitude or arid climates [@Andrady2019; @Aldosary2025; @wieser2023]. The strong correlation (r = 0.82) between embrittlement kinetics and FTIR oxidation markers suggests, however, that mechanical degradation remains governed by matrix chemical evolution [@Tanasa2022; @Silva2024].
+
+### 3.4. Protocol and Geotechnical Implications
+
+Technical specification of natural geotextiles supports replacing deterministic averages with probabilistic safety margins, aligning with structural reliability practices via adoption of the $P_{10}$ percentile, as recommended by @ISO2394 and @Phoon2021. Empirical evidence supports defining performance thresholds based on minimum initial tensile strength of 20 kN/m, SL ≥ 90 days, and crystallinity index above 60 %, while setting the reduction of maximum strain ($\varepsilon_{\max}$) to 2.0 % as the terminal functionality criterion.
+
+Treatment selection (Figure 10) is based on integrating rapid characterization tests (L/C, crystallinity index, FTIR) with SL estimates weighted by environmental aggressiveness and ductility requirements. Untreated material is restricted to provisional interventions under low aggressiveness scenarios (30–60 days) [@Pritchard2000; @Methacanon2010], whereas 6 % NaOH (T2) represents a technical-economic balance for tropical slopes. This concentration extends SL to 95 days (+127 %) while preserving functional ductility (2.8 %), unlike 9 % (T3) which, although maximizing durability, induces embrittlement ($\varepsilon_{\max} < 2.0 %$) compatible only with rigid reinforcement applications or basal confinement [@Syed2021; @Kafodya2020; @Holanda2024].
+
+**Figure 10.** Decision flowchart for selecting *Typha domingensis* fiber treatment ($P_{10}$ criterion and accelerated qualification protocol).
+
+![ ](../../3-IMAGENS/INGLES/fluxograma_decisorio_en.png){width="90%"}
+
+Large-scale adoption is supported by environmental and economic advantages over conventional geosynthetics. A 60–70 % lower carbon footprint relative to polypropylene [@Shamsuddoha2025; @Soares2023] combines with operational efficiency in large works (10,000 m²), where the incremental treatment cost (R$ 180–220/ton) is offset by extended SL and reduced maintenance frequency, yielding estimated savings between R$ 50,000 and R$ 70,000 per year.
+
+Protocol applicability is subordinate to local irradiance regime, given that non-linearity of photochemical response under extreme UV (index 1.0) introduces predictive deviations requiring *in situ* validation or parametric correction to avoid risk underestimation [@Andrady2019]. Under humid tropical slope conditions, however, the validated chain—from chemical modulation to mechanical reliability—provides a robust quantitative basis for engineering nature-based solutions.
+
 ## 4. Conclusion
+
+Validation of the hierarchical model connecting chemical recalcitrance to SL is the central contribution of this study, indicating that the durability of natural geotextiles is not a stochastic artifact but a deterministic response to compositional architecture. Experimental evidence shows that hemicellulose removal and the consequent crystalline reorganization induced by mercerization can act as governing mechanisms delaying mechanical degradation.
+
+Identification of 6 % NaOH treatment as the technical-economic optimum goes beyond parameter tuning by delimiting a boundary condition where reliability gains do not compromise the deformability essential for soil–geotextile interaction. While 9 % maximizes tensile strength, the resulting embrittlement violates ductility requirements for slope stabilization, exemplifying the trade-off between chemical recalcitrance and mechanical compliance.
+
+Adoption of the reliability metric $P_{10}$ translates this understanding into engineering specification, enabling *Typha domingensis* fibers to be prescribed with safety margins comparable to synthetic counterparts, provided that irradiance regime remains within the validated envelope.
+
+This investigation repositions natural geotextiles from alternative materials to engineered solutions grounded in a predictive framework integrating microstructural evidence and probabilistic design.
+
+The demonstrated ability to estimate long-term performance through rapid compositional tests reduces dependence on prolonged field tests, accelerating technology transfer for bioengineering solutions. Future work includes expanding the model to other fibrous species and incorporating additional environmental variables, such as relative humidity and temperature, to broaden applicability of the decision protocol across diverse geographic contexts.
 
 ## References
 

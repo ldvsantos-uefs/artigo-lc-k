@@ -31,6 +31,8 @@ def gerar_docx(md_file, output_file, bib_file, csl_file, apendices_file=None):
     print(f"\nGerando {output_file.name}...")
     
     # Remover arquivo antigo se existir
+    # Em Windows/OneDrive, é comum o DOCX estar bloqueado se estiver aberto.
+    # Se não for possível apagar, gera com sufixo "_novo".
     if output_file.exists():
         print(f"[INFO] Removendo arquivo antigo: {output_file.name}")
         max_attempts = 5
@@ -43,9 +45,11 @@ def gerar_docx(md_file, output_file, bib_file, csl_file, apendices_file=None):
                     print(f"[AVISO] Tentativa {attempt + 1}/{max_attempts}: Arquivo em uso, aguardando...")
                     time.sleep(0.6)
                 else:
-                    print(f"Erro: nao foi possivel remover '{output_file.name}'.")
-                    print("Certifique-se de que o arquivo não está aberto no Word ou OneDrive.")
-                    return 1
+                    novo_output = output_file.with_name(f"{output_file.stem}_novo{output_file.suffix}")
+                    print(f"[AVISO] Não foi possível remover '{output_file.name}' (arquivo em uso).")
+                    print(f"[INFO] Gerando em arquivo alternativo: {novo_output.name}")
+                    output_file = novo_output
+                    break
     
     # Comando Pandoc
     cmd = [
@@ -80,9 +84,14 @@ def gerar_docx(md_file, output_file, bib_file, csl_file, apendices_file=None):
         "--csl", str(csl_file),
     ])
     
-    # Adicionar modelo de formatação se existir
-    modelo = Path("modelo_formatacao.docx")
-    if modelo.exists():
+    # Adicionar modelo de formatação se existir (padroniza PT/EN)
+    # Preferir o template canônico em 1-MANUSCRITO/PORTUGUES para manter o mesmo estilo.
+    modelo_canonico = (repo_root / "1-MANUSCRITO" / "PORTUGUES" / "modelo_formatacao.docx").resolve()
+    modelo_local = (md_dir / "modelo_formatacao.docx").resolve()
+
+    modelo = modelo_canonico if modelo_canonico.exists() else (modelo_local if modelo_local.exists() else None)
+    if modelo is not None:
+        print(f"[INFO] Usando modelo de formatação: {modelo}")
         cmd.extend(["--reference-doc", str(modelo)])
     
     cmd.extend(["-o", str(output_file)])
