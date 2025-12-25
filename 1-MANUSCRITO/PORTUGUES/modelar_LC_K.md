@@ -62,7 +62,7 @@ Esta macrófita aquática, que tipicamente atinge entre 2 e 3 metros de altura, 
 
 ![ ](../../3-IMAGENS/PORTUGUES/coleta.png){width="90%"}
 
-A coleta de folhas e brotos foi realizada no Povoado Tigre pertencente ao município de Pacatuba, Estado de Sergipe, nordeste do Brasil (Figura 2).
+A coleta de folhas e brotos foi realizada no Povoado Tigre (10°35′21.2″S, 36°40′14.3″W) pertencente ao município de Pacatuba, Estado de Sergipe, nordeste do Brasil (Figura 2).
 
 **Figura 2.** Localização geográfica da área de coleta de *Typha domingensis*.
 

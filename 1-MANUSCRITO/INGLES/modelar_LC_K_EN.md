@@ -64,7 +64,7 @@ This aquatic macrophyte, which typically reaches between 2 and 3 meters in heigh
 
 ![ ](../../3-IMAGENS/PORTUGUES/coleta.png){width="90%"}
 
-The collection of leaves and shoots was carried out in Tigre Village, belonging to the municipality of Pacatuba, State of Sergipe, northeastern Brazil (Figure 2).
+The collection of leaves and shoots was carried out in Tigre Village (10°35′21.2″S, 36°40′14.3″W), belonging to the municipality of Pacatuba, State of Sergipe, northeastern Brazil (Figure 2).
 
 **Figure 2.** Geographic location of the *Typha domingensis* collection area.
 
